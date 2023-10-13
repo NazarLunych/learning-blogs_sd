@@ -23,7 +23,11 @@
                     {% if image %}
                       {{- image | image_url: width: 343, height: 206 -}}
                     {% else %}
-                      {{- section.settings.default-image | image_url: width: 343, height: 206 -}}
+                      {% if section.settings.default-image %}
+                        {{- section.settings.default-image | image_url: width: 343, height: 206 -}}
+                      {% else %}
+                        {{ 'image-placeholder.jpeg' | asset_url }}
+                      {% endif %}
                     {% endif %}
                   "
                 >
