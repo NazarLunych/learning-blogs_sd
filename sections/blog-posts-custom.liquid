@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
-<script src="{{'posts-swiper.js' | asset_url}}" defer="defer"></script>
+<script src="{{ 'posts-swiper.js' | asset_url }}" defer="defer"></script>
 {{ 'section-blog-posts-custom.css' | asset_url | stylesheet_tag }}
 
 <link
@@ -15,61 +15,84 @@
           {% assign image = article.image %}
 
           <div class="blog-posts__post swiper-slide">
-            <a href="{{article.url}}"
-              ><img
-                src="
-                  {% if image %}
-                    {{ image | image_url }}
-                  {% else %}
-                    {% if section.settings.default-image %}
-                      {{ section.settings.default-image | image_url }}
+            <a class="blog-posts__img-wrapper" href="{{ article.url }}">
+              <picture>
+                <source
+                  media="(max-width: 500px)"
+                  srcset="
+                    {% if image %}
+                      {{- image | image_url: width: 343, height: 206 -}}
                     {% else %}
-                      {{ 'image-placeholder.jpeg' | asset_url }}
+                      {{- section.settings.default-image | image_url: width: 343, height: 206 -}}
                     {% endif %}
-                  {% endif %}
-                "
-                loading="eager"
-                width="539"
-                height="268"
-                alt="{{ image.alt }}"
-                class="blog-posts__post-img"
-            ></a>
+                  "
+                >
+                <img
+                  class="blog-posts__post-img"
+                  src="
+                    {% if image %}
+                      {{- image | image_url: width: 539, height: 268 -}}
+                    {% else %}
+                      {% if section.settings.default-image %}
+                        {{- section.settings.default-image | image_url: width: 539, height: 268 -}}
+                      {% else %}
+                        {{ 'image-placeholder.jpeg' | asset_url }}
+                      {% endif %}
+                    {% endif %}
+                  "
+                  loading="eager"
+                  width="539"
+                  height="268"
+                  alt="{{ image.alt }}"
+                >
+              </picture>
+            </a>
             <div class="blog-posts__post-content-container">
               <div class="blog-posts__about-post">
-                <div class="blog-posts__post-tag">{{ article.tags | first }}</div>
+                {% if article.tags.size > 0 %}
+                  <div class="blog-posts__post-tag">{{ article.tags | first }}</div>
+                {% endif %}
 
                 <div class="blog-posts__post-info-wrapper">
-                  <img src="{{'clock.svg' | asset_url}}" width="16" height="16" alt="Clock icon" loading="eager">
+                  <img src="{{ 'clock.svg' | asset_url }}" width="16" height="16" alt="Clock icon" loading="eager">
                   <span class="blog-posts__post-info">{{ article.published_at | date: '%B %d %Y' }}</span>
                 </div>
 
                 <div class="blog-posts__post-info-wrapper">
-                  <img src="{{'message.svg' | asset_url}}" width="16" height="16" alt="Message icon" loading="eager">
+                  <img src="{{ 'message.svg' | asset_url }}" width="16" height="16" alt="Message icon" loading="eager">
                   <span class="blog-posts__post-info">
                     {{- article.comments_count }}
-                    <span class="blog-posts__comments-word">comments</span>
+
+                    <span class="blog-posts__comments-word">
+                      {% if article.comments_count == 1 %}
+                        comment
+                      {% else -%}
+                        comments
+                      {% endif %}
+                    </span>
                   </span>
                 </div>
               </div>
 
               <h2 class="blog-posts__post-title">{{ article.title }}</h2>
-              <p class="blog-posts__excerpt-or-content">{{ article.excerpt_or_content }}</p>
+              <div class="blog-posts__excerpt-or-content">{{ article.excerpt_or_content }}</div>
 
               <div class="blog-posts__post-footer-info">
-                <a href="{{article.url}}" class="blog-posts__post-link">Read More</a>
+                <a href="{{ article.url }}" class="blog-posts__post-link">Read More</a>
 
                 <div class="blog-posts__post-info">
                   <img
+                    class="blog-posts__author-avatar"
                     src="
-                      {%if article.metafields.custom.author_image%}
-                        {{article.metafields.custom.author_image | image_url}}
-                      {%else%}
-                        {{'avatar-placeholder.jpeg' | asset_url}}
-                      {%endif%}
+                      {% if article.metafields.custom.author_image %}
+                        {{ article.metafields.custom.author_image | image_url: width: 64, height: 64 }}
+                      {% else %}
+                        {{ 'avatar-placeholder.jpeg' | asset_url }}
+                      {% endif %}
                     "
+                    srcset="{{ article.metafields.custom.author_image | image_url: width: 32, height: 32 }} 1x, {{ article.metafields.custom.author_image | image_url: width: 64, height: 64 }} 2x"
                     width="32"
                     height="32"
-                    class="blog-posts__author-avatar"
                     loading="eager"
                   >
                   <span>By {{ article.author }}</span>

@@ -1,7 +1,9 @@
 let init = false;
 let swiper;
+const mediaQuery = window.matchMedia("(max-width: 990px)");
+
 function swiperCard() {
-  if (window.innerWidth <= 1350) {
+  if (mediaQuery.matches) {
     if (!init) {
       init = true;
       swiper = new Swiper(".js-posts-swiper", {
@@ -24,4 +26,4 @@ function swiperCard() {
   }
 }
 swiperCard();
-window.addEventListener("resize", swiperCard);
+mediaQuery.addEventListener("change", swiperCard);
