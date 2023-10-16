@@ -1,0 +1,146 @@
+{{ 'section-collections-list-custom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'collections-list-custom.js' | asset_url }}" defer="defer"></script>
+
+{% if section.blocks.size > 0 %}
+  <section class="page-width collections-list">
+    <div class="collections-list__wrapper">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        {% assign blockImg = block.settings.image %}
+        {% capture textColor %}
+          {% if section.settings.text-position == 'inside' %}
+            style="color: {{ section.settings.image-text-color }}"
+          {% endif %}
+        {% endcapture %}
+
+        {% capture aspectRatio %}
+          {% case section.settings.aspect-ratio %}
+            {% when 'square' %}
+              collections-list__card--square
+            {% when 'landscape' %}
+              collections-list__card--landscape
+            {% else %}
+              collections-list__card--portrait
+          {% endcase %}
+        {% endcapture %}
+
+        {% if collection != blank %}
+          <a
+            href="{{ collection.url }}"
+            class="
+              collections-list__card
+              {% if section.settings.text-position == 'under' %}
+                collections-list__card--under
+              {%else%}
+                collections-list__card--inside js-card-inside
+              {% endif %}
+              {{ aspectRatio }}
+            "
+          >
+            {% if section.settings['text-position'] == 'inside' %}
+              <div
+                class="collections-list__linear-background"
+                style="background: {{ section.settings.overlay-color }}"
+              ></div>
+            {% endif %}
+
+            <picture class="collections-list__card-picture">
+              <source
+                media="(max-width: 1260px)"
+                srcset="
+                  {% if blockImg %}
+                    {{ blockImg | image_url: width: 293, height: 380 }}
+                      {% else %}
+                        {% if collection.image %}
+                          {{ collection.image | image_url: width: 293, height: 380 }}
+                        {% endif %}
+                      {{ 'image-placeholder.png' | asset_url }}
+                  {% endif %}
+                "
+              >
+              <img
+                class="collections-list__card-img"
+                src="
+                  {% if blockImg %}
+                    {{ blockImg | image_url: width: 400, height: 484 }}
+                      {% else %}
+                        {% if collection.image %}
+                          {{ collection.image | image_url: width: 400, height: 484 }}
+                        {% endif %}
+                      {{ 'image-placeholder.png' | asset_url }}
+                  {% endif %}
+                "
+                width="400"
+                height="484"
+                loading="lazy"
+              >
+            </picture>
+            <div class="collections-list__collection-info js-collection-info">
+              <span class="collections-list__collection-title" {{ textColor }}>
+                {{- collection.title -}}
+              </span>
+              {% if section.settings['show-products-count'] %}
+                <span class="collections-list__collection-text" {{ textColor }}>
+                  {{- collection.all_products_count }}
+                  {% if collection.all_products_count == 1 %}
+                    product
+                  {% else %}
+                    products
+                  {%- endif %}
+                </span>
+              {% endif %}
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": [
+    {
+      "type": "select",
+      "id": "text-position",
+      "label": "Text position",
+      "options": [
+        { "value": "under", "label": "Under the image" },
+        { "value": "inside", "label": "Inside the image" }
+      ],
+      "default": "under"
+    },
+    {
+      "type": "select",
+      "id": "aspect-ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "landscape", "label": "Landscape" }
+      ],
+      "default": "landscape"
+    },
+    {
+      "type": "checkbox",
+      "id": "show-products-count",
+      "label": "Show products count",
+      "default": true
+    },
+    { "type": "color", "id": "image-text-color", "label": "Image text color", "default": "#fff" },
+    { "type": "color_background", "id": "overlay-color", "label": "Overlay color", "default": "rgba(0,0,0, 0.3)" }
+  ],
+  "blocks": [
+    {
+      "name": "collection",
+      "type": "collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Collections list" }]
+}
+{% endschema %}

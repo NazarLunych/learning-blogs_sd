@@ -3,6 +3,14 @@
   --alpha-button-border: 1;
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
+  --border-radius: 16px;
+  --primary-gray-color: #f6f6f6;
+  --primary-black-color: #000;
+  --article-title-font-size: 22px;
+  --article-mob-title-font-size: 18px;
+  --article-info-font-size: 14px;
+  --article-mob-info-font-size: 12px;
+  --transition-duration: 0.4s;
 }
 
 .product-card-wrapper .card,
