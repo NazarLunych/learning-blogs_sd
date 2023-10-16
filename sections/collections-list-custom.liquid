@@ -24,7 +24,7 @@
           {% endcase %}
         {% endcapture %}
 
-        {% if collection != blank %}
+        {% if collection != blank and collection.all_products_count > 0 %}
           <a
             href="{{ collection.url }}"
             class="
