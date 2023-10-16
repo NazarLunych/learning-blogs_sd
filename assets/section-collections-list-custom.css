@@ -19,6 +19,7 @@
   flex-direction: column;
   text-decoration: none;
   transition: var(--transition-duration);
+  flex: 1;
 }
 
 .collections-list__card:hover {
