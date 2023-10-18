@@ -1,0 +1,168 @@
+{{ "section-story-telling.css" | asset_url | stylesheet_tag }}
+
+<section class="custom-section page-width">
+  <div>
+    {% for block in section.blocks %}
+      test
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story telling",
+  "blocks": [
+    {
+      "name": "Story",
+      "type": "text",
+      "settings": [
+        {
+          "id": "tab_heading",
+          "type": "text",
+          "label": "Tab heading"
+        },
+        {
+          "id": "image_desktop",
+          "type": "image_picker",
+          "label": "Image desktop"
+        },
+        {
+          "id": "image_mobile",
+          "type": "image_picker",
+          "label": "Image mobile"
+        },
+        {
+          "id": "image_aspect_ratio",
+          "type": "select",
+          "options": [
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            }
+          ],
+          "label": "Image aspect ratio"
+        },
+        {
+          "id": "image_position",
+          "type": "select",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Image position"
+        },
+        {
+          "id": "text_alignment",
+          "type": "select",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "label": "Text alignment"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Text"
+        },
+        {
+          "id": "button_label",
+          "type": "text",
+          "label": "Button label"
+        },
+        {
+          "id": "button_link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "background",
+          "type": "color_background",
+          "label": "Text"
+        },
+        {
+          "id": "heading_color",
+          "type": "color",
+          "label": "Heading color"
+        },
+        {
+          "id": "subheading_color",
+          "type": "color",
+          "label": "Subheading color"
+        },
+        {
+          "id": "text_color",
+          "type": "color",
+          "label": "Text color"
+        },
+        {
+          "id": "button_label_color",
+          "type": "color",
+          "label": "Button label color"
+        },
+        {
+          "id": "button_background_color",
+          "type": "color",
+          "label": "Button background color"
+        },
+        {
+          "id": "button_border_color",
+          "type": "color",
+          "label": "Button border color"
+        },
+        {
+          "id": "button_label_hover_color",
+          "type": "color",
+          "label": "Button label (hover) color"
+        },
+        {
+          "id": "button_background_hover_color",
+          "type": "color",
+          "label": "Button background (hover) color"
+        },
+        {
+          "id": "button_border_hover_color",
+          "type": "color",
+          "label": "Button border (hover) color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story telling"
+    }
+  ]
+}
+{% endschema %}
