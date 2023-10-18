@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
-<script src="{{ 'posts-swiper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
 {{ 'section-blog-posts-custom.css' | asset_url | stylesheet_tag }}
 
 <link
@@ -9,7 +9,7 @@
 
 {% if section.settings.blog.articles.size > 0 %}
   <section class="page-width blog-posts">
-    <div class="swiper js-posts-swiper">
+    <div class="swiper js-swiper">
       <div class="blog-posts__content swiper-wrapper">
         {% for article in section.settings.blog.articles limit: 3 -%}
           {% assign image = article.image %}
