@@ -6,6 +6,7 @@
   --border-radius: 16px;
   --primary-gray-color: #f6f6f6;
   --primary-black-color: #000;
+  --secondary-color-gray: #535353;
   --article-title-font-size: 22px;
   --article-mob-title-font-size: 18px;
   --article-info-font-size: 14px;
@@ -80,6 +81,10 @@
 }
 
 /* base */
+
+button {
+  cursor: pointer;
+}
 
 .no-js:not(html) {
   display: none !important;

@@ -39,37 +39,70 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "528818c2-3f32-4131-83a7-df683e429b3f": {
+      "type": "our-team",
+      "blocks": {
+        "1d3e4c91-5954-4e7a-8a04-1da1b700cda8": {
+          "type": "team_card",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Img.jpg",
+            "name": "Hristo Borisov",
+            "role": "Co-founder & CEO",
+            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
+            "facebook_link": "",
+            "instagram_link": "",
+            "youtube_link": ""
+          }
+        },
+        "ff0dc438-ae39-4aa6-ad58-35d70aabd719": {
+          "type": "team_card",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Img2.jpg",
+            "popup_image": "shopify:\/\/shop_images\/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg",
+            "name": "Hristo Borisov",
+            "role": "Co-founder & CEO",
+            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
+            "facebook_link": "https:\/\/facebook.com",
+            "instagram_link": "https:\/\/instagram.com",
+            "youtube_link": "https:\/\/youtube.com"
+          }
+        },
+        "2b495806-5e7a-4e80-9e6d-c190b9963b47": {
+          "type": "team_card",
+          "settings": {
+            "name": "Hristo Borisov",
+            "role": "Co-founder & CEO",
+            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
+            "facebook_link": "",
+            "instagram_link": "",
+            "youtube_link": ""
+          }
+        },
+        "ec124e61-593f-4828-9ec5-461848c4a66f": {
+          "type": "team_card",
+          "settings": {
+            "name": "Hristo Borisov",
+            "role": "Co-founder & CEO",
+            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
+            "facebook_link": "https:\/\/facebook.com",
+            "instagram_link": "",
+            "youtube_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1d3e4c91-5954-4e7a-8a04-1da1b700cda8",
+        "ff0dc438-ae39-4aa6-ad58-35d70aabd719",
+        "2b495806-5e7a-4e80-9e6d-c190b9963b47",
+        "ec124e61-593f-4828-9ec5-461848c4a66f"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "read_more_label": "Read More"
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "528818c2-3f32-4131-83a7-df683e429b3f"
   ]
 }
