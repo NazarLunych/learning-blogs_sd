@@ -1,0 +1,117 @@
+{{ "section-shop-the-look.css" | asset_url | stylesheet_tag }}
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+>
+
+{% if section.blocks.size > 0 %}
+  <section class="custom-section page-width">
+    {% if section.settings.heading != blank %}
+      <h4 class="shop-the-look__heading shop-the-look__hide-on-desktop">{{ section.settings.heading }}</h4>
+    {% endif %}
+    <div class="shop-the-look__wrapper">
+      <div class="shop-the-look__img-wrapper">
+        <div class="shop-the-look__square-aspect-ratio">
+          <picture>
+            <source media="(max-width: 991px)"
+                    srcset="{{ section.settings.image | image_url: width: 343, height: 343 }}">
+            <img class="shop-the-look__img"
+                 srcset="{{ section.settings.image | image_url: width: 816, height: 816 }} 1x,
+               {{ section.settings.image | image_url: width: 1632, height: 1632 }} 2x"
+                 src="{{ section.settings.image | image_url: width: 816, height: 816 }}"
+                 alt="{{ section.settings.image.alt | default: "Shop the look" }}">
+          </picture>
+          {% for hot_spot in section.blocks %}
+            <button class="shop-the-look__hot-spot js-hot-spot"
+                    style="left: {{ hot_spot.settings.spot_horizontal_position }}%;
+                      top: {{ hot_spot.settings.spot_vertical_position }}%">
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="shop-the-look__content-wrapper">
+        <h4 class="shop-the-look__heading shop-the-look__hide-on-mobile">{{ section.settings.heading }}</h4>
+        <div class="shop-the-look__content-with-navigation">
+          {% if section.blocks.size > 1 %}
+            <button class="shop-the-look__button-prev"></button>
+          {% endif %}
+          <div class="swiper js-shop-the-look-swiper">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                <div class="swiper-slide">
+                  {% render 'product-card', product: block.settings.product %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% if section.blocks.size > 1 %}
+            <button class="shop-the-look__button-next"></button>
+          {% endif %}
+        </div>
+
+        {% render 'swiper-pagination-custom' %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Shop the look",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product",
+      "type": "product",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "spot_vertical_position",
+          "type": "range",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Spot vertical position",
+          "default": 10
+        },
+        {
+          "id": "spot_horizontal_position",
+          "type": "range",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Spot horizontal position",
+          "default": 10
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Shop the look"
+    }
+  ]
+}
+{% endschema %}

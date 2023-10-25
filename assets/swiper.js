@@ -22,7 +22,7 @@ function swiperCard() {
 
       ourTeamSwiper = initializeSwiper(".js-our-team-swiper", "auto", 8);
       swiper = initializeSwiper(".js-swiper", 1, 16, {
-        640: { slidesPerView: 2 },
+        640: {slidesPerView: 2},
       });
     }
   } else if (init) {
@@ -31,5 +31,25 @@ function swiperCard() {
     init = false;
   }
 }
+
 swiperCard();
 mediaQuery.addEventListener("change", swiperCard);
+
+const shopTheLookSwiper = new Swiper(".js-shop-the-look-swiper", {
+  direction: "horizontal",
+  slidesPerView: 1,
+  spaceBetween: 24,
+  navigation: {
+    nextEl: ".shop-the-look__button-next",
+    prevEl: ".shop-the-look__button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
+})
+
+const hotSpots = document.querySelectorAll('.js-hot-spot');
+
+if (hotSpots.length) {
+  hotSpots.forEach((button, index) => button.addEventListener("click", () => shopTheLookSwiper.slideTo(index)))
+}
