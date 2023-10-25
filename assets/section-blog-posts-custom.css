@@ -1,7 +1,6 @@
 :root {
   --border-radius: 16px;
   --primary-gray-color: #f6f6f6;
-  --primary-black-color: #000;
   --article-title-font-size: 22px;
   --article-mob-title-font-size: 18px;
   --article-info-font-size: 14px;
@@ -134,12 +133,6 @@
   flex-wrap: wrap;
   gap: 24px;
   margin-top: 11px;
-}
-
-.blog-posts .swiper-pagination-bullet-active {
-  background-color: var(--primary-black-color);
-  width: 24px;
-  border-radius: 16px;
 }
 
 @media screen and (min-width: 991px) {

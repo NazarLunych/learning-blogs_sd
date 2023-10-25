@@ -101,12 +101,6 @@
   margin-top: 22px;
 }
 
-.our-team .swiper-pagination-bullet-active {
-  width: 24px;
-  border-radius: var(--border-radius);
-  background-color: var(--primary-black-color);
-}
-
 @media screen and (min-width: 990px) {
   .our-team .our-team__container {
     display: grid;

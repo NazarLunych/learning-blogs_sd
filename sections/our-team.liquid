@@ -58,7 +58,7 @@
         {% endfor %}
       </div>
 
-      <div class="swiper-pagination"></div>
+      {% render 'swiper-pagination-custom' %}
     </div>
   </section>
 {% endif %}
@@ -125,6 +125,10 @@
       ]
     }
   ],
-  "presets": [{ "name": "Our team" }]
+  "presets": [
+    {
+      "name": "Our team"
+    }
+  ]
 }
 {% endschema %}
