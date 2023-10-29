@@ -31,7 +31,7 @@
               collections-list__card
               {% if section.settings.text-position == 'under' %}
                 collections-list__card--under
-              {%else%}
+              {% else %}
                 collections-list__card--inside js-card-inside
               {% endif %}
               {{ aspectRatio }}
@@ -106,8 +106,14 @@
       "id": "text-position",
       "label": "Text position",
       "options": [
-        { "value": "under", "label": "Under the image" },
-        { "value": "inside", "label": "Inside the image" }
+        {
+          "value": "under",
+          "label": "Under the image"
+        },
+        {
+          "value": "inside",
+          "label": "Inside the image"
+        }
       ],
       "default": "under"
     },
@@ -116,9 +122,18 @@
       "id": "aspect-ratio",
       "label": "Image aspect ratio",
       "options": [
-        { "value": "square", "label": "Square" },
-        { "value": "portrait", "label": "Portrait" },
-        { "value": "landscape", "label": "Landscape" }
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
       ],
       "default": "landscape"
     },
@@ -128,19 +143,41 @@
       "label": "Show products count",
       "default": true
     },
-    { "type": "color", "id": "image-text-color", "label": "Image text color", "default": "#fff" },
-    { "type": "color_background", "id": "overlay-color", "label": "Overlay color", "default": "rgba(0,0,0, 0.3)" }
+    {
+      "type": "color",
+      "id": "image-text-color",
+      "label": "Image text color",
+      "default": "#fff"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay-color",
+      "label": "Overlay color",
+      "default": "rgba(0,0,0, 0.3)"
+    }
   ],
   "blocks": [
     {
       "name": "collection",
       "type": "collection",
       "settings": [
-        { "type": "collection", "id": "collection", "label": "Collection" },
-        { "type": "image_picker", "id": "image", "label": "Image" }
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
       ]
     }
   ],
-  "presets": [{ "name": "Collections list" }]
+  "presets": [
+    {
+      "name": "Collections list"
+    }
+  ]
 }
 {% endschema %}

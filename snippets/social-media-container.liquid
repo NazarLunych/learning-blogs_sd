@@ -5,7 +5,7 @@
 {% assign youtubeLink = content.settings.youtube_link %}
 
 {% if instagramLink %}
-  <a class="social-media" href="{{ instagramLink }}">
+  <a class="social-media" href="{{ instagramLink }}" target="_blank">
     <img
       src="{{ 'instagram.svg' | asset_url }}"
       width="24"
@@ -17,7 +17,7 @@
 {% endif %}
 
 {% if facebookLink %}
-  <a class="social-media" href="{{ facebookLink }}">
+  <a class="social-media" href="{{ facebookLink }}" target="_blank">
     <img
       src="{{ 'facebook.svg' | asset_url }}"
       width="24"
@@ -29,7 +29,7 @@
 {% endif %}
 
 {% if youtubeLink %}
-  <a class="social-media" href="{{ youtubeLink }}">
+  <a class="social-media" href="{{ youtubeLink }}" target="_blank">
     <img
       src="{{ 'youtube.svg' | asset_url }}"
       width="24"

@@ -1,5 +1,9 @@
 {{ 'component-our-team-modal.css' | asset_url | stylesheet_tag }}
 
+{% assign instagram = content.settings.instagram_link %}
+{% assign facebook = content.settings.facebook_link %}
+{% assign youtube = content.settings.youtube_link %}
+
 <div class="our-team-modal hidden js-our-team-modal">
   <div class="our-team-modal__content">
     <button class="our-team-modal__close-btn js-our-team-close-modal">
@@ -7,39 +11,54 @@
     </button>
 
     <div class="our-team-modal__content-wrapper">
-      <picture class="our-team-modal__img-wrapper">
-        <source
-          media="(max-width: 500px)"
-          {% if content.settings.popup_image %}
-            srcset="{{ content.settings.popup_image | image_url: width: 311, height: 311 }}"
-          {% else %}
-            srcset="{{ content.settings.card_image | image_url: width: 311, height: 311 }}"
-          {% endif %}
-        >
-        <img
-          class="our-team-modal__img"
-          {% if content.settings.popup_image %}
-            src="{{ content.settings.popup_image | image_url: width: 504, height: 504 }}"
-          {% elsif content.settings.card_image %}
-            src="{{ content.settings.card_image | image_url: width: 504, height: 504 }}"
-          {% else %}
-            src="{{ 'image-placeholder.jpeg' | asset_url }}"
-          {% endif %}
-          width="504"
-          height="504"
-          loading="lazy"
-          alt="Modal card image"
-        >
-      </picture>
+      <div class="our-team-modal__aspect-ratio-wrapper">
+        <div class="our-team-modal__square-container">
+          <picture class="our-team-modal__img-wrapper">
+            <source
+              media="(max-width: 500px)"
+              {% if content.settings.popup_image %}
+                srcset="{{ content.settings.popup_image | image_url: width: 311, height: 311 }} 1x, {{ content.settings.popup_image | image_url: width: 622, height: 622 }} 2x"
+              {% else %}
+                srcset="{{ content.settings.card_image | image_url: width: 311, height: 311 }} 1x, {{ content.settings.card_image | image_url: width: 622, height: 622 }} 2x"
+              {% endif %}
+            >
+            <img
+              class="our-team-modal__img"
+              {% if content.settings.popup_image %}
+                srcset="{{ content.settings.popup_image | image_url: width: 504, height: 504 }} 1x, {{ content.settings.popup_image | image_url: width: 1008, height: 1008 }} 2x"
+                src="{{ content.settings.popup_image | image_url: width: 504, height: 504 }}"
+              {% elsif content.settings.card_image %}
+                srcset="{{ content.settings.card_image | image_url: width: 504, height: 504 }} 1x, {{ content.settings.popup_image | image_url: width: 1008, height: 1008 }} 2x"
+                src="{{ content.settings.card_image | image_url: width: 504, height: 504 }}"
+              {% else %}
+                src="{{ 'image-placeholder.jpeg' | asset_url }}"
+              {% endif %}
+              loading="lazy"
+              alt="Modal card image"
+            >
+          </picture>
+        </div>
+      </div>
+
 
       <div class="our-team-modal__info">
-        <span class="our-team-modal__name">{{ content.settings.name }}</span>
-        <span class="our-team-modal__role">{{ content.settings.role }}</span>
-        <div class="our-team-modal__description">{{ content.settings.description }}</div>
+        {% if content.settings.name != blank %}
+          <span class="our-team-modal__name">{{ content.settings.name }}</span>
+        {% endif %}
 
-        <div class="our-team-modal__social-media-wrapper">
-          {% render 'social-media-container', content: content %}
-        </div>
+        {% if content.settings.role != blank %}
+          <span class="our-team-modal__role">{{ content.settings.role }}</span>
+        {% endif %}
+
+        {% if content.settings.description != blank %}
+          <div class="our-team-modal__description">{{ content.settings.description }}</div>
+        {% endif %}
+
+        {% if instagram or facebook or youtube %}
+          <div class="our-team-modal__social-media-wrapper">
+            {% render 'social-media-container', content: content %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
