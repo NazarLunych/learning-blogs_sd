@@ -1,3 +1,10 @@
+const selectors = {
+  swiper: ".js-swiper",
+  ourTeamSwiper: ".js-our-team-swiper",
+  trendProductsSwiper: ".js-trend-products-swiper",
+  shopTheLookSwiper: ".js-shop-the-look-swiper",
+  reviewsSwiper: ".js-reviews-swiper"
+}
 let swiper;
 let ourTeamSwiper;
 let trendProductsSwiper;
@@ -26,8 +33,8 @@ function swiperCardLarge() {
   if (largeScreen.matches) {
     if (!largeScreenInit) {
       largeScreenInit = true;
-      ourTeamSwiper = initializeSwiper(".js-our-team-swiper", "auto", 8);
-      swiper = initializeSwiper(".js-swiper", 1, 16, {
+      ourTeamSwiper = initializeSwiper(selectors.ourTeamSwiper, "auto", 8);
+      swiper = initializeSwiper(selectors.swiper, 1, 16, {
         640: {slidesPerView: 2},
       });
     }
@@ -44,7 +51,7 @@ function swiperCardSmall() {
   if (smallScreen.matches) {
     if (!smallScreenInit) {
       smallScreenInit = true;
-      trendProductsSwiper = initializeSwiper('.js-trend-products-swiper', 1, 16);
+      trendProductsSwiper = initializeSwiper(selectors.trendProductsSwiper, 1, 16);
     }
   } else if (smallScreenInit) {
     trendProductsSwiper.destroy();
@@ -57,7 +64,7 @@ swiperCardSmall();
 largeScreen.addEventListener("change", swiperCardLarge);
 smallScreen.addEventListener("change", swiperCardSmall)
 
-const shopTheLookSwiper = new Swiper(".js-shop-the-look-swiper", {
+const shopTheLookSwiper = new Swiper(selectors.shopTheLookSwiper, {
   direction: "horizontal",
   slidesPerView: 1,
   spaceBetween: 24,
@@ -75,3 +82,7 @@ const hotSpots = document.querySelectorAll('.js-hot-spot');
 if (hotSpots.length) {
   hotSpots.forEach((button, index) => button.addEventListener("click", () => shopTheLookSwiper.slideTo(index)))
 }
+
+const reviewsSwiper = initializeSwiper(selectors.reviewsSwiper, 1, 16, {
+  768: {slidesPerView: 2}
+})
