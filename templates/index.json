@@ -39,70 +39,75 @@
         "show_text_below": false
       }
     },
-    "528818c2-3f32-4131-83a7-df683e429b3f": {
-      "type": "our-team",
+    "c77a2b0b-e214-45f2-a5eb-f10149322d32": {
+      "type": "trend-products",
       "blocks": {
-        "1d3e4c91-5954-4e7a-8a04-1da1b700cda8": {
-          "type": "team_card",
+        "127df2f1-6bd9-4297-8aa1-dfc7aa839666": {
+          "type": "product",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/Img.jpg",
-            "name": "Hristo Borisov",
-            "role": "Co-founder & CEO",
-            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
-            "facebook_link": "",
-            "instagram_link": "",
-            "youtube_link": ""
+            "card_image": "shopify:\/\/shop_images\/image_18.jpg",
+            "product_1": "i-am-the-storm",
+            "spot_horizontal_position_1": 37,
+            "spot_vertical_position_1": 38,
+            "product_2": "",
+            "spot_horizontal_position_2": 0,
+            "spot_vertical_position_2": 0,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
           }
         },
-        "ff0dc438-ae39-4aa6-ad58-35d70aabd719": {
-          "type": "team_card",
+        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce": {
+          "type": "product",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/Img2.jpg",
-            "popup_image": "shopify:\/\/shop_images\/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg",
-            "name": "Hristo Borisov",
-            "role": "Co-founder & CEO",
-            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
-            "facebook_link": "https:\/\/facebook.com",
-            "instagram_link": "https:\/\/instagram.com",
-            "youtube_link": "https:\/\/youtube.com"
+            "card_image": "shopify:\/\/shop_images\/image_18.png",
+            "product_1": "the-3p-fulfilled-snowboard",
+            "spot_horizontal_position_1": 43,
+            "spot_vertical_position_1": 30,
+            "product_2": "the-collection-snowboard-liquid",
+            "spot_horizontal_position_2": 43,
+            "spot_vertical_position_2": 51,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
           }
         },
-        "2b495806-5e7a-4e80-9e6d-c190b9963b47": {
-          "type": "team_card",
+        "9ddb0a17-810a-4930-8ff9-38c56825f6f7": {
+          "type": "product",
           "settings": {
-            "name": "Hristo Borisov",
-            "role": "Co-founder & CEO",
-            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
-            "facebook_link": "",
-            "instagram_link": "",
-            "youtube_link": ""
-          }
-        },
-        "ec124e61-593f-4828-9ec5-461848c4a66f": {
-          "type": "team_card",
-          "settings": {
-            "name": "Hristo Borisov",
-            "role": "Co-founder & CEO",
-            "description": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
-            "facebook_link": "https:\/\/facebook.com",
-            "instagram_link": "",
-            "youtube_link": ""
+            "card_image": "shopify:\/\/shop_images\/image_3.png",
+            "product_1": "the-collection-snowboard-hydrogen",
+            "spot_horizontal_position_1": 38,
+            "spot_vertical_position_1": 81,
+            "product_2": "test",
+            "spot_horizontal_position_2": 42,
+            "spot_vertical_position_2": 55,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
           }
         }
       },
       "block_order": [
-        "1d3e4c91-5954-4e7a-8a04-1da1b700cda8",
-        "ff0dc438-ae39-4aa6-ad58-35d70aabd719",
-        "2b495806-5e7a-4e80-9e6d-c190b9963b47",
-        "ec124e61-593f-4828-9ec5-461848c4a66f"
+        "127df2f1-6bd9-4297-8aa1-dfc7aa839666",
+        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce",
+        "9ddb0a17-810a-4930-8ff9-38c56825f6f7"
       ],
       "settings": {
-        "read_more_label": "Read More"
       }
     }
   },
   "order": [
     "image_banner",
-    "528818c2-3f32-4131-83a7-df683e429b3f"
+    "c77a2b0b-e214-45f2-a5eb-f10149322d32"
   ]
 }

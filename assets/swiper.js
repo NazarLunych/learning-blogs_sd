@@ -1,7 +1,11 @@
-let init = false;
 let swiper;
 let ourTeamSwiper;
-const mediaQuery = window.matchMedia("(max-width: 990px)");
+let trendProductsSwiper;
+const mediaQueries = {
+  largeScreen: window.matchMedia("(max-width: 990px)"),
+  smallScreen: window.matchMedia("(max-width: 767px)")
+}
+const {largeScreen, smallScreen} = mediaQueries;
 
 function initializeSwiper(selector, slidesPerView, spaceBetween, breakpoints) {
   return new Swiper(selector, {
@@ -9,27 +13,65 @@ function initializeSwiper(selector, slidesPerView, spaceBetween, breakpoints) {
     slidesPerView: slidesPerView,
     breakpoints: breakpoints,
     spaceBetween: spaceBetween,
+    cssMode: true,
     pagination: {
       el: ".swiper-pagination",
     },
   });
 }
 
-function swiperCard() {
-  if (mediaQuery.matches) {
-    if (!init) {
-      init = true;
+let largeScreenInit = false;
 
+function swiperCardLarge() {
+  if (largeScreen.matches) {
+    if (!largeScreenInit) {
+      largeScreenInit = true;
       ourTeamSwiper = initializeSwiper(".js-our-team-swiper", "auto", 8);
       swiper = initializeSwiper(".js-swiper", 1, 16, {
-        640: { slidesPerView: 2 },
+        640: {slidesPerView: 2},
       });
     }
-  } else if (init) {
+  } else if (largeScreenInit) {
     swiper.destroy();
     ourTeamSwiper.destroy();
-    init = false;
+    largeScreenInit = false;
   }
 }
-swiperCard();
-mediaQuery.addEventListener("change", swiperCard);
+
+let smallScreenInit = false;
+
+function swiperCardSmall() {
+  if (smallScreen.matches) {
+    if (!smallScreenInit) {
+      smallScreenInit = true;
+      trendProductsSwiper = initializeSwiper('.js-trend-products-swiper', 1, 16);
+    }
+  } else if (smallScreenInit) {
+    trendProductsSwiper.destroy();
+    smallScreenInit = false;
+  }
+}
+
+swiperCardLarge();
+swiperCardSmall();
+largeScreen.addEventListener("change", swiperCardLarge);
+smallScreen.addEventListener("change", swiperCardSmall)
+
+const shopTheLookSwiper = new Swiper(".js-shop-the-look-swiper", {
+  direction: "horizontal",
+  slidesPerView: 1,
+  spaceBetween: 24,
+  navigation: {
+    nextEl: ".shop-the-look__button-next",
+    prevEl: ".shop-the-look__button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
+})
+
+const hotSpots = document.querySelectorAll('.js-hot-spot');
+
+if (hotSpots.length) {
+  hotSpots.forEach((button, index) => button.addEventListener("click", () => shopTheLookSwiper.slideTo(index)))
+}

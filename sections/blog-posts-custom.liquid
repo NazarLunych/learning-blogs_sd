@@ -107,7 +107,7 @@
         {%- endfor %}
       </div>
 
-      <div class="swiper-pagination"></div>
+      {% render 'swiper-pagination-custom' %}
     </div>
   </section>
 {% endif %}
@@ -127,6 +127,10 @@
       "label": "Default Image"
     }
   ],
-  "presets": [{ "name": "Blog posts custom" }]
+  "presets": [
+    {
+      "name": "Blog posts custom"
+    }
+  ]
 }
 {% endschema %}
