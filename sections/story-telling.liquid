@@ -15,26 +15,42 @@
       </div>
 
       {% for block in section.blocks %}
+        {% assign text_alignment = block.settings.text_alignment %}
+        {% capture button_styles %}
+          --button-label-color:{{ block.settings.button_label_color }};
+          --button-background-color: {{ block.settings.button_background_color }};
+          --button-border-color: {{ block.settings.button_border_color }};
+          --button-label-hover-color: {{ block.settings.button_label_hover_color }};
+          --button-background-hover-color: {{ block.settings.button_background_hover_color }};
+          --button-border-hover-color: {{ block.settings.button_border_hover_color }}
+        {% endcapture %}
+
       <div
         class="story-telling__card story-telling__card--{{ block.settings.image_position }} {% unless forloop.first %}hidden{% endunless %} js-story-telling-cards"
         style="--story-telling-background: {{ block.settings.background | default: '#161E13' }}"
         data-card-index="{{ forloop.index }}">
-        <div class="story-telling__content" style="text-align: {{ block.settings.text_alignment }}">
-          <p class="story-telling__label"
-             style="--subheading-color: {{ block.settings.subheading_color }}">{{ block.settings.label }}</p>
-          <span class="story-telling__heading"
-                style="--heading-color: {{ block.settings.heading_color }}">{{ block.settings.heading }}</span>
-          <div class="story-telling__text"
-               style="--text-color: {{ block.settings.text_color }}">{{ block.settings.text }}</div>
+        <div class="story-telling__content" style="--text-alignment: {{ text_alignment }}">
+          {% if block.settings.label != blank %}
+            <p class="story-telling__label"
+               style="--subheading-color: {{ block.settings.subheading_color }}">{{ block.settings.label }}
+            </p>
+          {% endif %}
+
+          {% if block.settings.heading != blank %}
+            <span class="story-telling__heading"
+                  style="--heading-color: {{ block.settings.heading_color }}">{{ block.settings.heading }}
+            </span>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <div class="story-telling__text"
+                 style="--text-color: {{ block.settings.text_color }}">{{ block.settings.text }}
+            </div>
+          {% endif %}
 
           {% if block.settings.button_link and block.settings.button_label %}
-            <a class="story-telling__button"
-               style="--button-label-color:{{ block.settings.button_label_color }};
-                 --button-background-color: {{ block.settings.button_background_color }};
-                 --button-border-color: {{ block.settings.button_border_color }};
-                 --button-label-hover-color: {{ block.settings.button_label_hover_color }};
-                 --button-background-hover-color: {{ block.settings.button_background_hover_color }};
-                 --button-border-hover-color: {{ block.settings.button_border_hover_color }}"
+            <a class="story-telling__button story-telling__button--{{ text_alignment }}"
+               style="{{ button_styles }}"
                href="{{ block.settings.button_link }}">
               {{ block.settings.button_label }}
             </a>
@@ -46,27 +62,30 @@
             {{ 'image' | placeholder_svg_tag }}
           </div>
         {% else %}
+          {% assign image_desktop = block.settings.image_desktop %}
+          {% assign image_mobile = block.settings.image_mobile | default: image_desktop %}
+
           <div class="story-telling__img-wrapper">
             <div
               class="story-telling__aspect-ratio-wrapper story-telling__aspect-ratio-wrapper--{{ block.settings.image_aspect_ratio }}">
               <picture>
                 <source
-                  srcset="{{ block.settings.image_mobile | image_url: height: 906, width: 906 }}"
-                  media="(max-width: 991px)">
-                <source
-                  srcset="{{ block.settings.image_mobile | image_url: height: 311, width: 311 }}"
+                  srcset="{{ image_mobile | image_url: height: 311, width: 311 }} 1x, {{ image_mobile | image_url: height: 622, width: 622 }} 2x"
                   media="(max-width: 600px)">
+                <source
+                  srcset="{{ image_mobile | image_url: height: 906, width: 906 }} 1x, {{ image_mobile | image_url: height: 1812, width: 1812 }} 2x"
+                  media="(max-width: 991px)">
                 <img class="story-telling__img"
                   {% case block.settings.image_aspect_ratio %}
                     {% when 'square' %}
-                      srcset="{{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 800, width: 800 }} 1x,
-                   {{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 1600, width: 1600 }} 2x"
+                      srcset="{{ image_desktop | default: image_mobile | image_url: height: 800, width: 800 }} 1x,
+                   {{ image_desktop | default: block.settings.image_mobile | image_image_url: height: 1600, width: 1600 }} 2x"
                     {% when 'landscape' %}
-                      srcset="{{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 568, width: 800 }} 1x,
-                   {{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 1136, width: 1600 }} 2x"
+                      srcset="{{ image_desktop | default: image_mobile | image_url: height: 568, width: 800 }} 1x,
+                   {{ image_desktop | default: block.settings.image_mobile | image_url: height: 1136, width: 1600 }} 2x"
                   {% endcase %}
-                     src="{{ block.settings.image_desktop | default: block.settings.image_mobile | image_url }}"
-                     alt="{{ block.settings.image_desktop.alt | default: "Story image" }}">
+                     src="{{ image_desktop | default: block.settings.image_mobile | image_url }}"
+                     alt="{{ image_desktop.alt }}">
               </picture>
             </div>
           </div>
