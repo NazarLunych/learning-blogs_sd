@@ -7,10 +7,12 @@
     <div class="faq__container">
       <div class="faq__menu js-faq-menu">
         {% for block in section.blocks %}
+          {% assign heading = block.settings.heading %}
+
           {% if block.type == "group" %}
-            {% if block.settings.heading != blank %}
-              <a class="faq__btn js-faq-links" href="#{{ block.settings.heading }}"
-                 data-target="{{ block.settings.heading }}">{{ block.settings.heading }}</a>
+            {% if heading != blank %}
+              <a class="faq__btn js-faq-links" href="#{{ heading }}"
+                 data-target="{{ block.settings.heading }}">{{ heading }}</a>
             {% endif %}
           {% endif %}
         {% endfor %}
@@ -18,26 +20,31 @@
 
       <div class="faq__content-wrapper">
         {% for block in section.blocks %}
+          {% assign heading = block.settings.heading %}
+          {% assign answer = block.settings.answer %}
+          {% assign question = block.settings.question %}
+          {% assign icon = block.settings.icon %}
+
           {% if block.type == "group" %}
-            {% if block.settings.heading != blank %}
-              <h2 class="faq__group-name" id="{{ block.settings.heading }}">{{ block.settings.heading }}</h2>
+            {% if heading != blank %}
+              <h2 class="faq__group-name" id="{{ heading }}">{{ heading }}</h2>
             {% endif %}
           {% else %}
-            {% if block.settings.answer != blank or block.settings.question != blank %}
+            {% if answer != blank or question != blank %}
               <div class="faq__accordion js-faq-accordion">
                 <button
                   class="faq__question-accordion">
-                  {% if block.settings.icon %}
+                  {% if icon %}
                     <img
-                      srcset="{{ block.settings.icon | image_url: width: 24, height: 24 }} 1x, {{ block.settings.icon | image_url: width: 48, height: 48 }} 2x"
-                      src="{{ block.settings.icon | image_url: width: 24, height: 24 }}"
-                      alt="{{ block.settings.icon.alt }}">
+                      srcset="{{ icon | image_url: width: 24, height: 24 }} 1x, {{ icon | image_url: width: 48, height: 48 }} 2x"
+                      src="{{ icon | image_url: width: 24, height: 24 }}"
+                      alt="{{ icon.alt }}">
                   {% endif %}
 
-                  {{ block.settings.question }}
+                  {{ question }}
                   {% render "icon-caret" %}
                 </button>
-                <div class="faq__answer" data-target="answer">{{ block.settings.answer }}</div>
+                <div class="faq__answer" data-target="answer">{{ answer }}</div>
               </div>
             {% endif %}
           {% endif %}
