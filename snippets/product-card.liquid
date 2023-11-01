@@ -1,0 +1,29 @@
+{{ 'product-card.css' | asset_url | stylesheet_tag }}
+
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-card__square-aspect-ratio">
+    {% unless product.featured_image %}
+      <div class="product-card__placeholder-img">
+        {{ "image" | placeholder_svg_tag }}
+      </div>
+    {% else %}
+      <picture>
+        <source srcset="{{ product.featured_image | image_url: width: 343, height: 343 }}"
+                media="(max-width: 991px)">
+        <img class="product-card__img"
+             srcset="{{ product.featured_image | image_url: width: 400, height: 400 }} 1x, {{ product.featured_image | image_url: width: 800, height: 800 }} 2x"
+             src="{{ product.featured_image | image_url: width: 400, height: 400 }}"
+             alt="{{ product.featured_image.alt | default: "Product" }}">
+      </picture>
+    {% endunless %}
+  </div>
+  {% if product.title %}
+    <p class="product-card__title">{{ product.title }}</p>
+  {% endif %}
+  <div class="product-card__price-wrapper">
+    <span class="product-card__price">{{ product.price | money }}</span>
+    {% if product.compare_at_price %}
+      <span class="product-card__compare-at-price">{{ product.compare_at_price | money }}</span>
+    {% endif %}
+  </div>
+</a>
