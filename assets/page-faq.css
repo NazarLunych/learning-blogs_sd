@@ -17,7 +17,7 @@
 
 .faq__container {
   display: flex;
-  gap: 165px;
+  gap: 177px;
 }
 
 .faq__menu {
@@ -121,13 +121,18 @@
 
 .faq__btn {
   width: fit-content;
-  padding: 8px 0;
+  padding: 5px 0;
   text-decoration: none;
   font-size: 16px;
   line-height: 1.37em;
   background: transparent;
   border: none;
   color: var(--secondary-color-light-gray);
+}
+
+.faq__icon {
+  width: 24px;
+  height: 24px;
 }
 
 .faq__btn:hover, .faq__btn--active {
