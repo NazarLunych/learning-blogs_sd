@@ -39,68 +39,43 @@
         "show_text_below": false
       }
     },
-    "c77a2b0b-e214-45f2-a5eb-f10149322d32": {
-      "type": "trend-products",
+    "b177dc4d-87c9-4a3e-83ac-a3e5ecf4671d": {
+      "type": "customer-reviews",
       "blocks": {
-        "127df2f1-6bd9-4297-8aa1-dfc7aa839666": {
-          "type": "product",
+        "060054ca-74b6-4e15-aaf8-9fea0ba7641d": {
+          "type": "review_card",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_18.jpg",
-            "product_1": "i-am-the-storm",
-            "spot_horizontal_position_1": 37,
-            "spot_vertical_position_1": 38,
-            "product_2": "",
-            "spot_horizontal_position_2": 0,
-            "spot_vertical_position_2": 0,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "product": "i-am-the-storm",
+            "avatar": "shopify:\/\/shop_images\/Img.jpg",
+            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
+            "name": "Stacey Reed",
+            "position": "Project Manager, Tourism Australia"
           }
         },
-        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce": {
-          "type": "product",
+        "a6238f1d-13d9-43da-8e20-3244594115cc": {
+          "type": "review_card",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_18.png",
-            "product_1": "the-3p-fulfilled-snowboard",
-            "spot_horizontal_position_1": 43,
-            "spot_vertical_position_1": 30,
-            "product_2": "the-collection-snowboard-liquid",
-            "spot_horizontal_position_2": 43,
-            "spot_vertical_position_2": 51,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "product": "",
+            "avatar": "shopify:\/\/shop_images\/image_18.png",
+            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
+            "name": "Stacey Reed",
+            "position": "Project Manager, Tourism Australia"
           }
         },
-        "9ddb0a17-810a-4930-8ff9-38c56825f6f7": {
-          "type": "product",
+        "581e63bc-c447-43de-bd82-1142149ddd83": {
+          "type": "review_card",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_3.png",
-            "product_1": "the-collection-snowboard-hydrogen",
-            "spot_horizontal_position_1": 38,
-            "spot_vertical_position_1": 81,
-            "product_2": "test",
-            "spot_horizontal_position_2": 42,
-            "spot_vertical_position_2": 55,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "product": "test",
+            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
+            "name": "Stacey Reed",
+            "position": "Project Manager, Tourism Australia"
           }
         }
       },
       "block_order": [
-        "127df2f1-6bd9-4297-8aa1-dfc7aa839666",
-        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce",
-        "9ddb0a17-810a-4930-8ff9-38c56825f6f7"
+        "060054ca-74b6-4e15-aaf8-9fea0ba7641d",
+        "a6238f1d-13d9-43da-8e20-3244594115cc",
+        "581e63bc-c447-43de-bd82-1142149ddd83"
       ],
       "settings": {
       }
@@ -108,6 +83,6 @@
   },
   "order": [
     "image_banner",
-    "c77a2b0b-e214-45f2-a5eb-f10149322d32"
+    "b177dc4d-87c9-4a3e-83ac-a3e5ecf4671d"
   ]
 }
