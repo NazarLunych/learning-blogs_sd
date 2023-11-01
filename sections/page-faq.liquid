@@ -1,0 +1,100 @@
+<script src="{{ "page-faq.js" | asset_url }}" defer></script>
+{{ "page-faq.css" | asset_url | stylesheet_tag }}
+
+{% if section.blocks.size > 0 %}
+  <section class="custom-section--large-padding page-width">
+    <h1 class="faq__title">{{ section.settings.heading | default: page_title }}</h1>
+    <div class="faq__container">
+      <div class="faq__menu js-faq-menu">
+        {% for block in section.blocks %}
+          {% if block.type == "group" %}
+            {% if block.settings.heading != blank %}
+              <a class="faq__btn js-faq-links" href="#{{ block.settings.heading }}"
+                 data-target="{{ block.settings.heading }}">{{ block.settings.heading }}</a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="faq__content-wrapper">
+        {% for block in section.blocks %}
+          {% if block.type == "group" %}
+            {% if block.settings.heading != blank %}
+              <h2 class="faq__group-name" id="{{ block.settings.heading }}">{{ block.settings.heading }}</h2>
+            {% endif %}
+          {% else %}
+            {% if block.settings.answer != blank or block.settings.question != blank %}
+              <div class="faq__accordion js-faq-accordion">
+                <button
+                  class="faq__question-accordion">
+                  {% if block.settings.icon %}
+                    <img
+                      srcset="{{ block.settings.icon | image_url: width: 24, height: 24 }} 1x, {{ block.settings.icon | image_url: width: 48, height: 48 }} 2x"
+                      src="{{ block.settings.icon | image_url: width: 24, height: 24 }}"
+                      alt="{{ block.settings.icon.alt }}">
+                  {% endif %}
+
+                  {{ block.settings.question }}
+                  {% render "icon-caret" %}
+                </button>
+                <div class="faq__answer" data-target="answer">{{ block.settings.answer }}</div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "FAQ page",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Group",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "id": "question",
+          "type": "text",
+          "label": "Question"
+        },
+        {
+          "id": "answer",
+          "type": "richtext",
+          "label": "Answer"
+        },
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ page"
+    }
+  ]
+}
+{% endschema %}

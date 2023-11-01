@@ -39,75 +39,101 @@
         "show_text_below": false
       }
     },
-    "c77a2b0b-e214-45f2-a5eb-f10149322d32": {
-      "type": "trend-products",
+    "ebbe3a68-1026-40a1-a268-7dcc8f1f1f32": {
+      "type": "page-faq",
       "blocks": {
-        "127df2f1-6bd9-4297-8aa1-dfc7aa839666": {
-          "type": "product",
+        "246b52b7-d3db-46f4-9469-5162b9b9292c": {
+          "type": "group",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_18.jpg",
-            "product_1": "i-am-the-storm",
-            "spot_horizontal_position_1": 37,
-            "spot_vertical_position_1": 38,
-            "product_2": "",
-            "spot_horizontal_position_2": 0,
-            "spot_vertical_position_2": 0,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "heading": "Orders & Payments"
           }
         },
-        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce": {
-          "type": "product",
+        "f2e7597a-ae40-42ff-9086-a617f30dd373": {
+          "type": "question",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_18.png",
-            "product_1": "the-3p-fulfilled-snowboard",
-            "spot_horizontal_position_1": 43,
-            "spot_vertical_position_1": 30,
-            "product_2": "the-collection-snowboard-liquid",
-            "spot_horizontal_position_2": 43,
-            "spot_vertical_position_2": 51,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "question": "I made a mistake in shipping address, can I change it?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
           }
         },
-        "9ddb0a17-810a-4930-8ff9-38c56825f6f7": {
-          "type": "product",
+        "09f5528d-921d-4ba0-94d1-8f51c15779b7": {
+          "type": "question",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_3.png",
-            "product_1": "the-collection-snowboard-hydrogen",
-            "spot_horizontal_position_1": 38,
-            "spot_vertical_position_1": 81,
-            "product_2": "test",
-            "spot_horizontal_position_2": 42,
-            "spot_vertical_position_2": 55,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "question": "I am purchasing a gift, can you exclude price information?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
+          }
+        },
+        "0358e78a-dd27-4eb4-8431-675b7f8ea5ed": {
+          "type": "group",
+          "settings": {
+            "heading": "Returns\/Exchanges"
+          }
+        },
+        "06aa7755-1bda-436b-944e-4c47fce9b938": {
+          "type": "question",
+          "settings": {
+            "question": "Can I make a change to my order?",
+            "answer": "<p>Discover the Science of Enhanced Testing Techniques.<\/p>"
+          }
+        },
+        "461fe12d-a1f2-4c11-aea1-352eba6bacfa": {
+          "type": "question",
+          "settings": {
+            "question": "Do you accept returns or exchanges?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
+          }
+        },
+        "2e17d792-b7c1-47cb-b033-f178bf1547ff": {
+          "type": "question",
+          "settings": {
+            "question": "We stand behind our products.",
+            "answer": "<p>Unlock the Power of Testing for Improved Results.<\/p>"
+          }
+        },
+        "5e058654-b7a7-42ca-937a-9b666b8cb401": {
+          "type": "question",
+          "settings": {
+            "question": "What forms of payment do you accept?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
+          }
+        },
+        "76e34be8-e792-4bd5-82b6-517638247f2a": {
+          "type": "group",
+          "settings": {
+            "heading": "Privacy Policy"
+          }
+        },
+        "b88a5c35-d2b5-4c47-bf2b-34032ce7e1e2": {
+          "type": "question",
+          "settings": {
+            "question": "Do you accept returns or exchanges?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
           }
         }
       },
       "block_order": [
-        "127df2f1-6bd9-4297-8aa1-dfc7aa839666",
-        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce",
-        "9ddb0a17-810a-4930-8ff9-38c56825f6f7"
+        "246b52b7-d3db-46f4-9469-5162b9b9292c",
+        "f2e7597a-ae40-42ff-9086-a617f30dd373",
+        "09f5528d-921d-4ba0-94d1-8f51c15779b7",
+        "0358e78a-dd27-4eb4-8431-675b7f8ea5ed",
+        "06aa7755-1bda-436b-944e-4c47fce9b938",
+        "461fe12d-a1f2-4c11-aea1-352eba6bacfa",
+        "2e17d792-b7c1-47cb-b033-f178bf1547ff",
+        "5e058654-b7a7-42ca-937a-9b666b8cb401",
+        "76e34be8-e792-4bd5-82b6-517638247f2a",
+        "b88a5c35-d2b5-4c47-bf2b-34032ce7e1e2"
       ],
       "settings": {
+        "heading": ""
       }
     }
   },
   "order": [
     "image_banner",
-    "c77a2b0b-e214-45f2-a5eb-f10149322d32"
+    "ebbe3a68-1026-40a1-a268-7dcc8f1f1f32"
   ]
 }
