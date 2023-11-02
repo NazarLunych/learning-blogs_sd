@@ -60,11 +60,6 @@
   color: var(--primary-black-color);
 }
 
-.customer-reviews__product-price-wrapper {
-  display: flex;
-  gap: 8px;
-}
-
 .customer-reviews__product-price {
   font-size: 14px;
   line-height: 1.28em;
