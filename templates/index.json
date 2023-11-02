@@ -39,50 +39,101 @@
         "show_text_below": false
       }
     },
-    "b177dc4d-87c9-4a3e-83ac-a3e5ecf4671d": {
-      "type": "customer-reviews",
+    "ebbe3a68-1026-40a1-a268-7dcc8f1f1f32": {
+      "type": "page-faq",
       "blocks": {
-        "060054ca-74b6-4e15-aaf8-9fea0ba7641d": {
-          "type": "review_card",
+        "246b52b7-d3db-46f4-9469-5162b9b9292c": {
+          "type": "group",
           "settings": {
-            "product": "i-am-the-storm",
-            "avatar": "shopify:\/\/shop_images\/Img.jpg",
-            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
-            "name": "Stacey Reed",
-            "position": "Project Manager, Tourism Australia"
+            "heading": "Orders & Payments"
           }
         },
-        "a6238f1d-13d9-43da-8e20-3244594115cc": {
-          "type": "review_card",
+        "f2e7597a-ae40-42ff-9086-a617f30dd373": {
+          "type": "question",
           "settings": {
-            "product": "",
-            "avatar": "shopify:\/\/shop_images\/image_18.png",
-            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
-            "name": "Stacey Reed",
-            "position": "Project Manager, Tourism Australia"
+            "question": "I made a mistake in shipping address, can I change it?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
           }
         },
-        "581e63bc-c447-43de-bd82-1142149ddd83": {
-          "type": "review_card",
+        "09f5528d-921d-4ba0-94d1-8f51c15779b7": {
+          "type": "question",
           "settings": {
-            "product": "test",
-            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
-            "name": "Stacey Reed",
-            "position": "Project Manager, Tourism Australia"
+            "question": "I am purchasing a gift, can you exclude price information?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
+          }
+        },
+        "0358e78a-dd27-4eb4-8431-675b7f8ea5ed": {
+          "type": "group",
+          "settings": {
+            "heading": "Returns\/Exchanges"
+          }
+        },
+        "06aa7755-1bda-436b-944e-4c47fce9b938": {
+          "type": "question",
+          "settings": {
+            "question": "Can I make a change to my order?",
+            "answer": "<p>Discover the Science of Enhanced Testing Techniques.<\/p>"
+          }
+        },
+        "461fe12d-a1f2-4c11-aea1-352eba6bacfa": {
+          "type": "question",
+          "settings": {
+            "question": "Do you accept returns or exchanges?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
+          }
+        },
+        "2e17d792-b7c1-47cb-b033-f178bf1547ff": {
+          "type": "question",
+          "settings": {
+            "question": "We stand behind our products.",
+            "answer": "<p>Unlock the Power of Testing for Improved Results.<\/p>"
+          }
+        },
+        "5e058654-b7a7-42ca-937a-9b666b8cb401": {
+          "type": "question",
+          "settings": {
+            "question": "What forms of payment do you accept?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
+          }
+        },
+        "76e34be8-e792-4bd5-82b6-517638247f2a": {
+          "type": "group",
+          "settings": {
+            "heading": "Privacy Policy"
+          }
+        },
+        "b88a5c35-d2b5-4c47-bf2b-34032ce7e1e2": {
+          "type": "question",
+          "settings": {
+            "question": "Do you accept returns or exchanges?",
+            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
+            "icon": "shopify:\/\/shop_images\/message-question.svg"
           }
         }
       },
       "block_order": [
-        "060054ca-74b6-4e15-aaf8-9fea0ba7641d",
-        "a6238f1d-13d9-43da-8e20-3244594115cc",
-        "581e63bc-c447-43de-bd82-1142149ddd83"
+        "246b52b7-d3db-46f4-9469-5162b9b9292c",
+        "f2e7597a-ae40-42ff-9086-a617f30dd373",
+        "09f5528d-921d-4ba0-94d1-8f51c15779b7",
+        "0358e78a-dd27-4eb4-8431-675b7f8ea5ed",
+        "06aa7755-1bda-436b-944e-4c47fce9b938",
+        "461fe12d-a1f2-4c11-aea1-352eba6bacfa",
+        "2e17d792-b7c1-47cb-b033-f178bf1547ff",
+        "5e058654-b7a7-42ca-937a-9b666b8cb401",
+        "76e34be8-e792-4bd5-82b6-517638247f2a",
+        "b88a5c35-d2b5-4c47-bf2b-34032ce7e1e2"
       ],
       "settings": {
+        "heading": ""
       }
     }
   },
   "order": [
     "image_banner",
-    "b177dc4d-87c9-4a3e-83ac-a3e5ecf4671d"
+    "ebbe3a68-1026-40a1-a268-7dcc8f1f1f32"
   ]
 }
