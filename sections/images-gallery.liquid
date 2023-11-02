@@ -1,17 +1,26 @@
 {{ 'section-images-gallery.css' | asset_url | stylesheet_tag }}
 
-{% assign divideNumber = section.settings.per-row-desktop | divided_by: 2 %}
-{% assign divideNumberMob = section.settings.per-row-mobile | plus: 0 %}
-{% assign halfOfGap = 16 | divided_by: divideNumber %}
-{% assign desktopCardWidth = 816 | divided_by: divideNumber | minus: halfOfGap %}
-{% assign mobileCardWidth = 343 | divided_by: divideNumberMob %}
+{% assign divide_number = section.settings.per-row-desktop | divided_by: 2 %}
+{% assign divide_number_mob = section.settings.per-row-mobile | plus: 0 %}
+{% assign half_of_gap = 16 | divided_by: divide_number %}
+{% assign img_width_default = 816 | divided_by: divide_number | minus: half_of_gap %}
+{% assign img_width_991 = 959 | divided_by: divide_number_mob %}
+{% assign img_width_767 = 737 | divided_by: divide_number_mob %}
+{% assign img_width_480 = 448 | divided_by: divide_number_mob %}
+{% assign img_width_380 = 348 | divided_by: divide_number_mob %}
 
 {% if section.settings.aspect-ratio == "square" %}
-  {% assign desktopCardHeight = desktopCardWidth %}
-  {% assign mobileCardHeight = mobileCardWidth %}
+  {% assign img_height_default = img_width_default %}
+  {% assign img_height_991 = img_width_991 %}
+  {% assign img_height_767 = img_width_767 %}
+  {% assign img_height_480 = img_width_480 %}
+  {% assign img_height_380 = img_width_380 %}
 {% else %}
-  {% assign desktopCardHeight = desktopCardWidth | times: 66 | divided_by: 100 %}
-  {% assign mobileCardHeight = mobileCardWidth | times: 66 | divided_by: 100 %}
+  {% assign img_height_default = img_width_default | times: 66 | divided_by: 100 %}
+  {% assign img_height_991 = img_width_991 | times: 66 | divided_by: 100 %}
+  {% assign img_height_767 = img_width_767 | times: 66 | divided_by: 100 %}
+  {% assign img_height_480 = img_width_480 | times: 66 | divided_by: 100 %}
+  {% assign img_height_380 = img_width_380 | times: 66 | divided_by: 100 %}
 {% endif %}
 
 {% if section.blocks.size > 0 %}
@@ -23,18 +32,53 @@
         <div class="gallery__image-wrapper gallery__image-wrapper--{{ section.settings.aspect-ratio }}"
              style="--overlay-color: {{ section.settings.overlay_color }}">
           <picture>
-            <source media="(max-width: 991px)" srcset="
+            <source media="(max-width: 380px)" srcset="
             {% if block.settings.image %}
-              {{ block.settings.image | image_url: width: mobileCardWidth, height: mobileCardHeight }} 1x, {{ block.settings.image | image_url: width: mobileCardWidth | times: 2, height: mobileCardHeight | times: 2 }} 2x
+              {% assign double_img_width_380 = img_width_380 | times: 2 %}
+              {% assign double_img_height_380 = img_height_380 | times: 2 %}
+
+              {{ block.settings.image | image_url: width: img_width_380, height: img_height_380 }} 1x, {{ block.settings.image | image_url: width: double_img_width_380, height: double_img_height_380 }} 2x
                 {% else %}
               {{ 'image-placeholder.jpeg' | asset_url }}
-            {% endif %}
-          "
-            >
+            {% endif %}">
+
+            <source media="(max-width: 480px)" srcset="
+            {% if block.settings.image %}
+              {% assign double_img_width_480 = img_width_480 | times: 2 %}
+              {% assign double_img_height_480 = img_height_480 | times: 2 %}
+
+              {{ block.settings.image | image_url: width: img_width_480, height: img_height_480 }} 1x, {{ block.settings.image | image_url: width: double_img_width_480, height: double_img_height_480 }} 2x
+                {% else %}
+              {{ 'image-placeholder.jpeg' | asset_url }}
+            {% endif %}">
+
+            <source media="(max-width: 767px)" srcset="
+            {% if block.settings.image %}
+              {% assign double_img_width_767 = img_width_767 | times: 2 %}
+              {% assign double_img_height_767 = img_height_767 | times: 2 %}
+
+              {{ block.settings.image | image_url: width: img_width_767, height: img_height_767 }} 1x, {{ block.settings.image | image_url: width: double_img_width_767, height: double_img_height_767 }} 2x
+                {% else %}
+              {{ 'image-placeholder.jpeg' | asset_url }}
+            {% endif %}">
+
+            <source media="(max-width: 991px)" srcset="
+            {% if block.settings.image %}
+              {% assign double_img_width_991 = img_width_991 | times: 2 %}
+              {% assign double_img_height_991 = img_height_991 | times: 2 %}
+
+              {{ block.settings.image | image_url: width: img_width_991, height: img_height_991 }} 1x, {{ block.settings.image | image_url: width: double_img_width_991, height: double_img_height_991 }} 2x
+                {% else %}
+              {{ 'image-placeholder.jpeg' | asset_url }}
+            {% endif %}">
+
             <img class="gallery__image"
               {% if block.settings.image %}
-                src="{{ block.settings.image | image_url: width: cardWidth, height: cardHeight }}"
-                srcset="{{ block.settings.image | image_url: width: desktopCardWidth, height: desktopCardHeight }} 1x, {{ block.settings.image | image_url: width: desktopCardWidth | times: 2, height: desktopCardHeight | times: 2 }} 2x"
+                {% assign double_img_width_default = img_width_default | times: 2 %}
+                {% assign double_img_height_default = img_height_default | times: 2 %}
+
+                srcset="{{ block.settings.image | image_url: width: img_width_default, height: img_height_default }} 1x, {{ block.settings.image | image_url: width: double_img_width_default, height: double_img_height_default }} 2x"
+                src="{{ block.settings.image | image_url: width: img_width_default, height: img_height_default }}"
               {% else %}
                 src="{{ "image-placeholder.jpeg" | asset_url }}"
               {% endif %}
