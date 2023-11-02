@@ -21,7 +21,7 @@
 }
 
 .customer-reviews__product:hover {
-  scale: 0.9;
+  transform: scale(0.9);
 }
 
 .customer-reviews__product-wrapper {
@@ -96,10 +96,12 @@
 .customer-reviews__personal-info-wrapper {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .customer-reviews__name {
   line-height: 1.5em;
+  color: var(--primary-black-color);
 }
 
 .customer-reviews__position {
@@ -135,6 +137,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.customer-reviews__rate-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .customer-reviews .swiper-pagination {

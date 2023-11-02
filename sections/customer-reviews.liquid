@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
-<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'customer-reviews.js' | asset_url }}" defer="defer"></script>
 {{ "customer-reviews.css" | asset_url | stylesheet_tag }}
 
 <link
@@ -14,22 +14,26 @@
         {% for block in section.blocks %}
           {% assign product = block.settings.product %}
           {% assign avatar = block.settings.avatar %}
+          {% assign image = product.featured_image %}
+          {% assign text = block.settings.text %}
+          {% assign name = block.settings.name %}
+          {% assign position = block.settings.position %}
 
-          {% if block.settings.text != blank %}
+          {% if text != blank %}
             <div class="swiper-slide customer-reviews__card">
               {% if product != blank %}
                 <div class="customer-reviews__product">
                   <a href="{{ product.url }}" class="customer-reviews__product-wrapper">
                     <picture>
-                      {% if product.featured_image %}
+                      {% if image %}
                         <source
-                          srcset="{{ product.featured_image | image_url: width: 295, height: 295 }} 1x, {{ product.featured_image | image_url: width: 590, height: 590 }} 2x"
+                          srcset="{{ image | image_url: width: 295, height: 295 }} 1x, {{ image | image_url: width: 590, height: 590 }} 2x"
                           media="(max-width: 768px)">
                         <img
                           class="customer-reviews__product-img"
-                          srcset="{{ product.featured_image | image_url: width: 360, height: 360 }} 1x, {{ product.featured_image | image_url: width: 720, height: 720 }} 2x"
-                          src="{{ product.featured_image | image_url: width: 360, height: 360 }}"
-                          alt="{{ product.featured_image.alt }}">
+                          srcset="{{ image | image_url: width: 360, height: 360 }} 1x, {{ image | image_url: width: 720, height: 720 }} 2x"
+                          src="{{ image | image_url: width: 360, height: 360 }}"
+                          alt="{{ image.alt }}">
                       {% else %}
                         <div class="customer-reviews__product-img">{{ "product-1" | placeholder_svg_tag }}</div>
                       {% endif %}
@@ -52,7 +56,8 @@
                 class="customer-reviews__card-info-wrapper {% if product == blank %}customer-reviews__full-width{% endif %}">
                 <div class="customer-reviews__rate">
                   {% for i in (1..5) %}
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="customer-reviews__rate-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0_365_49935)">
                         <path
                           d="M10.0013 14.3915L15.1513 17.4998L13.7888 11.6415L18.3346 7.704L12.343 7.18734L10.0013 1.6665L7.65964 7.18734L1.66797 7.704L6.2138 11.6415L4.8513 17.4998L10.0013 14.3915Z"
@@ -67,28 +72,26 @@
                   {% endfor %}
                 </div>
 
-                {% if block.settings.text != blank %}
-                  <div class="customer-reviews__text">
-                    {{ block.settings.text }}
-                  </div>
-                {% endif %}
+                <div class="customer-reviews__text">
+                  {{ text }}
+                </div>
 
-                <div class="customer-reviews__footer-info">
-                  {% if avatar != blank %}
-                    <picture>
+                {% if name != blank or position != blank %}
+                  <div class="customer-reviews__footer-info">
+                    {% if avatar != blank %}
                       <img
                         class="customer-reviews__avatar"
                         srcset="{{ avatar | image_url: width: 48, height: 48 }} 1x, {{ avatar | image_url: width: 96, height: 96 }} 2x"
                         src="{{ avatar | image_url: width: 48, height: 48 }}"
                         alt="{{ avatar.alt }}">
-                    </picture>
-                  {% endif %}
+                    {% endif %}
 
-                  <div class="customer-reviews__personal-info-wrapper">
-                    <span class="customer-reviews__name">{{ block.settings.name }}</span>
-                    <span class="customer-reviews__position">{{ block.settings.position }}</span>
+                    <div class="customer-reviews__personal-info-wrapper">
+                      <span class="customer-reviews__name">{{ name }}</span>
+                      <span class="customer-reviews__position">{{ position }}</span>
+                    </div>
                   </div>
-                </div>
+                {% endif %}
               </div>
             </div>
           {% endif %}
