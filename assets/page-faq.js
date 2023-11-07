@@ -1,5 +1,6 @@
 function initFAQPage() {
   const selectors = {
+    faqAccordionBtn: ".js-faq-accordion-btn",
     faqAccordion: ".js-faq-accordion",
     sectionHeader: ".section-header",
     faqMenu: ".js-faq-menu",
@@ -14,10 +15,12 @@ function initFAQPage() {
   };
 
   const faqAccordions = document.querySelectorAll(selectors.faqAccordion);
-  faqAccordions.length && faqAccordions.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      const notAnswer = e.target.closest("div").dataset.target !== "answer";
-      notAnswer && button.classList.toggle(classes.faqAccordionActive);
+  const faqAccordionBtns = document.querySelectorAll(selectors.faqAccordionBtn);
+  faqAccordionBtns.length && faqAccordionBtns.forEach((button, buttonIndex) => {
+    button.addEventListener("click", () => {
+      faqAccordions.forEach((el, elIndex) => {
+        if (buttonIndex === elIndex) el.classList.toggle(classes.faqAccordionActive);
+      });
     });
   });
 
