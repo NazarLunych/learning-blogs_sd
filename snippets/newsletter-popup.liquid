@@ -34,25 +34,25 @@
         </h3>
       {% endif %}
 
-      <div class="newsletter-popup__content-wrapper">
-        {% if img_desktop != blank %}
-          <div class="newsletter-popup__aspect-ratio">
-            <div class="newsletter-popup__img-wrapper">
-              <picture>
-                <source
-                  srcset="{{ img_mobile | image_url: width: 335, height: 240 }} 1x, {{ img_mobile | image_url: width: 670, height: 480 }} 2x"
-                  media="(max-width: 980px)">
+      {% unless errors or posted_successfully %}
+        <div class="newsletter-popup__content-wrapper">
+          {% if img_desktop != blank %}
+            <div class="newsletter-popup__aspect-ratio">
+              <div class="newsletter-popup__img-wrapper">
+                <picture>
+                  <source
+                    srcset="{{ img_mobile | image_url: width: 335, height: 240 }} 1x, {{ img_mobile | image_url: width: 670, height: 480 }} 2x"
+                    media="(max-width: 980px)">
 
-                <img class="newsletter-popup__img"
-                     srcset="{{ img_desktop | image_url: width: 504, height: 504 }} 1x, {{ img_desktop | image_url: width: 1008, height: 1008 }} 2x"
-                     src="{{ img_desktop | image_url: width: 504, height: 504 }}"
-                     alt="{{ img_desktop.alt }}">
-              </picture>
+                  <img class="newsletter-popup__img"
+                       srcset="{{ img_desktop | image_url: width: 504, height: 504 }} 1x, {{ img_desktop | image_url: width: 1008, height: 1008 }} 2x"
+                       src="{{ img_desktop | image_url: width: 504, height: 504 }}"
+                       alt="{{ img_desktop.alt }}">
+                </picture>
+              </div>
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
 
-        {% unless errors or posted_successfully %}
           <div class="newsletter-popup__info-wrapper">
             {% if heading != blank or newsletter_text != blank %}
               <div class="newsletter-popup__text-wrapper">
@@ -113,8 +113,8 @@
               </div>
             {% endif %}
           </div>
-        {% endunless %}
-      </div>
+        </div>
+      {% endunless %}
     </div>
   </div>
 {% endform %}
