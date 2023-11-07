@@ -6,10 +6,11 @@
 {% assign img_desktop = settings.image_desktop %}
 {% assign img_mobile = settings.image_mobile | default: img_desktop %}
 {% assign form_id = 'newsletterPopupForm--' | append: section.id %}
-{% assign posted_successfully = form.posted_successfully? %}
-{% assign errors = form.errors %}
 
 {% form 'customer', id: form_id %}
+  {% assign posted_successfully = form.posted_successfully? %}
+  {% assign errors = form.errors %}
+
   <div
     class="newsletter-popup newsletter-popup--hidden js-newsletter-popup"
     data-form-errors="{{ errors }}" data-form-success="{{ posted_successfully }}"
