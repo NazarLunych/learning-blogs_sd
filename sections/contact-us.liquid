@@ -1,0 +1,288 @@
+{{ "contact-us.css" | asset_url | stylesheet_tag }}
+
+{% assign contact_form = 'contactUsForm--' | append: section.id %}
+
+<section class="contact-us custom-section page-width">
+  <div class="contact-us__store-info-wrapper">
+    <div class="contact-us__info-content">
+      <h4 class="contact-us__info-title">{{ section.settings.heading }}</h4>
+      <div class="contact-us__info-text">{{ section.settings.text }}</div>
+
+      {% comment %}TODO: додати посилання{% endcomment %}
+      <div
+        class="contact-us__point-wrapper">
+        <div class="contact-us__point-heading">
+          {% if section.settings.address_icon != blank %}
+            <img class="contact-us__point-icon" src="{{ section.settings.address_icon | image_url }}"
+                 alt="{{ seciton.settings.address_icon.alt }}">
+          {% endif %}
+
+          {{ section.settings.address_heading }}
+        </div>
+        <div class="contact-us__point-text">
+          {{ section.settings.address_text }}
+        </div>
+      </div>
+
+      <div class="contact-us__point-wrapper">
+        <div class="contact-us__point-heading">
+          {% if section.settings.phone_icon != blank %}
+            <img class="contact-us__point-icon" src="{{ section.settings.phone_icon | image_url }}"
+                 alt="{{ section.settings.phone_icon.alt }}">
+          {% endif %}
+
+          {{ section.settings.phone_heading }}
+        </div>
+        <div class="contact-us__point-text">{{ section.settings.phone_text }}</div>
+      </div>
+
+      <div class="contact-us__point-wrapper">
+        <div class="contact-us__point-heading">
+          {% if section.settings.email_icon != blank %}
+            <img class="contact-us__point-icon" src="{{ section.settings.email_icon | image_url }}"
+                 alt="{{ section.settings.phone_icon.alt }}">
+          {% endif %}
+
+          {{ section.settings.email_heading }}
+        </div>
+        <div class="contact-us__point-text">{{ section.settings.email_text }}</div>
+      </div>
+
+      <div
+        class="contact-us__point-wrapper">
+        <div class="contact-us__point-heading">
+          {% if section.settings.schedule_icon != blank %}
+            <img class="contact-us__point-icon" src="{{ section.settings.schedule_icon | image_url }}"
+                 alt="{{ section.settings.schedule_icon.alt }}">
+          {% endif %}
+
+          {{ section.settings.schedule_heading }}
+        </div>
+        <div class="contact-us__point-text">{{ section.settings.schedule_text }}</div>
+      </div>
+
+      <div class="contact-us__btns">
+        <button class="contact-us__btn contact-us__btn--filled">{{ section.settings.button_first_label }}</button>
+        <button class="contact-us__btn">{{ section.settings.button_second_label }}</button>
+      </div>
+    </div>
+
+    <div class="contact-us__img-wrapper">
+      <picture>
+        {% comment %}TODO: додати моб{% endcomment %}
+        <img
+          class="contact-us__img"
+          srcset="{{ section.settings.stored_image | image_url: width: 816, height: 800 }} 1x, {{ section.settings.stored_image | image_url: width: 1632, height: 1600 }} 2x"
+          src="{{ section.settings.store_image | image_url: width: 816, height: 800 }}"
+          alt="{{ section.settings.store_image.alt }}">
+      </picture>
+    </div>
+  </div>
+
+  <div class="contact-us__map-wrapper">
+    <div class="contact-us__map-content">
+      {% if section.settings.map_image != blank %}
+        {% comment %}TODO: допрацювати картинку{% endcomment %}
+        <a href="{{ section.settings.map_link }}" target="_blank">
+          <img class="contact-us__map-img" src="{{ section.settings.map_image | image_url: width: 1648, height: 480 }}"
+               alt="{{ section.settings.map_image.alt }}">
+        </a>
+      {% else %}
+        {{ section.settings.map_code }}
+      {% endif %}
+    </div>
+  </div>
+
+  {% form 'contact', id: contact_form %}
+    <div class="contact-us__form-wrapper">
+      <h4 class="contact-us__form-heading">{{ section.settings.contact_heading }}</h4>
+      {% if form.posted_successfully? %}
+        <div class="contact-us__form-status contact-us__form--success">
+          {% render 'icon-success' -%}
+          Success message
+        </div>
+      {% elsif form.errors %}
+        <div class="contact-us__form-status contact-us__form--error">
+          {%- render 'icon-error' -%}
+          There was an error with your submission. Please try again.
+        </div>
+      {% endif %}
+
+      <div class="contact-us__inputs">
+        <div class="contact-us__input-wrapper contact-us__input-name">
+          <label for="name">Name</label>
+          <input class="contact-us__input" type="text" name="contact[name]" id="name" placeholder="Enter your name"
+                 required/>
+        </div>
+
+        {% comment %}TODO: не додавати asterisk і required{% endcomment %}
+        <div class="contact-us__input-wrapper contact-us__input-email">
+          <label for="email">Email</label>
+          <input class="contact-us__input" type="email" name="contact[email]" id="email"
+                 placeholder="john.smith@example.com"/>
+        </div>
+
+        <div class="contact-us__input-wrapper">
+          <label for="phone">Phone</label>
+          <input class="contact-us__input" type="tel" name="contact[phone]" id="phone"
+                 placeholder="Enter your phone number" required/>
+        </div>
+
+        <div class="contact-us__input-wrapper">
+          <label for="message">Message</label>
+          <textarea class="contact-us__input contact-us__textarea" name="contact[body]" id="message"
+                    placeholder="Enter your message"></textarea>
+        </div>
+      </div>
+
+      <button class="contact-us__btn contact-us__btn--filled contact-us__btn--centered" type="submit">
+        Send a message
+      </button>
+    </div>
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "Contact us",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Store information"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "text",
+      "type": "richtext",
+      "label": "Text"
+    },
+    {
+      "id": "address_heading",
+      "type": "text",
+      "label": "Address heading"
+    },
+    {
+      "id": "address_text",
+      "type": "richtext",
+      "label": "Address text"
+    },
+    {
+      "id": "address_icon",
+      "type": "image_picker",
+      "label": "Address icon"
+    },
+    {
+      "id": "phone_heading",
+      "type": "text",
+      "label": "Phone heading"
+    },
+    {
+      "id": "phone_text",
+      "type": "richtext",
+      "label": "Phone text"
+    },
+    {
+      "id": "phone_icon",
+      "type": "image_picker",
+      "label": "Phone icon"
+    },
+    {
+      "id": "email_heading",
+      "type": "text",
+      "label": "Email heading"
+    },
+    {
+      "id": "email_text",
+      "type": "richtext",
+      "label": "Email text"
+    },
+    {
+      "id": "email_icon",
+      "type": "image_picker",
+      "label": "Email icon"
+    },
+    {
+      "id": "schedule_heading",
+      "type": "text",
+      "label": "Schedule heading"
+    },
+    {
+      "id": "schedule_text",
+      "type": "richtext",
+      "label": "Schedule text"
+    },
+    {
+      "id": "schedule_icon",
+      "type": "image_picker",
+      "label": "Schedule icon"
+    },
+    {
+      "id": "button_first_label",
+      "type": "text",
+      "label": "Button first label"
+    },
+    {
+      "id": "button_first_link",
+      "type": "url",
+      "label": "Button first link"
+    },
+    {
+      "id": "button_second_label",
+      "type": "text",
+      "label": "Button second label"
+    },
+    {
+      "id": "button_second_link",
+      "type": "url",
+      "label": "Button second link"
+    },
+    {
+      "id": "store_image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Map"
+    },
+    {
+      "id": "map_image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "map_link",
+      "type": "url",
+      "label": "Link"
+    },
+    {
+      "id": "map_code",
+      "type": "textarea",
+      "label": "Google map code"
+    },
+    {
+      "type": "header",
+      "content": "Contact form"
+    },
+    {
+      "id": "contact_heading",
+      "type": "text",
+      "label": "Contact heading"
+    },
+    {
+      "id": "success_message",
+      "type": "textarea",
+      "label": "Success message"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact us"
+    }
+  ]
+}
+{% endschema %}
