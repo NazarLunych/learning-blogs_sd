@@ -1,0 +1,153 @@
+{{ 'section-collections-list-custom.css' | asset_url | stylesheet_tag }}
+
+{% if section.blocks.size > 0 %}
+  <section class="page-width collections-list">
+    <div class="collections-list__wrapper">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        {% assign blockImg = block.settings.image | default: collection.image %}
+        {% capture textColor %}
+          {% if section.settings.text-position == 'inside' %}
+            style="color: {{ section.settings.image-text-color }}"
+          {% endif %}
+        {% endcapture %}
+
+        {% if collection != blank and collection.all_products_count > 0 %}
+          {% capture cardTextPosition %}
+            {% if section.settings.text-position == 'under' %}collections-list__card--under{% else %}collections-list__card--inside{% endif %}
+          {% endcapture %}
+
+          <a href="{{ collection.url }}"
+             class="collections-list__content collections-list__content--{{ section.settings.text-position }}">
+            <div
+              class="collections-list__card collections-list__card--{{ section.settings.aspect-ratio }} {{ cardTextPosition }}">
+              <picture class="collections-list__card-picture" style="background: {{ section.settings.overlay-color }}">
+                <source media="(max-width: 1260px)" srcset="
+                    {% if blockImg %}
+                      {{ blockImg | image_url: width: 293, height: 380 }}
+                        {% else %}
+                      {{ 'image-placeholder.jpeg' | asset_url }}
+                    {% endif %}
+                  "
+                >
+                <img
+                  class="collections-list__card-img"
+                  {% if blockImg %}
+                    src="{{ blockImg | image_url: width: 400, height: 484 }}"
+                  {% else %}
+                    src="{{ 'image-placeholder.jpeg' | asset_url }}"
+                  {% endif %}
+                  width="400"
+                  height="484"
+                  loading="lazy"
+                  alt="{{ blockImg.alt | default: 'Collection image' }}"
+                >
+              </picture>
+            </div>
+
+            <div class="collections-list__card-info">
+                <span class="collections-list__card-title" {{ textColor }}>
+                  {{- collection.title -}}
+                </span>
+              {% if section.settings['show-products-count'] %}
+                <span class="collections-list__card-text" {{ textColor }}>
+                  {{- collection.all_products_count }}
+                  {% if collection.all_products_count == 1 %}
+                    product
+                  {% else %}
+                    products
+                  {%- endif %}
+                </span>
+              {% endif %}
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": [
+    {
+      "type": "select",
+      "id": "text-position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "under",
+          "label": "Under the image"
+        },
+        {
+          "value": "inside",
+          "label": "Inside the image"
+        }
+      ],
+      "default": "under"
+    },
+    {
+      "type": "select",
+      "id": "aspect-ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
+      ],
+      "default": "landscape"
+    },
+    {
+      "type": "checkbox",
+      "id": "show-products-count",
+      "label": "Show products count",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "image-text-color",
+      "label": "Image text color",
+      "default": "#fff"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay-color",
+      "label": "Overlay color",
+      "default": "rgba(0,0,0, 0.3)"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections list"
+    }
+  ]
+}
+{% endschema %}

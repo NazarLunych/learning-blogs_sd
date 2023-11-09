@@ -1,0 +1,148 @@
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+<script src="{{ 'customer-reviews.js' | asset_url }}" defer="defer"></script>
+{{ "customer-reviews.css" | asset_url | stylesheet_tag }}
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+>
+
+{% if section.blocks.size > 0 %}
+  <section class="customer-reviews custom-section page-width">
+    <div class="swiper js-reviews-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% assign product = block.settings.product %}
+          {% assign avatar = block.settings.avatar %}
+          {% assign image = product.featured_image %}
+          {% assign text = block.settings.text %}
+          {% assign name = block.settings.name %}
+          {% assign position = block.settings.position %}
+
+          {% if text != blank %}
+            <div class="swiper-slide customer-reviews__card">
+              {% if product != blank %}
+                <div class="customer-reviews__product">
+                  <a href="{{ product.url }}" class="customer-reviews__product-wrapper">
+                    <picture>
+                      {% if image %}
+                        <source
+                          srcset="{{ image | image_url: width: 295, height: 295 }} 1x, {{ image | image_url: width: 590, height: 590 }} 2x"
+                          media="(max-width: 768px)">
+                        <img
+                          class="customer-reviews__product-img"
+                          srcset="{{ image | image_url: width: 360, height: 360 }} 1x, {{ image | image_url: width: 720, height: 720 }} 2x"
+                          src="{{ image | image_url: width: 360, height: 360 }}"
+                          alt="{{ image.alt }}">
+                      {% else %}
+                        <div class="customer-reviews__product-img">{{ "product-1" | placeholder_svg_tag }}</div>
+                      {% endif %}
+                    </picture>
+                    <div class="customer-reviews__product-info-wrapper">
+                      <span class="customer-reviews__product-title">{{ product.title }}</span>
+                      <div class="customer-reviews__price-wrapper">
+                        <span class="customer-reviews__product-price">{{ product.price | money }}</span>
+                        {% if product.compare_at_price != blank %}
+                          <span
+                            class="customer-reviews__product-compare-at-price">{{ product.compare_at_price | money }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+
+              <div
+                class="customer-reviews__card-info-wrapper {% if product == blank %}customer-reviews__full-width{% endif %}">
+                <div class="customer-reviews__rate">
+                  {% for i in (1..5) %}
+                    <svg class="customer-reviews__rate-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_365_49935)">
+                        <path
+                          d="M10.0013 14.3915L15.1513 17.4998L13.7888 11.6415L18.3346 7.704L12.343 7.18734L10.0013 1.6665L7.65964 7.18734L1.66797 7.704L6.2138 11.6415L4.8513 17.4998L10.0013 14.3915Z"
+                          fill="black"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_365_49935">
+                          <rect width="20" height="20" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  {% endfor %}
+                </div>
+
+                <div class="customer-reviews__text">
+                  {{ text }}
+                </div>
+
+                {% if name != blank or position != blank %}
+                  <div class="customer-reviews__footer-info">
+                    {% if avatar != blank %}
+                      <img
+                        class="customer-reviews__avatar"
+                        srcset="{{ avatar | image_url: width: 48, height: 48 }} 1x, {{ avatar | image_url: width: 96, height: 96 }} 2x"
+                        src="{{ avatar | image_url: width: 48, height: 48 }}"
+                        alt="{{ avatar.alt }}">
+                    {% endif %}
+
+                    <div class="customer-reviews__personal-info-wrapper">
+                      <span class="customer-reviews__name">{{ name }}</span>
+                      <span class="customer-reviews__position">{{ position }}</span>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% render "swiper-pagination-custom" %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Customer reviews",
+  "blocks": [
+    {
+      "type": "review_card",
+      "name": "Review card",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "avatar",
+          "type": "image_picker",
+          "label": "Avatar"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Text"
+        },
+        {
+          "id": "name",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "id": "position",
+          "type": "text",
+          "label": "Position"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer reviews"
+    }
+  ]
+}
+{% endschema %}

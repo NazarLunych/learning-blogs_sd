@@ -1,0 +1,41 @@
+{{ 'component-social-media-container.css' | asset_url | stylesheet_tag }}
+
+{% assign instagramLink = content.settings.instagram_link %}
+{% assign facebookLink = content.settings.facebook_link %}
+{% assign youtubeLink = content.settings.youtube_link %}
+
+{% if instagramLink %}
+  <a class="social-media" href="{{ instagramLink }}">
+    <img
+      src="{{ 'instagram.svg' | asset_url }}"
+      width="24"
+      height="24"
+      loading="eager"
+      alt="Instagram icon"
+    >
+  </a>
+{% endif %}
+
+{% if facebookLink %}
+  <a class="social-media" href="{{ facebookLink }}">
+    <img
+      src="{{ 'facebook.svg' | asset_url }}"
+      width="24"
+      height="24"
+      loading="eager"
+      alt="Facebook icon"
+    >
+  </a>
+{% endif %}
+
+{% if youtubeLink %}
+  <a class="social-media" href="{{ youtubeLink }}">
+    <img
+      src="{{ 'youtube.svg' | asset_url }}"
+      width="24"
+      height="24"
+      loading="eager"
+      alt="Youtube icon"
+    >
+  </a>
+{%- endif %}

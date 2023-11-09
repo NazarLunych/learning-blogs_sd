@@ -1,0 +1,46 @@
+{{ 'component-our-team-modal.css' | asset_url | stylesheet_tag }}
+
+<div class="our-team-modal hidden js-our-team-modal">
+  <div class="our-team-modal__content">
+    <button class="our-team-modal__close-btn js-our-team-close-modal">
+      {% render 'icon-close' %}
+    </button>
+
+    <div class="our-team-modal__content-wrapper">
+      <picture class="our-team-modal__img-wrapper">
+        <source
+          media="(max-width: 500px)"
+          {% if content.settings.popup_image %}
+            srcset="{{ content.settings.popup_image | image_url: width: 311, height: 311 }}"
+          {% else %}
+            srcset="{{ content.settings.card_image | image_url: width: 311, height: 311 }}"
+          {% endif %}
+        >
+        <img
+          class="our-team-modal__img"
+          {% if content.settings.popup_image %}
+            src="{{ content.settings.popup_image | image_url: width: 504, height: 504 }}"
+          {% elsif content.settings.card_image %}
+            src="{{ content.settings.card_image | image_url: width: 504, height: 504 }}"
+          {% else %}
+            src="{{ 'image-placeholder.jpeg' | asset_url }}"
+          {% endif %}
+          width="504"
+          height="504"
+          loading="lazy"
+          alt="Modal card image"
+        >
+      </picture>
+
+      <div class="our-team-modal__info">
+        <span class="our-team-modal__name">{{ content.settings.name }}</span>
+        <span class="our-team-modal__role">{{ content.settings.role }}</span>
+        <div class="our-team-modal__description">{{ content.settings.description }}</div>
+
+        <div class="our-team-modal__social-media-wrapper">
+          {% render 'social-media-container', content: content %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

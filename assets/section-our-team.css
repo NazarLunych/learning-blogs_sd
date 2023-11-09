@@ -1,0 +1,135 @@
+.our-team {
+  padding: 32px 16px;
+}
+
+.our-team__container .our-team__card {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  max-width: 400px;
+  min-height: 498px;
+  box-sizing: border-box;
+}
+
+.our-team__container .our-team__card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.our-team__card-img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.our-team__read-more-btn {
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 1.37em;
+  display: none;
+  background-color: transparent;
+  border: none;
+  align-self: center;
+  color: #fff;
+}
+
+.our-team__read-more-btn::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: #fff;
+  transition: var(--transition-duration);
+}
+
+.our-team__read-more-btn:hover::after {
+  width: 0;
+}
+
+.our-team__card:hover .our-team__read-more-btn,
+.our-team__card:hover .our-team__social-media-container {
+  display: flex;
+}
+
+.our-team__info-container {
+  z-index: 2;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+}
+
+.our-team__card-name {
+  font-size: 22px;
+  line-height: 1.18em;
+}
+
+.our-team__card-role {
+  line-height: 1.375em;
+}
+
+.our-team__social-media-container {
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 22px;
+  display: none;
+}
+
+.our-team .swiper-pagination {
+  position: initial;
+  margin-top: 22px;
+}
+
+@media screen and (min-width: 990px) {
+  .our-team .our-team__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .our-team {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .our-team .swiper {
+    padding: 0 16px;
+  }
+
+  .our-team__read-more-btn {
+    display: flex;
+  }
+
+  .our-team__social-media-container {
+    display: flex;
+    padding: 14px;
+  }
+
+  .our-team__container .our-team__card {
+    min-width: 303px;
+    height: 468px;
+  }
+}

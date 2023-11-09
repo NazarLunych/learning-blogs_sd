@@ -1,0 +1,20 @@
+.social-media {
+  padding: 16px;
+  display: flex;
+  background-color: #fff;
+  border-radius: 100%;
+  transition: var(--transition-duration);
+}
+
+.social-media:hover {
+  scale: 0.8;
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  transition: var(--transition-duration);
+}
+
+@media screen and (min-width: 990px) {
+  .social-media {
+    padding: 12px;
+  }
+}
