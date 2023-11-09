@@ -61,11 +61,13 @@ function initNewsletterPopupFunc() {
   const getTimeoutTime = () => (isFormSuccess || formErrors) ? 0 : 4000;
   const timeoutTime = getTimeoutTime();
 
-  if ((isEnable && !dontShowPopup) || (isFormSuccess || formErrors)) {
-    setTimeout(() => {
-      newsletterPopup.classList.remove(classes.hiddenPopup);
-      document.getElementsByTagName("body")[0].style.overflow = "hidden";
-    }, timeoutTime);
+  if (isEnable) {
+    if (!dontShowPopup || isFormSuccess || formErrors) {
+      setTimeout(() => {
+        newsletterPopup.classList.remove(classes.hiddenPopup);
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      }, timeoutTime);
+    }
   }
 
   const closeBtns = document.querySelectorAll(selectors.popupCloseBtn);

@@ -39,101 +39,38 @@
         "show_text_below": false
       }
     },
-    "ebbe3a68-1026-40a1-a268-7dcc8f1f1f32": {
-      "type": "page-faq",
-      "blocks": {
-        "246b52b7-d3db-46f4-9469-5162b9b9292c": {
-          "type": "group",
-          "settings": {
-            "heading": "Orders & Payments"
-          }
-        },
-        "f2e7597a-ae40-42ff-9086-a617f30dd373": {
-          "type": "question",
-          "settings": {
-            "question": "I made a mistake in shipping address, can I change it?",
-            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
-            "icon": "shopify:\/\/shop_images\/message-question.svg"
-          }
-        },
-        "09f5528d-921d-4ba0-94d1-8f51c15779b7": {
-          "type": "question",
-          "settings": {
-            "question": "I am purchasing a gift, can you exclude price information?",
-            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
-            "icon": "shopify:\/\/shop_images\/message-question.svg"
-          }
-        },
-        "0358e78a-dd27-4eb4-8431-675b7f8ea5ed": {
-          "type": "group",
-          "settings": {
-            "heading": "Returns\/Exchanges"
-          }
-        },
-        "06aa7755-1bda-436b-944e-4c47fce9b938": {
-          "type": "question",
-          "settings": {
-            "question": "Can I make a change to my order?",
-            "answer": "<p>Discover the Science of Enhanced Testing Techniques.<\/p>"
-          }
-        },
-        "461fe12d-a1f2-4c11-aea1-352eba6bacfa": {
-          "type": "question",
-          "settings": {
-            "question": "Do you accept returns or exchanges?",
-            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
-            "icon": "shopify:\/\/shop_images\/message-question.svg"
-          }
-        },
-        "2e17d792-b7c1-47cb-b033-f178bf1547ff": {
-          "type": "question",
-          "settings": {
-            "question": "We stand behind our products.",
-            "answer": "<p>Unlock the Power of Testing for Improved Results.<\/p>"
-          }
-        },
-        "5e058654-b7a7-42ca-937a-9b666b8cb401": {
-          "type": "question",
-          "settings": {
-            "question": "What forms of payment do you accept?",
-            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
-            "icon": "shopify:\/\/shop_images\/message-question.svg"
-          }
-        },
-        "76e34be8-e792-4bd5-82b6-517638247f2a": {
-          "type": "group",
-          "settings": {
-            "heading": "Privacy Policy"
-          }
-        },
-        "b88a5c35-d2b5-4c47-bf2b-34032ce7e1e2": {
-          "type": "question",
-          "settings": {
-            "question": "Do you accept returns or exchanges?",
-            "answer": "<p>Our warehouse takes pride in shipping items out as soon as possible. Many of the orders will be processed within 2 hours after you place the order. We are unable to make any changes once an order begins processing, but we do accepts returns and exchanges at any time, and would be happy to reship your order if it is undeliverable as addressed.<\/p>",
-            "icon": "shopify:\/\/shop_images\/message-question.svg"
-          }
-        }
-      },
-      "block_order": [
-        "246b52b7-d3db-46f4-9469-5162b9b9292c",
-        "f2e7597a-ae40-42ff-9086-a617f30dd373",
-        "09f5528d-921d-4ba0-94d1-8f51c15779b7",
-        "0358e78a-dd27-4eb4-8431-675b7f8ea5ed",
-        "06aa7755-1bda-436b-944e-4c47fce9b938",
-        "461fe12d-a1f2-4c11-aea1-352eba6bacfa",
-        "2e17d792-b7c1-47cb-b033-f178bf1547ff",
-        "5e058654-b7a7-42ca-937a-9b666b8cb401",
-        "76e34be8-e792-4bd5-82b6-517638247f2a",
-        "b88a5c35-d2b5-4c47-bf2b-34032ce7e1e2"
-      ],
+    "bace274a-86c3-4c82-a58f-e648899ecba5": {
+      "type": "contact-us",
       "settings": {
-        "heading": ""
+        "heading": "Mantraband Store",
+        "text": "<p>To live inspired, is to live a life true to your values, a life that’s meaningful, and a life of purpose. <\/p>",
+        "address_heading": "Address:",
+        "address_text": "<p>2205 Rosewood Lane<\/p>",
+        "address_icon": "shopify:\/\/shop_images\/Map-pin.png",
+        "phone_heading": "Phone:",
+        "phone_text": "<p>213 443 6364<\/p>",
+        "phone_icon": "shopify:\/\/shop_images\/Phone.png",
+        "email_heading": "Email:",
+        "email_text": "<p>hello@revellabel.com<\/p>",
+        "email_icon": "shopify:\/\/shop_images\/Email.png",
+        "schedule_heading": "Schedule:",
+        "schedule_text": "<p>Mn - Fr. 8:00-17:00<\/p>",
+        "schedule_icon": "shopify:\/\/shop_images\/clock.png",
+        "button_first_label": "Send a message",
+        "button_first_link": "",
+        "button_second_label": "Support",
+        "button_second_link": "",
+        "store_image": "shopify:\/\/shop_images\/image_14.jpg",
+        "map_image": "shopify:\/\/shop_images\/2023-07-18_16.42_1.jpg",
+        "map_link": "",
+        "map_code": "<iframe width=\"100%\" height=\"600\" src=\"https:\/\/maps.google.com\/maps?width=100%&height=600&hl=en&coord=52.70967533219885,%20-8.020019531250002&q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland&ie=UTF8&t=&z=14&iwloc=B&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"><\/iframe>",
+        "contact_heading": "Send a message",
+        "success_message": "Success"
       }
     }
   },
   "order": [
     "image_banner",
-    "ebbe3a68-1026-40a1-a268-7dcc8f1f1f32"
+    "bace274a-86c3-4c82-a58f-e648899ecba5"
   ]
 }

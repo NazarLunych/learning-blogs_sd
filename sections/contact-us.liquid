@@ -1,105 +1,173 @@
 {{ "contact-us.css" | asset_url | stylesheet_tag }}
 
 {% assign contact_form = 'contactUsForm--' | append: section.id %}
+{% assign heading = section.settings.heading %}
+{% assign text = section.settings.text %}
+{% assign address_icon = section.settings.address_icon %}
+{% assign address_heading = section.settings.address_heading %}
+{% assign address_text = section.settings.address_text %}
+{% assign phone_icon = section.settings.phone_icon %}
+{% assign phone_heading = section.settings.phone_heading %}
+{% assign phone_text = section.settings.phone_text %}
+{% assign email_icon = section.settings.email_icon %}
+{% assign email_heading = section.settings.email_heading %}
+{% assign email_text = section.settings.email_text %}
+{% assign schedule_icon = section.settings.schedule_icon %}
+{% assign schedule_heading = section.settings.schedule_heading %}
+{% assign schedule_text = section.settings.schedule_text %}
+{% assign button_first_label = section.settings.button_first_label %}
+{% assign button_first_link = section.settings.button_first_link %}
+{% assign button_second_label = section.settings.button_second_label %}
+{% assign button_second_link = section.settings.button_second_link %}
+{% assign map_code = section.settings.map_code %}
+{% assign map_image = section.settings.map_image %}
+{% assign contact_heading = section.settings.contact_heading %}
+{% assign store_image = section.settings.store_image %}
 
 <section class="contact-us custom-section page-width">
-  <div class="contact-us__store-info-wrapper">
-    <div class="contact-us__info-content">
-      <h4 class="contact-us__info-title">{{ section.settings.heading }}</h4>
-      <div class="contact-us__info-text">{{ section.settings.text }}</div>
+  {% if heading != blank or text != blank %}
+    <div class="contact-us__store-info-wrapper">
+      <div class="contact-us__info-content">
+        {% if heading != blank or text != blank %}
+          <div class="contact-us__info-heading-wrapper">
+            {% if heading != blank %}
+              <h4 class="contact-us__info-title">{{ heading }}</h4>
+            {% endif %}
 
-      {% comment %}TODO: додати посилання{% endcomment %}
-      <div
-        class="contact-us__point-wrapper">
-        <div class="contact-us__point-heading">
-          {% if section.settings.address_icon != blank %}
-            <img class="contact-us__point-icon" src="{{ section.settings.address_icon | image_url }}"
-                 alt="{{ seciton.settings.address_icon.alt }}">
+            {% if text != blank %}
+              <div class="contact-us__info-text">{{ text }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if address_heading != blank and address_text != blank %}
+          <div
+            class="contact-us__point-wrapper">
+            <div class="contact-us__point-heading">
+              {% if address_icon != blank %}
+                <img class="contact-us__point-icon"
+                     srcset="{{ address_icon | image_url: width: 24, height: 24 }} 1x, {{ address_icon | image_url: width: 48, height: 48 }} 2x"
+                     src="{{ address_icon | image_url: width: 24, height: 24 }}"
+                     alt="{{ seciton.settings.address_icon.alt }}">
+              {% endif %}
+
+              {{ address_heading }}
+            </div>
+            <div class="contact-us__point-text">
+              {{ address_text }}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if phone_heading != blank and phone_text != blank %}
+          <div class="contact-us__point-wrapper">
+            <div class="contact-us__point-heading">
+              {% if phone_icon != blank %}
+                <img class="contact-us__point-icon"
+                     srcset="{{ phone_icon | image_url: width: 24, height: 24 }} 1x, {{ phone_icon | image_url: width: 48, height: 48 }} 2x"
+                     src="{{ phone_icon | image_url: width: 24, height: 24 }}"
+                     alt="{{ phone_icon.alt }}">
+              {% endif %}
+
+              {{ phone_heading }}
+            </div>
+            <div class="contact-us__point-text">{{ phone_text }}</div>
+          </div>
+        {% endif %}
+
+        {% if email_heading != blank and email_text != blank %}
+          <div class="contact-us__point-wrapper">
+            <div class="contact-us__point-heading">
+              {% if email_icon != blank %}
+                <img class="contact-us__point-icon"
+                     srcset="{{ email_icon | image_url: width: 24, height: 24 }} 1x, {{ email_icon | image_url: width: 48, height: 48 }} 2x"
+                     src="{{ email_icon | image_url: width: 24, height: 24 }}"
+                     alt="{{ email_icon.alt }}">
+              {% endif %}
+
+              {{ email_heading }}
+            </div>
+            {% comment %} Не зроблено посиланням, щоб користувач сам мав можливість його додати в кастомайзері {% endcomment %}
+            <div class="contact-us__point-text">{{ email_text }}</div>
+          </div>
+        {% endif %}
+
+        {% if schedule_heading != blank and schedule_text != blank %}
+          <div
+            class="contact-us__point-wrapper">
+            <div class="contact-us__point-heading">
+              {% if schedule_icon != blank %}
+                <img class="contact-us__point-icon"
+                     srcset="{{ schedule_icon | image_url: width: 24, height: 24 }} 1x, {{ schedule_icon | image_url: width: 48, height: 48 }} 2x"
+                     src="{{ schedule_icon | image_url: width: 24, height: 24 }}"
+                     alt="{{ schedule_icon.alt }}">
+              {% endif %}
+
+              {{ schedule_heading }}
+            </div>
+            <div class="contact-us__point-text">{{ schedule_text }}</div>
+          </div>
+        {% endif %}
+
+        <div class="contact-us__btns">
+          {% if button_first_link != blank and button_first_label != blank %}
+            <a href="{{ button_first_link }}"
+               class="contact-us__btn contact-us__btn--filled">{{ button_first_label }}</a>
           {% endif %}
 
-          {{ section.settings.address_heading }}
-        </div>
-        <div class="contact-us__point-text">
-          {{ section.settings.address_text }}
+          {% if button_second_link != blank and button_second_label != blank %}
+            <a href="{{ button_second_link }}" class="contact-us__btn">{{ button_second_label }}</a>
+          {% endif %}
         </div>
       </div>
 
-      <div class="contact-us__point-wrapper">
-        <div class="contact-us__point-heading">
-          {% if section.settings.phone_icon != blank %}
-            <img class="contact-us__point-icon" src="{{ section.settings.phone_icon | image_url }}"
-                 alt="{{ section.settings.phone_icon.alt }}">
-          {% endif %}
+      <div class="contact-us__img-wrapper">
+        <picture>
+          <source srcset="{{ store_image | image_url: width: 343, height: 340 }}"
+                  media="(max-width: 750px)">
 
-          {{ section.settings.phone_heading }}
-        </div>
-        <div class="contact-us__point-text">{{ section.settings.phone_text }}</div>
-      </div>
-
-      <div class="contact-us__point-wrapper">
-        <div class="contact-us__point-heading">
-          {% if section.settings.email_icon != blank %}
-            <img class="contact-us__point-icon" src="{{ section.settings.email_icon | image_url }}"
-                 alt="{{ section.settings.phone_icon.alt }}">
-          {% endif %}
-
-          {{ section.settings.email_heading }}
-        </div>
-        <div class="contact-us__point-text">{{ section.settings.email_text }}</div>
-      </div>
-
-      <div
-        class="contact-us__point-wrapper">
-        <div class="contact-us__point-heading">
-          {% if section.settings.schedule_icon != blank %}
-            <img class="contact-us__point-icon" src="{{ section.settings.schedule_icon | image_url }}"
-                 alt="{{ section.settings.schedule_icon.alt }}">
-          {% endif %}
-
-          {{ section.settings.schedule_heading }}
-        </div>
-        <div class="contact-us__point-text">{{ section.settings.schedule_text }}</div>
-      </div>
-
-      <div class="contact-us__btns">
-        <button class="contact-us__btn contact-us__btn--filled">{{ section.settings.button_first_label }}</button>
-        <button class="contact-us__btn">{{ section.settings.button_second_label }}</button>
+          <img
+            class="contact-us__img"
+            srcset="{{ store_image | image_url: width: 816, height: 800 }} 1x, {{ store_image | image_url: width: 1632, height: 1600 }} 2x"
+            src="{{ store_image | image_url: width: 816, height: 800 }}"
+            alt="{{ store_image.alt }}">
+        </picture>
       </div>
     </div>
+  {% endif %}
 
-    <div class="contact-us__img-wrapper">
-      <picture>
-        {% comment %}TODO: додати моб{% endcomment %}
-        <img
-          class="contact-us__img"
-          srcset="{{ section.settings.stored_image | image_url: width: 816, height: 800 }} 1x, {{ section.settings.stored_image | image_url: width: 1632, height: 1600 }} 2x"
-          src="{{ section.settings.store_image | image_url: width: 816, height: 800 }}"
-          alt="{{ section.settings.store_image.alt }}">
-      </picture>
-    </div>
-  </div>
+  {% if map_code != blank or map_image != blank %}
+    <div class="contact-us__map-wrapper">
+      <div class="contact-us__map-content">
+        {% if map_code != blank %}
+          {{ map_code }}
+        {% else %}
+          <a href="{{ section.settings.map_link }}" target="_blank">
+            <picture>
+              <source srcset="{{ map_image | image_url: width: 345, height: 280 }}"
+                      media="(max-width: 750px)">
 
-  <div class="contact-us__map-wrapper">
-    <div class="contact-us__map-content">
-      {% if section.settings.map_image != blank %}
-        {% comment %}TODO: допрацювати картинку{% endcomment %}
-        <a href="{{ section.settings.map_link }}" target="_blank">
-          <img class="contact-us__map-img" src="{{ section.settings.map_image | image_url: width: 1648, height: 480 }}"
-               alt="{{ section.settings.map_image.alt }}">
-        </a>
-      {% else %}
-        {{ section.settings.map_code }}
-      {% endif %}
+              <img class="contact-us__map-img"
+                   srcset="{{ map_image | image_url: width: 1648, height: 480 }} 1x, {{ map_image | image_url: width: 3296, height: 960 }} 2x"
+                   src="{{ map_image | image_url: width: 1648, height: 480 }}"
+                   alt="{{ map_image.alt }}">
+            </picture>
+          </a>
+        {% endif %}
+      </div>
     </div>
-  </div>
+  {% endif %}
 
   {% form 'contact', id: contact_form %}
     <div class="contact-us__form-wrapper">
-      <h4 class="contact-us__form-heading">{{ section.settings.contact_heading }}</h4>
+      {% if contact_heading != blank %}
+        <h4 class="contact-us__form-heading">{{ contact_heading }}</h4>
+      {% endif %}
+
       {% if form.posted_successfully? %}
         <div class="contact-us__form-status contact-us__form--success">
           {% render 'icon-success' -%}
-          Success message
+          {{ section.settings.success_message }}
         </div>
       {% elsif form.errors %}
         <div class="contact-us__form-status contact-us__form--error">
@@ -110,12 +178,11 @@
 
       <div class="contact-us__inputs">
         <div class="contact-us__input-wrapper contact-us__input-name">
-          <label for="name">Name</label>
+          <label for="name">Name <span class="contact-us__asterisk">*</span></label>
           <input class="contact-us__input" type="text" name="contact[name]" id="name" placeholder="Enter your name"
                  required/>
         </div>
 
-        {% comment %}TODO: не додавати asterisk і required{% endcomment %}
         <div class="contact-us__input-wrapper contact-us__input-email">
           <label for="email">Email</label>
           <input class="contact-us__input" type="email" name="contact[email]" id="email"
@@ -123,7 +190,7 @@
         </div>
 
         <div class="contact-us__input-wrapper">
-          <label for="phone">Phone</label>
+          <label for="phone">Phone <span class="contact-us__asterisk">*</span></label>
           <input class="contact-us__input" type="tel" name="contact[phone]" id="phone"
                  placeholder="Enter your phone number" required/>
         </div>
@@ -223,7 +290,8 @@
     {
       "id": "button_first_label",
       "type": "text",
-      "label": "Button first label"
+      "label": "Button first label",
+      "default": "Send a message"
     },
     {
       "id": "button_first_link",
@@ -233,7 +301,8 @@
     {
       "id": "button_second_label",
       "type": "text",
-      "label": "Button second label"
+      "label": "Button second label",
+      "default": "Support"
     },
     {
       "id": "button_second_link",
@@ -276,7 +345,8 @@
     {
       "id": "success_message",
       "type": "textarea",
-      "label": "Success message"
+      "label": "Success message",
+      "default": "Success"
     }
   ],
   "presets": [
