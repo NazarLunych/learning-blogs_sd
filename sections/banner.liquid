@@ -1,3 +1,4 @@
+<script src="{{ "banner.js" | asset_url }}" defer></script>
 {{ "banner.css" | asset_url | stylesheet_tag }}
 
 {% assign heading = section.settings.heading %}
@@ -20,7 +21,7 @@
     <div class="custom-banner" style="{{ banner_styles }}">
       {% if section.settings.media_type == "html5_video" and section.settings.video_desktop != blank %}
         <video
-          class="custom-banner__media {% if video_mobile != blank %}custom-banner--desktop-display{% endif %}"
+          class="custom-banner__media {% if video_mobile != blank %}custom-banner--desktop-display{% endif %} js-custom-banner-video"
           autoplay loop muted>
           {% for video_source in section.settings.video_desktop.sources %}
             <source
@@ -32,7 +33,7 @@
         </video>
 
         {% if video_mobile != blank %}
-          <video class="custom-banner__media custom-banner--mobile-display" autoplay loop muted>
+          <video class="custom-banner__media custom-banner--mobile-display js-custom-banner-video" autoplay loop muted>
             {% for video_source_mob in video_mobile.sources %}
               <source
                 src="{{ video_source_mob.url }}"
