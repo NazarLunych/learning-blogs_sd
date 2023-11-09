@@ -39,38 +39,31 @@
         "show_text_below": false
       }
     },
-    "bace274a-86c3-4c82-a58f-e648899ecba5": {
-      "type": "contact-us",
+    "5d3c69af-c24d-4f39-8d51-cb6b2caa6c77": {
+      "type": "banner",
       "settings": {
-        "heading": "Mantraband Store",
-        "text": "<p>To live inspired, is to live a life true to your values, a life that’s meaningful, and a life of purpose. <\/p>",
-        "address_heading": "Address:",
-        "address_text": "<p>2205 Rosewood Lane<\/p>",
-        "address_icon": "shopify:\/\/shop_images\/Map-pin.png",
-        "phone_heading": "Phone:",
-        "phone_text": "<p>213 443 6364<\/p>",
-        "phone_icon": "shopify:\/\/shop_images\/Phone.png",
-        "email_heading": "Email:",
-        "email_text": "<p>hello@revellabel.com<\/p>",
-        "email_icon": "shopify:\/\/shop_images\/Email.png",
-        "schedule_heading": "Schedule:",
-        "schedule_text": "<p>Mn - Fr. 8:00-17:00<\/p>",
-        "schedule_icon": "shopify:\/\/shop_images\/clock.png",
-        "button_first_label": "Send a message",
-        "button_first_link": "",
-        "button_second_label": "Support",
-        "button_second_link": "",
-        "store_image": "shopify:\/\/shop_images\/image_14.jpg",
-        "map_image": "shopify:\/\/shop_images\/2023-07-18_16.42_1.jpg",
-        "map_link": "",
-        "map_code": "<iframe width=\"100%\" height=\"600\" src=\"https:\/\/maps.google.com\/maps?width=100%&height=600&hl=en&coord=52.70967533219885,%20-8.020019531250002&q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland&ie=UTF8&t=&z=14&iwloc=B&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"><\/iframe>",
-        "contact_heading": "Send a message",
-        "success_message": "Success"
+        "desktop_banner_min_height": "800",
+        "mobile_banner_min_height": "250",
+        "heading": "Satisfy your top obsession with the range of new arrivals",
+        "text": "<p>Personal boundaries are similar to a property fence or written law, they’re just not quite as evident (or as easy). The only way others know your personal boundaries is when you make them clear.<\/p>",
+        "button_label": "Shop Now",
+        "button_link": "https:\/\/placeholder.com",
+        "media_type": "html5_video",
+        "image_desktop": "shopify:\/\/shop_images\/Img_6c92f8f6-c73d-4c36-91d6-2b9e699369d8.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Img_2fc2f971-95fd-4771-95da-ece5897ee3f5.jpg",
+        "video_desktop": "shopify:\/\/files\/videos\/Запись экрана 2023-11-02 в 17.11.59.mov",
+        "video_mobile": "shopify:\/\/files\/videos\/Запись экрана 2023-11-03 в 10.54.13.mov",
+        "overlay": "rgba(0, 0, 0, 0.3)",
+        "text_color": "#ffffff",
+        "button_text_color": "#000000",
+        "button_background": "#fff",
+        "button_text_hover": "#000000",
+        "button_background_hover": "#fff"
       }
     }
   },
   "order": [
     "image_banner",
-    "bace274a-86c3-4c82-a58f-e648899ecba5"
+    "5d3c69af-c24d-4f39-8d51-cb6b2caa6c77"
   ]
 }

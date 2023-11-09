@@ -11,8 +11,8 @@
 
           {% if block.type == "group" %}
             {% if heading != blank %}
-              <a class="faq__btn js-faq-links" href="#{{ heading | handleize }}"
-                 data-target="{{ heading | handleize }}">{{ heading }}</a>
+              <a class="faq__btn js-faq-links" href="#{{ heading }}"
+                 data-target="{{ block.settings.heading }}">{{ heading }}</a>
             {% endif %}
           {% endif %}
         {% endfor %}
@@ -27,13 +27,13 @@
 
           {% if block.type == "group" %}
             {% if heading != blank %}
-              <h2 class="faq__group-name" id="{{ heading | handleize }}">{{ heading }}</h2>
+              <h2 class="faq__group-name" id="{{ heading }}">{{ heading }}</h2>
             {% endif %}
           {% else %}
             {% if answer != blank or question != blank %}
               <div class="faq__accordion js-faq-accordion">
                 <button
-                  class="faq__question-accordion js-faq-accordion-btn">
+                  class="faq__question-accordion">
                   {% if icon %}
                     <img
                       class="faq__icon"
@@ -45,7 +45,7 @@
                   {{ question }}
                   {% render "icon-caret" %}
                 </button>
-                <div class="faq__answer">{{ answer }}</div>
+                <div class="faq__answer" data-target="answer">{{ answer }}</div>
               </div>
             {% endif %}
           {% endif %}
