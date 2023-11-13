@@ -39,21 +39,50 @@
         "show_text_below": false
       }
     },
-    "1b01ce44-fa09-4a37-9926-01fe20e0a59a": {
-      "type": "custom-video",
+    "b177dc4d-87c9-4a3e-83ac-a3e5ecf4671d": {
+      "type": "customer-reviews",
+      "blocks": {
+        "060054ca-74b6-4e15-aaf8-9fea0ba7641d": {
+          "type": "review_card",
+          "settings": {
+            "product": "i-am-the-storm",
+            "avatar": "shopify:\/\/shop_images\/Img.jpg",
+            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
+            "name": "Stacey Reed",
+            "position": "Project Manager, Tourism Australia"
+          }
+        },
+        "a6238f1d-13d9-43da-8e20-3244594115cc": {
+          "type": "review_card",
+          "settings": {
+            "product": "",
+            "avatar": "shopify:\/\/shop_images\/image_18.png",
+            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
+            "name": "Stacey Reed",
+            "position": "Project Manager, Tourism Australia"
+          }
+        },
+        "581e63bc-c447-43de-bd82-1142149ddd83": {
+          "type": "review_card",
+          "settings": {
+            "product": "test",
+            "text": "<p>Easy and effortless exchanges. I had an item arrive that was a little too small. I was a bit hesitant to email and ask for an exchange due to my experiences with other brands but the Revella team responded right away and sent out a replacement item on the day and organised the return of my exchange item. Simple and easy.<\/p>",
+            "name": "Stacey Reed",
+            "position": "Project Manager, Tourism Australia"
+          }
+        }
+      },
+      "block_order": [
+        "060054ca-74b6-4e15-aaf8-9fea0ba7641d",
+        "a6238f1d-13d9-43da-8e20-3244594115cc",
+        "581e63bc-c447-43de-bd82-1142149ddd83"
+      ],
       "settings": {
-        "video_position_type": "popup",
-        "heading": "",
-        "text": "",
-        "image": "shopify:\/\/shop_images\/image_14.jpg",
-        "video_type": "html",
-        "html_desktop_video": "shopify:\/\/files\/videos\/Запись экрана 2023-11-02 в 17.11.59.mov",
-        "youtube_vimeo_desktop_url": ""
       }
     }
   },
   "order": [
     "image_banner",
-    "1b01ce44-fa09-4a37-9926-01fe20e0a59a"
+    "b177dc4d-87c9-4a3e-83ac-a3e5ecf4671d"
   ]
 }
