@@ -1,10 +1,27 @@
 function initCustomerReviews() {
-  new Swiper(".js-reviews-swiper", {
+  const reviewsSelector = ".js-reviews-swiper";
+  const reviewsSwiper = document.querySelector(reviewsSelector);
+  const {layout} = reviewsSwiper.dataset;
+  let slidesPerView;
+
+  switch (layout) {
+    case "base":
+    case "small_product":
+      slidesPerView = 3;
+      break;
+    case "big_product":
+      slidesPerView = 2;
+      break;
+    default:
+      slidesPerView = 1;
+  }
+
+  new Swiper(reviewsSelector, {
     direction: "horizontal",
     slidesPerView: 1,
     breakpoints: {
       768: {
-        slidesPerView: 2
+        slidesPerView: slidesPerView
       }
     },
     spaceBetween: 16,
