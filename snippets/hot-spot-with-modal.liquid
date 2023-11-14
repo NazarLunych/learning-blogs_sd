@@ -14,7 +14,7 @@
           <img
             srcset="{{ product.featured_image | image_url: width: 64, height: 64 }} 1x, {{ product.featured_image | image_url: width: 128, height: 128 }}, 2x"
             src="{{ product.featured_image | image_url: width: 64, height: 64 }}"
-            alt="{{ product.featured_image.alt }}">
+            alt="{{ product.featured_image.alt | escape }}">
         {% endunless %}
       </div>
 

@@ -14,11 +14,17 @@
   display: none;
 }
 
-.trend-products__product {
+.trend-products__content-wrapper .trend-products__product {
+  flex-shrink: 1;
   position: relative;
   width: 100%;
   max-width: 400px;
-  min-height: 498px;
+}
+
+.trend-products__product:after {
+  content: "";
+  display: block;
+  padding-top: 124%;
 }
 
 .trend-products__img {
@@ -34,6 +40,12 @@
 .trend-products .swiper-pagination {
   position: initial;
   margin-top: 32px
+}
+
+@media screen and (max-width: 991px) {
+  .trend-products__content-wrapper .trend-products__product {
+    flex-shrink: 0;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -52,4 +64,3 @@
     max-width: 100%;
   }
 }
-
