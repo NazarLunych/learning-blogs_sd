@@ -99,7 +99,10 @@ function minicartFuncInit() {
   });
 
   const closeBtn = document.querySelector(selectors.closeBtn);
-  closeBtn?.addEventListener("click", () => toggleMinicartVisibility(false));
+  closeBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    toggleMinicartVisibility(false);
+  });
 
   const openButton = document.querySelector(selectors.openButton);
   openButton?.addEventListener("click", () => toggleMinicartVisibility(true));
