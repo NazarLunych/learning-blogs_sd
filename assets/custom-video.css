@@ -93,6 +93,11 @@
   outline-offset: 3px
 }
 
+.custom-video__play-btn--hidden {
+  opacity: 0;
+  z-index: -1;
+}
+
 .custom-video__modal {
   display: flex;
   position: fixed;
