@@ -16,6 +16,7 @@
           {% for cart_item in cart.items %}
             {% assign image = cart_item.image %}
             {% assign id = cart_item.id %}
+            {% assign quantity_rule = cart_item.variant.quantity_rule %}
 
             <div class="minicart__product js-minicart-item" data-item-id="{{ id }}">
               <div class="minicart__image-wrapper">
@@ -54,8 +55,16 @@
                        data-cart-id="{{ id }}">
                     <button class="minicart__quantity-btn" data-value="decrement" data-item-id="{{ id }}">-
                     </button>
-                    <span class="minicart__quantity js-minicart-counter"
-                          data-item-id="{{ id }}">{{ cart_item.quantity }}</span>
+                    <input
+                      class="minicart__quantity js-minicart-counter"
+                      type="number"
+                      data-item-id="{{ id }}"
+                      min="{{ quantity_rule.min }}"
+                      {% if quantity_rule.max != null %}
+                        max="{{ quantity_rule.max }}"
+                      {% endif %}
+                      value="{{ cart_item.quantity }}"
+                    >
                     <button class="minicart__quantity-btn" data-value="increment" data-item-id="{{ id }}">+
                     </button>
                   </div>

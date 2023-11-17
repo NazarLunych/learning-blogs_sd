@@ -175,6 +175,14 @@
   text-align: center;
   background-color: transparent;
   border: none;
+  width: 100%;
+  max-width: 32px;
+  -moz-appearance: textfield;
+}
+
+.minicart__quantity::-webkit-outer-spin-button,
+.minicart__quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 .minicart__price {
@@ -202,6 +210,7 @@
   max-height: 0;
   overflow: hidden;
   padding: 0 24px;
+  opacity: 0;
 }
 
 .minicart__textarea--hidden .minicart__textarea {
@@ -210,6 +219,7 @@
 
 .minicart__textarea {
   padding: 16px 24px;
+  min-height: 120px;
   width: 100%;
   border-radius: var(--large-border-radius);
   border: 1px solid var(--lines-light-gray-input);

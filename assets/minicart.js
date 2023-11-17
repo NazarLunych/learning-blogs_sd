@@ -39,6 +39,24 @@ function minicartFuncInit() {
     loader?.classList.toggle(classes.hidden, !isShown);
   };
 
+  const postDataHandler = (url, formData) => {
+    fetch(window.Shopify.routes.root + url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    }).then((response) => {
+      updateData();
+
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+
+      return response.json();
+    }).catch((err) => console.error(err));
+  };
+
   const updateData = () => {
     fetch(window.location.pathname + `?section_id=minicart`)
       .then(res => res.text()).then((resText) => {
@@ -62,26 +80,7 @@ function minicartFuncInit() {
 
   const changeCountHandler = (formData) => {
     toggleLoader(true);
-
-    fetch(window.Shopify.routes.root + "cart/change.js", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData)
-    })
-      .then((response) => {
-        updateData();
-
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-
-        return response.json();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    postDataHandler("cart/change.js", formData);
   };
 
   const contentContainer = document.querySelector(selectors.contentContainer);
@@ -115,29 +114,33 @@ function minicartFuncInit() {
     const countEl = item.querySelector(selectors.productsCounter);
     const processChange = debounce(() => changeCountHandler({
       id: itemId,
-      quantity: countEl.textContent
+      quantity: countEl.value
     }));
 
-    cartItemsWrapper && cartItemsWrapper.addEventListener("click", (e) => {
-      const {value} = e.target.dataset;
+    if (cartItemsWrapper) {
+      cartItemsWrapper.addEventListener("change", (e) => {
+        if (itemId === e.target.dataset.itemId) {
+          countEl.value = e.target.value;
+          processChange();
+        }
+      });
 
-      e.preventDefault();
+      cartItemsWrapper.addEventListener("click", (e) => {
+        const {value} = e.target.dataset;
 
-      if (itemId === e.target.closest(selectors.deleteBtn)?.dataset.itemId) {
-        countEl.textContent = 0;
-        processChange();
-      }
+        e.preventDefault();
 
-      if (itemId === e.target.dataset.itemId) {
-        if (value === "increment") {
-          countEl.textContent = +countEl.textContent + 1;
-        } else if (value === "decrement") {
-          countEl.textContent = +countEl.textContent - 1;
+        if (itemId === e.target.closest(selectors.deleteBtn)?.dataset.itemId) {
+          countEl.value = 0;
+          processChange();
         }
 
-        processChange();
-      }
-    });
+        if (itemId === e.target.dataset.itemId && (value === "increment" || value === "decrement")) {
+          value === "increment" ? countEl.stepUp() : countEl.stepDown();
+          processChange();
+        }
+      });
+    }
   });
 
   const addToNoteBtn = document.querySelector(selectors.addToNoteBtn);
@@ -148,7 +151,7 @@ function minicartFuncInit() {
     note.classList.toggle(classes.textareaHidden);
   });
 
-  note?.addEventListener("input", (e) => console.log(e.target.value));
+  note?.addEventListener("change", (e) => postDataHandler("cart/update.js", {note: e.target.value}));
 }
 
 minicartFuncInit();
