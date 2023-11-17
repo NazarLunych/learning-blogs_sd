@@ -109,7 +109,7 @@ function minicartFuncInit() {
   const cartItemsWrapper = document.querySelector(selectors.cartItemsWrapper);
   const cartItems = document.querySelectorAll(selectors.cartItem);
 
-  cartItems.length && cartItems.forEach((item, index) => {
+  cartItems.length && cartItems.forEach((item) => {
     const {itemId} = item.dataset;
     const countEl = item.querySelector(selectors.productsCounter);
     const processChange = debounce(() => changeCountHandler({
