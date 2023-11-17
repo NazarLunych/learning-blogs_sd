@@ -3,7 +3,6 @@
   --alpha-button-border: 1;
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
-  --large-border-radius: 32px;
   --border-radius: 16px;
   --primary-gray-color: #f6f6f6;
   --primary-black-color: #000;
@@ -21,10 +20,6 @@
 
 .custom-section {
   padding: 32px 16px !important;
-}
-
-.custom-section--large-padding {
-  padding: 32px 140px !important;
 }
 
 .product-card-wrapper .card,
@@ -465,10 +460,6 @@ table:not([class]) th {
 }
 
 @media screen and (max-width: 749px) {
-  .custom-section--large-padding {
-    padding: 16px !important;
-  }
-
   .small-hide {
     display: none !important;
   }
