@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+<script src="{{ "quick-view-popup.js" | asset_url }}" defer></script>
+{{ 'component-quick-view-popup.css' | asset_url | stylesheet_tag }}
+{{ 'quick-view-content.css' | asset_url | stylesheet_tag }}
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+>
+
+<div class="quick-view-popup quick-view-popup--hidden js-quick-view-popup">
+  <div class="quick-view-popup__cnt">
+    <button class="quick-view-popup__close-btn js-quick-view-popup-close-btn">
+      {% render 'icon-close' %}
+    </button>
+
+    <div class="quick-view-popup__loader hidden js-quick-view-popup-loader">
+      {% render 'loader' %}
+    </div>
+
+    <div class="js-quick-view-popup-cnt"></div>
+  </div>
+</div>
