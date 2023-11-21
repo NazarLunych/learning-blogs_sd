@@ -26,7 +26,7 @@
                   src="{{ image | image_url: width: 100, height: 100 }}" alt="{{ cart_item.alt | escape }}">
               </div>
 
-              <div class="minicart__product-info">
+              <div class="minicart__product-info js-minicart-item-info">
                 <div class="minicart__product-title-wrapper">
                   <div class="minicart__product-title">{{ cart_item.title }}</div>
 
@@ -87,7 +87,7 @@
           </button>
           <div class="minicart__container minicart__textarea-container minicart__textarea--hidden js-minicart-textarea">
         <textarea class="minicart__textarea" cols="30"
-                  placeholder="Leave a note for seller"></textarea>
+                  placeholder="Leave a note for seller">{{ cart.note }}</textarea>
           </div>
         </div>
 

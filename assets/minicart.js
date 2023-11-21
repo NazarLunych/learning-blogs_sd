@@ -12,7 +12,8 @@ function minicartFuncInit() {
     cartItem: ".js-minicart-item",
     addToNoteBtn: ".js-minicart-add-note-btn",
     textarea: ".js-minicart-textarea",
-    loader: ".js-minicart-loader"
+    loader: ".js-minicart-loader",
+    itemInfoBlock: ".js-minicart-item-info"
   };
 
   const classes = {
@@ -47,14 +48,28 @@ function minicartFuncInit() {
       },
       body: JSON.stringify(formData)
     }).then((response) => {
-      updateData();
-
       if (!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
       }
 
       return response.json();
-    }).catch((err) => console.error(err));
+    }).then(() => {
+      updateData();
+    }).catch((err) => {
+      console.error(err);
+      const itemsList = cartItemsWrapper.querySelectorAll(selectors.cartItem);
+      itemsList.length && itemsList.forEach((item) => {
+        if (formData.id === item.dataset.itemId) {
+          const infoBlock = item.querySelector(selectors.itemInfoBlock);
+
+          if (!infoBlock.innerHTML.includes(err.message)) {
+            infoBlock.innerHTML += `<div style="color: var(--secondary-color-red)">${err.message}</div>`;
+          }
+
+          toggleLoader(false);
+        }
+      });
+    });
   };
 
   const updateData = () => {
