@@ -49,7 +49,9 @@ function minicartFuncInit() {
       body: JSON.stringify(formData)
     }).then((response) => {
       if (!response.ok) {
-        throw new Error(`${response.status}: ${response.statusText}`);
+        return response.text().then(text => {
+          throw new Error(text);
+        });
       }
 
       return response.json();
@@ -61,9 +63,10 @@ function minicartFuncInit() {
       itemsList.length && itemsList.forEach((item) => {
         if (formData.id === item.dataset.itemId) {
           const infoBlock = item.querySelector(selectors.itemInfoBlock);
+          const {message} = JSON.parse(err.message);
 
-          if (!infoBlock.innerHTML.includes(err.message)) {
-            infoBlock.innerHTML += `<div style="color: var(--secondary-color-red)">${err.message}</div>`;
+          if (!infoBlock.innerHTML.includes(message)) {
+            infoBlock.innerHTML += `<div style="color: var(--secondary-color-red)">${message}</div>`;
           }
 
           toggleLoader(false);
