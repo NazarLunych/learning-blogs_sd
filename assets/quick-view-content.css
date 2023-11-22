@@ -197,6 +197,10 @@
   border-radius: 32px;
 }
 
+.quick-view-cnt__submit:disabled {
+  opacity: 0.5;
+}
+
 .quick-view-cnt__visit-btn {
   display: flex;
   justify-content: center;

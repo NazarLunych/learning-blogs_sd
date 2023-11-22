@@ -1,16 +1,8 @@
 {% layout none %}
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Quick view</title>
-</head>
-<body>
 <section class="js-quick-view-section">
+  <script type="application/json" id="product-quick-view-config">{{ product | json }}</script>
+
   {% assign images = product.images %}
   {% assign title = product.title %}
   {% assign price = product.price %}
@@ -18,7 +10,7 @@
   <div class="quick-view-cnt__container">
     <div class="quick-view-cnt__info-wrapper-mobile">
       <h4 class="quick-view-cnt__title">{{ title }}</h4>
-      <span class="quick-view-cnt__price">{{ price | money }}</span>
+      <span class="quick-view-cnt__price js-quick-view-price">{{ price | money }}</span>
     </div>
 
     <div class="quick-view-cnt__gallery">
@@ -50,7 +42,7 @@
       <div class="quick-view-cnt__bottom-slider swiper js-swiper-small-img">
         <div class="swiper-wrapper">
           {% for image in images %}
-            <div class="swiper-slide quick-view-cnt__aspect-ratio-wrapper">
+            <div class="swiper-slide quick-view-cnt__aspect-ratio-wrapper js-quick-view-image" id="{{ image.id }}">
               <img class="quick-view-cnt__img"
                    srcset="{{ image | image_url: width: 73, height: 73 }} 1x, {{ image | image_url: width: 146, height: 146 }} 2x"
                    src="{{ image | image_url: width: 73, height: 73 }}"
@@ -64,7 +56,7 @@
     <div class="quick-view-cnt">
       <div class="quick-view-cnt__info-wrapper">
         <h4 class="quick-view-cnt__title">{{ title }}</h4>
-        <span class="quick-view-cnt__price">{{ price | money }}</span>
+        <span class="quick-view-cnt__price js-quick-view-price">{{ price | money }}</span>
       </div>
 
       {% for product_option in product.options_with_values %}
@@ -74,8 +66,9 @@
           <div class="quick-view-cnt__variants">
             {% for value in product_option.values %}
               <div class="quick-view-cnt__variant">
-                <input type="radio" id="{{ value | handleize }}" name="{{ product_option.name | handleize }}"
-                       {% if forloop.first %}checked{% endif %} {% if forloop.last %}disabled{% endif %}>
+                <input class="js-quick-view-cnt-radio" type="radio" id="{{ value | handleize }}"
+                       name="{{ product_option.name | handleize }}"
+                       data-option-value="{{ value | escape }}">
                 <label for="{{ value | handleize }}">{{ value }}</label>
               </div>
             {% endfor %}
@@ -90,7 +83,7 @@
       </div>
 
       <div class="quick-view-cnt__footer-wrapper">
-        <button class="quick-view-cnt__submit">
+        <button class="quick-view-cnt__submit js-quick-view-submit-btn">
           Add To Cart
         </button>
 
@@ -102,5 +95,3 @@
     </div>
   </div>
 </section>
-</body>
-</html>

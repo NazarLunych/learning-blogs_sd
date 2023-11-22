@@ -1,3 +1,5 @@
+let posterSwiper;
+
 function quickViewSwiperInit() {
   const swiper = new Swiper(".js-swiper-small-img", {
     spaceBetween: 8,
@@ -6,7 +8,7 @@ function quickViewSwiperInit() {
     watchSlidesProgress: true
   });
 
-  new Swiper(".js-swiper-large-img", {
+  posterSwiper = new Swiper(".js-swiper-large-img", {
     spaceBetween: 10,
     navigation: {
       nextEl: ".swiper-button-next",
@@ -27,7 +29,12 @@ function trendProductsFuncInit() {
     quickViewModal: ".js-quick-view-popup",
     quantity: ".js-quick-view-quantity",
     counter: ".js-quick-view-counter",
-    loader: ".js-quick-view-popup-loader"
+    loader: ".js-quick-view-popup-loader",
+    radioBtn: ".js-quick-view-cnt-radio",
+    configEl: "#product-quick-view-config",
+    optionPrice: ".js-quick-view-price",
+    images: ".js-quick-view-image",
+    submitBtn: ".js-quick-view-submit-btn"
   };
 
   const hotSpotList = document.querySelectorAll(selectors.hotSpot);
@@ -60,6 +67,41 @@ function trendProductsFuncInit() {
         if (quickViewCnt && section) {
           quickViewCnt.innerHTML = section.innerHTML;
         }
+
+        const configEl = document.querySelector(selectors.configEl);
+        const configInner = JSON.parse(configEl.innerHTML);
+
+        const optionPrices = document.querySelectorAll(selectors.optionPrice);
+
+        const radioBtns = document.querySelectorAll(selectors.radioBtn);
+        radioBtns.length && radioBtns.forEach((input) => {
+          const images = document.querySelectorAll(selectors.images);
+          const submitBtn = document.querySelector(selectors.submitBtn);
+
+          input.addEventListener("change", (e) => {
+            const checkedFilteredRadioBtns = [...radioBtns].filter((radio) => radio.checked);
+            const checkedRadioValues = checkedFilteredRadioBtns.map((radio) => radio.dataset.optionValue);
+            const {
+              available,
+              featured_image,
+              price
+            } = configInner.variants.find((el) => checkedRadioValues.every((value) => {
+              return el.options.includes(value);
+            }));
+            const moneyFormatter = (price) => `₴${(price / 100).toFixed(2)}`;
+
+            if (submitBtn) {
+              submitBtn.textContent = available ? "Add to cart" : "Sold out";
+              submitBtn.disabled = !available;
+            }
+
+            posterSwiper.slideTo((images.length && featured_image) ? [...images].findIndex((img) => +img.id === featured_image.id) : 0);
+
+            optionPrices.length && optionPrices.forEach((priceEl) => {
+              priceEl.textContent = moneyFormatter(price);
+            });
+          });
+        });
 
         const counter = document.querySelector(selectors.counter);
         const quantity = document.querySelector(selectors.quantity);
