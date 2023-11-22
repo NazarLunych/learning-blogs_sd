@@ -39,75 +39,47 @@
         "show_text_below": false
       }
     },
-    "c77a2b0b-e214-45f2-a5eb-f10149322d32": {
-      "type": "trend-products",
+    "674c8aa8-59b3-4c90-b6d6-9fb009dd9652": {
+      "type": "shop-the-look",
       "blocks": {
-        "127df2f1-6bd9-4297-8aa1-dfc7aa839666": {
+        "a0bea8df-0564-4d9c-ab1d-ea02875ed82f": {
           "type": "product",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_18.jpg",
-            "product_1": "i-am-the-storm",
-            "spot_horizontal_position_1": 37,
-            "spot_vertical_position_1": 38,
-            "product_2": "",
-            "spot_horizontal_position_2": 0,
-            "spot_vertical_position_2": 0,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "product": "i-am-the-storm",
+            "spot_vertical_position": 45,
+            "spot_horizontal_position": 46
           }
         },
-        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce": {
+        "e58f8256-44b1-4e34-a951-bed14e3b26b1": {
           "type": "product",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_18.png",
-            "product_1": "the-3p-fulfilled-snowboard",
-            "spot_horizontal_position_1": 43,
-            "spot_vertical_position_1": 30,
-            "product_2": "the-collection-snowboard-liquid",
-            "spot_horizontal_position_2": 43,
-            "spot_vertical_position_2": 51,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "product": "gift-card",
+            "spot_vertical_position": 32,
+            "spot_horizontal_position": 31
           }
         },
-        "9ddb0a17-810a-4930-8ff9-38c56825f6f7": {
+        "6758060d-420c-4c9b-aef2-6693e7067dfc": {
           "type": "product",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/image_3.png",
-            "product_1": "the-collection-snowboard-hydrogen",
-            "spot_horizontal_position_1": 38,
-            "spot_vertical_position_1": 81,
-            "product_2": "test",
-            "spot_horizontal_position_2": 42,
-            "spot_vertical_position_2": 55,
-            "product_3": "",
-            "spot_horizontal_position_3": 0,
-            "spot_vertical_position_3": 0,
-            "product_4": "",
-            "spot_horizontal_position_4": 0,
-            "spot_vertical_position_4": 0
+            "product": "the-collection-snowboard-liquid",
+            "spot_vertical_position": 74,
+            "spot_horizontal_position": 72
           }
         }
       },
       "block_order": [
-        "127df2f1-6bd9-4297-8aa1-dfc7aa839666",
-        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce",
-        "9ddb0a17-810a-4930-8ff9-38c56825f6f7"
+        "a0bea8df-0564-4d9c-ab1d-ea02875ed82f",
+        "e58f8256-44b1-4e34-a951-bed14e3b26b1",
+        "6758060d-420c-4c9b-aef2-6693e7067dfc"
       ],
       "settings": {
+        "heading": "Shop the look",
+        "image": "shopify:\/\/shop_images\/image_18.jpg"
       }
     }
   },
   "order": [
     "image_banner",
-    "c77a2b0b-e214-45f2-a5eb-f10149322d32"
+    "674c8aa8-59b3-4c90-b6d6-9fb009dd9652"
   ]
 }

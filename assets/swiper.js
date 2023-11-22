@@ -1,11 +1,7 @@
+let init = false;
 let swiper;
 let ourTeamSwiper;
-let trendProductsSwiper;
-const mediaQueries = {
-  largeScreen: window.matchMedia("(max-width: 990px)"),
-  smallScreen: window.matchMedia("(max-width: 767px)")
-}
-const {largeScreen, smallScreen} = mediaQueries;
+const mediaQuery = window.matchMedia("(max-width: 990px)");
 
 function initializeSwiper(selector, slidesPerView, spaceBetween, breakpoints) {
   return new Swiper(selector, {
@@ -13,49 +9,31 @@ function initializeSwiper(selector, slidesPerView, spaceBetween, breakpoints) {
     slidesPerView: slidesPerView,
     breakpoints: breakpoints,
     spaceBetween: spaceBetween,
-    cssMode: true,
     pagination: {
       el: ".swiper-pagination",
     },
   });
 }
 
-let largeScreenInit = false;
+function swiperCard() {
+  if (mediaQuery.matches) {
+    if (!init) {
+      init = true;
 
-function swiperCardLarge() {
-  if (largeScreen.matches) {
-    if (!largeScreenInit) {
-      largeScreenInit = true;
       ourTeamSwiper = initializeSwiper(".js-our-team-swiper", "auto", 8);
       swiper = initializeSwiper(".js-swiper", 1, 16, {
         640: {slidesPerView: 2},
       });
     }
-  } else if (largeScreenInit) {
+  } else if (init) {
     swiper.destroy();
     ourTeamSwiper.destroy();
-    largeScreenInit = false;
+    init = false;
   }
 }
 
-let smallScreenInit = false;
-
-function swiperCardSmall() {
-  if (smallScreen.matches) {
-    if (!smallScreenInit) {
-      smallScreenInit = true;
-      trendProductsSwiper = initializeSwiper('.js-trend-products-swiper', 1, 16);
-    }
-  } else if (smallScreenInit) {
-    trendProductsSwiper.destroy();
-    smallScreenInit = false;
-  }
-}
-
-swiperCardLarge();
-swiperCardSmall();
-largeScreen.addEventListener("change", swiperCardLarge);
-smallScreen.addEventListener("change", swiperCardSmall)
+swiperCard();
+mediaQuery.addEventListener("change", swiperCard);
 
 const shopTheLookSwiper = new Swiper(".js-shop-the-look-swiper", {
   direction: "horizontal",
