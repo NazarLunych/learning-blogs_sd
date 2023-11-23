@@ -40,7 +40,11 @@ function minicartFuncInit() {
     loader?.classList.toggle(classes.hidden, !isShown);
   };
 
+  const countEl = document.querySelectorAll(selectors.productsCounter);
+
   const postDataHandler = (url, formData) => {
+    const counter = countEl.length && countEl[[...countEl].findIndex((el) => el.dataset.itemId === formData.id)];
+
     fetch(window.Shopify.routes.root + url, {
       method: "POST",
       headers: {
@@ -57,6 +61,7 @@ function minicartFuncInit() {
       return response.json();
     }).then(() => {
       updateData();
+      counter.setAttribute("data-cart-quantity", counter.getAttribute("value"));
     }).catch((err) => {
       console.error(err);
       const itemsList = cartItemsWrapper.querySelectorAll(selectors.cartItem);
@@ -64,6 +69,8 @@ function minicartFuncInit() {
         if (formData.id === item.dataset.itemId) {
           const infoBlock = item.querySelector(selectors.itemInfoBlock);
           const {message} = JSON.parse(err.message);
+
+          counter.setAttribute("value", counter.getAttribute("data-cart-quantity"));
 
           if (!infoBlock.innerHTML.includes(message)) {
             infoBlock.innerHTML += `<div style="color: var(--secondary-color-red)">${message}</div>`;
@@ -125,20 +132,21 @@ function minicartFuncInit() {
   openButton?.addEventListener("click", () => toggleMinicartVisibility(true));
 
   const cartItemsWrapper = document.querySelector(selectors.cartItemsWrapper);
-  const cartItems = document.querySelectorAll(selectors.cartItem);
+  const cartItems = cartItemsWrapper.querySelectorAll(selectors.cartItem);
 
   cartItems.length && cartItems.forEach((item) => {
     const {itemId} = item.dataset;
-    const countEl = item.querySelector(selectors.productsCounter);
+    const counter = countEl.length && countEl[[...countEl].findIndex((el) => el.dataset.itemId === itemId)];
+
     const processChange = debounce(() => changeCountHandler({
       id: itemId,
-      quantity: countEl.value
+      quantity: counter.getAttribute("value")
     }));
 
     if (cartItemsWrapper) {
       cartItemsWrapper.addEventListener("change", (e) => {
         if (itemId === e.target.dataset.itemId) {
-          countEl.value = e.target.value;
+          counter.setAttribute("value", e.target.value);
           processChange();
         }
       });
@@ -149,12 +157,19 @@ function minicartFuncInit() {
         e.preventDefault();
 
         if (itemId === e.target.closest(selectors.deleteBtn)?.dataset.itemId) {
-          countEl.value = 0;
+          counter.setAttribute("value", "0");
           processChange();
         }
 
+        const handleQuantityChange = (increment) => {
+          const counterValue = +counter.getAttribute("value");
+          const newValue = increment ? counterValue + 1 : counterValue - 1;
+
+          counter.setAttribute("value", newValue.toString());
+        };
+
         if (itemId === e.target.dataset.itemId && (value === "increment" || value === "decrement")) {
-          value === "increment" ? countEl.stepUp() : countEl.stepDown();
+          handleQuantityChange(value === "increment");
           processChange();
         }
       });

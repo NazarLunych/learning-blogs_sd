@@ -60,6 +60,7 @@
                       type="number"
                       data-item-id="{{ id }}"
                       min="{{ quantity_rule.min }}"
+                      data-cart-quantity="{{ cart | item_count_for_variant: id }}"
                       {% if quantity_rule.max != null %}
                         max="{{ quantity_rule.max }}"
                       {% endif %}
