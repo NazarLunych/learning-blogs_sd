@@ -39,31 +39,75 @@
         "show_text_below": false
       }
     },
-    "5d3c69af-c24d-4f39-8d51-cb6b2caa6c77": {
-      "type": "banner",
+    "c77a2b0b-e214-45f2-a5eb-f10149322d32": {
+      "type": "trend-products",
+      "blocks": {
+        "127df2f1-6bd9-4297-8aa1-dfc7aa839666": {
+          "type": "product",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/image_18.jpg",
+            "product_1": "i-am-the-storm",
+            "spot_horizontal_position_1": 37,
+            "spot_vertical_position_1": 38,
+            "product_2": "",
+            "spot_horizontal_position_2": 0,
+            "spot_vertical_position_2": 0,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
+          }
+        },
+        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce": {
+          "type": "product",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/image_18.png",
+            "product_1": "test-1",
+            "spot_horizontal_position_1": 43,
+            "spot_vertical_position_1": 30,
+            "product_2": "the-collection-snowboard-liquid",
+            "spot_horizontal_position_2": 43,
+            "spot_vertical_position_2": 51,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
+          }
+        },
+        "9ddb0a17-810a-4930-8ff9-38c56825f6f7": {
+          "type": "product",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/image_3.png",
+            "product_1": "the-collection-snowboard-hydrogen",
+            "spot_horizontal_position_1": 38,
+            "spot_vertical_position_1": 81,
+            "product_2": "test",
+            "spot_horizontal_position_2": 42,
+            "spot_vertical_position_2": 55,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
+          }
+        }
+      },
+      "block_order": [
+        "127df2f1-6bd9-4297-8aa1-dfc7aa839666",
+        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce",
+        "9ddb0a17-810a-4930-8ff9-38c56825f6f7"
+      ],
       "settings": {
-        "desktop_banner_min_height": "800",
-        "mobile_banner_min_height": "250",
-        "heading": "Satisfy your top obsession with the range of new arrivals",
-        "text": "<p>Personal boundaries are similar to a property fence or written law, they’re just not quite as evident (or as easy). The only way others know your personal boundaries is when you make them clear.<\/p>",
-        "button_label": "Shop Now",
-        "button_link": "https:\/\/placeholder.com",
-        "media_type": "html5_video",
-        "image_desktop": "shopify:\/\/shop_images\/Img_6c92f8f6-c73d-4c36-91d6-2b9e699369d8.jpg",
-        "image_mobile": "shopify:\/\/shop_images\/Img_2fc2f971-95fd-4771-95da-ece5897ee3f5.jpg",
-        "video_desktop": "shopify:\/\/files\/videos\/Запись экрана 2023-11-02 в 17.11.59.mov",
-        "video_mobile": "shopify:\/\/files\/videos\/Запись экрана 2023-11-03 в 10.54.13.mov",
-        "overlay": "rgba(0, 0, 0, 0.3)",
-        "text_color": "#ffffff",
-        "button_text_color": "#000000",
-        "button_background": "#fff",
-        "button_text_hover": "#000000",
-        "button_background_hover": "#fff"
       }
     }
   },
   "order": [
     "image_banner",
-    "5d3c69af-c24d-4f39-8d51-cb6b2caa6c77"
+    "c77a2b0b-e214-45f2-a5eb-f10149322d32"
   ]
 }

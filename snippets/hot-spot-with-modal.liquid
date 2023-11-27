@@ -4,9 +4,8 @@
 <div class="hot-spot__wrapper" style="--x-position: {{ x-position }}%; --y-position: {{ y-position }}%">
   <button class="hot-spot js-trend-products-hot-spot"></button>
 
-  <div class=" hot-spot__modal hidden {% if y-position > 70 %}hot-spot__top-position{% endif %} js-hot-spot-modal
-  ">
-    <a class="hot-spot__link-wrapper" href="{{ product.url }}">
+  <div class="hot-spot__modal hidden {% if y-position > 70 %}hot-spot__top-position{% endif %} js-hot-spot-modal">
+    <div class="hot-spot__link-wrapper">
       <div class="hot-spot__image-wrapper">
         {% unless product.featured_image %}
           {{ "product-apparel-1" | placeholder_svg_tag: "hot-spot__placeholder" }}
@@ -14,18 +13,20 @@
           <img
             srcset="{{ product.featured_image | image_url: width: 64, height: 64 }} 1x, {{ product.featured_image | image_url: width: 128, height: 128 }}, 2x"
             src="{{ product.featured_image | image_url: width: 64, height: 64 }}"
-            alt="{{ product.featured_image.alt }}">
+            alt="{{ product.featured_image.alt | escape }}">
         {% endunless %}
       </div>
 
       <div class="hot-spot__product-cnt">
         {% if product.title != blank %}<span class="hot-spot__product-title">{{ product.title }}</span>{% endif %}
-        <span>{{ product.price | money }}</span>
-        <span
-          class="hot-spot__add-to-cart {% unless product.available %}hot-spot__sold-out{% endunless %}">
+        <span>{{ product.variants.first.price | money }}</span>
+
+        <button
+          data-product-handle="{{ product.handle }}"
+          class="hot-spot__add-to-cart {% unless product.available %}hot-spot__sold-out{% endunless %} js-add-to-cart-button">
           {% if product.available %}Add to cart{% else %}Sold out{% endif %}
-        </span>
+        </button>
       </div>
-    </a>
+    </div>
   </div>
 </div>

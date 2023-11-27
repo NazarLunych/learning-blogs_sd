@@ -52,6 +52,9 @@
 .hot-spot__add-to-cart {
   text-underline-offset: 4px;
   text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+  text-align: start;
 }
 
 .hot-spot__sold-out {
