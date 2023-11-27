@@ -1,0 +1,46 @@
+.product-banner__container {
+  position: relative;
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.product-banner__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.product-banner__content-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 70px;
+  padding: 55px 140px;
+}
+
+.product-banner__text-content-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-banner__text-content-wrapper * {
+  margin: 0;
+}
+
+.product-banner__label, .product-banner__heading, .product-banner__text {
+  color: #fff;
+}
+
+.product-banner__label, .product-banner__text {
+  line-height: 1.5em;
+}
+
+.product-banner__heading {
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.21em;
+}

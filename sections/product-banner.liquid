@@ -1,0 +1,126 @@
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+{{ "product-banner.css" | asset_url | stylesheet_tag }}
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+>
+
+<section class="page-width">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign block_settings = block.settings %}
+        {% assign section_settings = section.settings %}
+        {% assign image_desktop = block_settings.image_desktop %}
+
+        <div class="swiper-slide product-banner__container">
+          <img class="product-banner__image" src="{{ image_desktop | image_url }}" alt="{{ image_desktop.alt }}">
+
+          <div class="product-banner__content-wrapper">
+            <div class="product-banner__text-content-wrapper">
+              {% if section_settings.label %}
+                <span class="product-banner__label">{{ section_settings.label }}</span>
+              {% endif %}
+
+              {% if section_settings.heading %}
+                <h3 class="product-banner__heading">{{ section_settings.heading }}</h3>
+              {% endif %}
+
+              {% if section_settings.text %}
+                <p class="product-banner__text">{{ section_settings.text }}</p>
+              {% endif %}
+            </div>
+
+            {% render 'custom-product-card', product: block_settings.product %}
+            {% render 'swiper-pagination-custom' %}
+          </div>
+        </div>
+      {% else %}
+        {% comment %}TODO: додати обробку{% endcomment %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product banner",
+  "settings": [
+    {
+      "id": "label",
+      "type": "text",
+      "label": "Label"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "text",
+      "type": "textarea",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "id": "colors_label",
+      "type": "text",
+      "label": "Label"
+    },
+    {
+      "id": "colors_heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "colors_text",
+      "type": "textarea",
+      "label": "Text"
+    },
+    {
+      "id": "overlay",
+      "type": "color_background",
+      "default": "rgba(0, 0, 0, 0.5)",
+      "label": "Overlay"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product",
+      "type": "product",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "html_video",
+          "type": "video",
+          "label": "HTML video"
+        },
+        {
+          "id": "image_desktop",
+          "type": "image_picker",
+          "label": "Image desktop"
+        },
+        {
+          "id": "image_mobile",
+          "type": "image_picker",
+          "label": "Image mobile"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product banner"
+    }
+  ]
+}
+{% endschema %}

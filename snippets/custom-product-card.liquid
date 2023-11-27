@@ -1,0 +1,18 @@
+{{ 'custom-product-card.css' | asset_url | stylesheet_tag }}
+
+{% assign image = product.featured_image %}
+
+<div class="custom-product-card">
+  <div class="custom-product-card__square-block">
+    <img class="custom-product-card__image" src="{{ image | image_url }}" alt="{{ image.alt }}">
+  </div>
+
+  <div class="custom-product-card__info">
+    <p class="custom-product-card__title">{{ product.title }}</p>
+    <div class="custom-product-card__price-wrapper">
+      <span class="custom-product-card__price">{{ product.price | money }}</span>
+      <span class="custom-product-card__compare-price">{{ product.compare_at_price | money }}</span>
+    </div>
+  </div>
+  {% comment %}TODO: додати можливість переходити по посиланні{% endcomment %}
+</div>
