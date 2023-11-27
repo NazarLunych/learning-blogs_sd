@@ -1,3 +1,8 @@
+:root {
+  --responsive-hot-spot-size: 11.64%;
+  --responsive-hot-spot-icon: 65%
+}
+
 .shop-the-look__wrapper {
   display: flex;
   gap: 16px;
@@ -13,25 +18,26 @@
   position: relative;
   padding-top: 100%;
   width: 100%;
-  height: 100%
+  height: 100%;
+  overflow: hidden;
 }
 
 .shop-the-look__img-wrapper .shop-the-look__hot-spot {
   border: none;
-  display: block;
-  background-image: url('add-icon.svg');
-  background-repeat: no-repeat;
-  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
   position: absolute;
   transform: translate(-100%, -100%);
-  padding: 3%;
-  border-radius: 32px;
+  border-radius: 100%;
   background-color: #fff;
   transition: var(--transition-duration);
 }
 
 .shop-the-look__img-wrapper .shop-the-look__hot-spot:hover {
-  scale: 1.2;
+  transform: translate(-100%, -100%) scale(1.2);
   outline: 2px solid #fff;
   outline-offset: 2px;
   transition: var(--transition-duration);
@@ -58,7 +64,7 @@
 }
 
 .shop-the-look__content-with-navigation {
-  margin: 20px 80px 0;
+  margin: 0 80px;
   display: flex;
   gap: 24px;
   align-items: center;
@@ -108,7 +114,7 @@
 
 .shop-the-look__content-wrapper .shop-the-look__button-next:hover,
 .shop-the-look__content-wrapper .shop-the-look__button-prev:hover {
-  scale: 1.2;
+  transform: scale(1.2);
   border-color: var(--primary-black-color);
   transition: var(--transition-duration);
 }
@@ -157,5 +163,14 @@
   .shop-the-look__content-wrapper .shop-the-look__button-next,
   .shop-the-look__content-wrapper .shop-the-look__button-prev {
     display: none;
+  }
+
+  .shop-the-look__img-wrapper .shop-the-look__hot-spot {
+    width: var(--responsive-hot-spot-size);
+    height: var(--responsive-hot-spot-size);
+  }
+
+  .shop-the-look__hot-spot-icon {
+    width: var(--responsive-hot-spot-icon);
   }
 }
