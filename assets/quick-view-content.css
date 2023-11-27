@@ -136,10 +136,6 @@
   border-color: var(--primary-black-color);
 }
 
-.quick-view-cnt__variant:has(input:disabled) {
-  color: var(--secondary-color-light-gray);
-}
-
 .quick-view-cnt__variant label {
   padding: 15px;
   width: 100%;
@@ -149,6 +145,11 @@
 
 .quick-view-cnt__variant input {
   display: none;
+}
+
+.quick-view-cnt__variant:has(.quick-view-cnt__variant--disabled) {
+  color: var(--secondary-color-light-gray);
+  text-decoration: line-through;
 }
 
 .quick-view-cnt__variant input:checked ~ label {

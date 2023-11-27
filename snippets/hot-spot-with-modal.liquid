@@ -19,7 +19,7 @@
 
       <div class="hot-spot__product-cnt">
         {% if product.title != blank %}<span class="hot-spot__product-title">{{ product.title }}</span>{% endif %}
-        <span>{{ product.price | money }}</span>
+        <span>{{ product.variants.first.price | money }}</span>
 
         <button
           data-product-handle="{{ product.handle }}"

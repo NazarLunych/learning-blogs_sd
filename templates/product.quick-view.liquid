@@ -5,7 +5,7 @@
 
   {% assign images = product.images %}
   {% assign title = product.title %}
-  {% assign price = product.price %}
+  {% assign price = product.variants.first.price %}
 
   <div class="quick-view-cnt__container">
     <div class="quick-view-cnt__info-wrapper-mobile">
@@ -60,15 +60,16 @@
       </div>
 
       {% for product_option in product.options_with_values %}
-        <div>
+        <div class="js-quick-view-option-wrapper">
           {{ product_option.name }}
 
           <div class="quick-view-cnt__variants">
             {% for value in product_option.values %}
-              <div class="quick-view-cnt__variant">
+              <div class="quick-view-cnt__variant js-quick-view-variant">
                 <input class="js-quick-view-cnt-radio" type="radio" id="{{ value | handleize }}"
                        name="{{ product_option.name | handleize }}"
-                       data-option-value="{{ value | escape }}">
+                       data-option-value="{{ value | escape }}"
+                       {% if forloop.first %}checked{% endif %}>
                 <label for="{{ value | handleize }}">{{ value }}</label>
               </div>
             {% endfor %}

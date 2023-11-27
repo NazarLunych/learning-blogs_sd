@@ -34,8 +34,12 @@ function trendProductsFuncInit() {
     configEl: "#product-quick-view-config",
     optionPrice: ".js-quick-view-price",
     images: ".js-quick-view-image",
-    submitBtn: ".js-quick-view-submit-btn"
+    submitBtn: ".js-quick-view-submit-btn",
+    quickViewOptionWrapper: ".js-quick-view-option-wrapper",
+    quickViewVariant: ".js-quick-view-variant"
   };
+
+  const classes = {variantDisabled: "quick-view-cnt__variant--disabled"};
 
   const hotSpotList = document.querySelectorAll(selectors.hotSpot);
   const hotSpotModalList = document.querySelectorAll(selectors.modal);
@@ -72,11 +76,35 @@ function trendProductsFuncInit() {
         const configInner = JSON.parse(configEl.innerHTML);
 
         const optionPrices = document.querySelectorAll(selectors.optionPrice);
+        const options = document.querySelectorAll(selectors.quickViewOptionWrapper);
+
+        const handleIsVariantsAvailable = (checkedInput) => {
+          const startIndex = 1;
+          const optionWrapper = [...options].slice(startIndex);
+
+          optionWrapper.length && optionWrapper.forEach((option) => {
+            const variants = option.querySelectorAll(`${selectors.quickViewVariant} input`);
+            variants.length && variants.forEach((input) => {
+              const isAvailable = configInner.variants.some((variant) => variant.options.includes(input.dataset.optionValue) && variant.options.includes(checkedInput?.dataset.optionValue) && variant.available);
+              input.classList.toggle(classes.variantDisabled, !isAvailable);
+            });
+          });
+        };
 
         const radioBtns = document.querySelectorAll(selectors.radioBtn);
         radioBtns.length && radioBtns.forEach((input) => {
           const images = document.querySelectorAll(selectors.images);
           const submitBtn = document.querySelector(selectors.submitBtn);
+          const firstOption = 0;
+          const optionWrapper = [...options][firstOption];
+          const variants = optionWrapper.querySelectorAll(`${selectors.quickViewVariant} input`);
+
+          variants.length && variants.forEach((el) => {
+            const isAvailable = configInner.variants.some((variant) => variant.options.includes(el.dataset.optionValue) && variant.available);
+
+            el.checked && handleIsVariantsAvailable(el);
+            el.classList.toggle(classes.variantDisabled, !isAvailable);
+          });
 
           input.addEventListener("change", (e) => {
             const checkedFilteredRadioBtns = [...radioBtns].filter((radio) => radio.checked);
@@ -95,6 +123,7 @@ function trendProductsFuncInit() {
               submitBtn.disabled = !available;
             }
 
+            [...variants].includes(e.target) && handleIsVariantsAvailable(e.target);
             posterSwiper.slideTo((images.length && featured_image) ? [...images].findIndex((img) => +img.id === featured_image.id) : 0);
 
             optionPrices.length && optionPrices.forEach((priceEl) => {
