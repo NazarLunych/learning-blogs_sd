@@ -22,6 +22,10 @@
   padding: 32px 16px !important;
 }
 
+.custom-section * {
+  box-sizing: border-box;
+}
+
 .product-card-wrapper .card,
 .contains-card--product {
   --border-radius: var(--product-card-corner-radius);
