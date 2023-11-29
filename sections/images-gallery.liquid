@@ -1,0 +1,131 @@
+{{ 'section-images-gallery.css' | asset_url | stylesheet_tag }}
+
+{% assign divideNumber = section.settings.per-row-desktop | divided_by: 2 %}
+{% assign divideNumberMob = section.settings.per-row-mobile | plus: 0 %}
+{% assign halfOfGap = 16 | divided_by: divideNumber %}
+{% assign desktopCardWidth = 816 | divided_by: divideNumber | minus: halfOfGap %}
+{% assign mobileCardWidth = 343 | divided_by: divideNumberMob %}
+
+{% if section.settings.aspect-ratio == "square" %}
+  {% assign desktopCardHeight = desktopCardWidth %}
+  {% assign mobileCardHeight = mobileCardWidth %}
+{% else %}
+  {% assign desktopCardHeight = desktopCardWidth | times: 66 | divided_by: 100 %}
+  {% assign mobileCardHeight = mobileCardWidth | times: 66 | divided_by: 100 %}
+{% endif %}
+
+{% if section.blocks.size > 0 %}
+  <section class="custom-section page-width">
+    <div
+      style="--cards-per-row-desktop: {{ section.settings.per-row-desktop }}; --cards-per-row-mobile: {{ section.settings.per-row-mobile }}"
+      class="gallery__images-wrapper">
+      {% for block in section.blocks %}
+        <div class="gallery__image-wrapper gallery__image-wrapper--{{ section.settings.aspect-ratio }}"
+             style="--overlay-color: {{ section.settings.overlay_color }}">
+          <picture>
+            <source media="(max-width: 991px)" srcset="
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: mobileCardWidth, height: mobileCardHeight }} 1x, {{ block.settings.image | image_url: width: mobileCardWidth | times: 2, height: mobileCardHeight | times: 2 }} 2x
+                {% else %}
+              {{ 'image-placeholder.jpeg' | asset_url }}
+            {% endif %}
+          "
+            >
+            <img class="gallery__image"
+              {% if block.settings.image %}
+                src="{{ block.settings.image | image_url: width: cardWidth, height: cardHeight }}"
+                srcset="{{ block.settings.image | image_url: width: desktopCardWidth, height: desktopCardHeight }} 1x, {{ block.settings.image | image_url: width: desktopCardWidth | times: 2, height: desktopCardHeight | times: 2 }} 2x"
+              {% else %}
+                src="{{ "image-placeholder.jpeg" | asset_url }}"
+              {% endif %}
+                 alt="{{ block.settings.image.alt | default: "Gallery image" }}">
+          </picture>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Images gallery",
+  "settings": [
+    {
+      "type": "select",
+      "id": "per-row-desktop",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ],
+      "label": "Cards per row desktop",
+      "default": "6"
+    },
+    {
+      "type": "select",
+      "id": "per-row-mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "label": "Cards per row mobile",
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "aspect-ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
+      ],
+      "label": "Image aspect ratio"
+    },
+    {
+      "id": "overlay_color",
+      "type": "color_background",
+      "label": "Overlay color",
+      "default": "rgba(0,0,0, 0.3)"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image",
+      "type": "image",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images gallery"
+    }
+  ]
+}
+{% endschema %}

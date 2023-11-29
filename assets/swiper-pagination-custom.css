@@ -1,0 +1,11 @@
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-black-color);
+}

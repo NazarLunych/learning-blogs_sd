@@ -1,0 +1,108 @@
+{{ 'minicart.css' | asset_url | stylesheet_tag }}
+
+<section class="minicart minicart--hidden js-minicart">
+  <div class="minicart__content js-minicart-container">
+    <form
+      action="{{ routes.cart_url }}"
+      method="post"
+    >
+      <div class="minicart__container minicart__header">
+        <h5 class="minicart__header-title">Your cart ({{ cart.items.size }})</h5>
+        <button class="minicart__close-btn js-minicart-close-btn">{% render 'icon-close' %}</button>
+      </div>
+
+      <div class="js-minicart-products-container">
+        <div class="minicart__container minicart__items js-minicart-items">
+          {% for cart_item in cart.items %}
+            {% assign image = cart_item.image %}
+            {% assign id = cart_item.id %}
+            {% assign quantity_rule = cart_item.variant.quantity_rule %}
+
+            <div class="minicart__product js-minicart-item" data-item-id="{{ id }}">
+              <div class="minicart__image-wrapper">
+                <img
+                  class="minicart__image"
+                  srcset="{{ image | image_url: width: 100, height: 100 }} 1x, {{ image | image_url: width: 200, height: 200 }} 2x"
+                  src="{{ image | image_url: width: 100, height: 100 }}" alt="{{ cart_item.alt | escape }}">
+              </div>
+
+              <div class="minicart__product-info js-minicart-item-info">
+                <div class="minicart__product-title-wrapper">
+                  <div class="minicart__product-title">{{ cart_item.title }}</div>
+
+                  <button class="minicart__remove-item-btn js-minicart-delete-btn" data-item-id="{{ id }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M14 3.98665C11.78 3.76665 9.54667 3.65332 7.32 3.65332C6 3.65332 4.68 3.71999 3.36 3.85332L2 3.98665"
+                        stroke="#9D9D9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path
+                        d="M5.66602 3.31337L5.81268 2.44004C5.91935 1.80671 5.99935 1.33337 7.12602 1.33337H8.87268C9.99935 1.33337 10.086 1.83337 10.186 2.44671L10.3327 3.31337"
+                        stroke="#9D9D9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path
+                        d="M12.5669 6.09338L12.1336 12.8067C12.0603 13.8534 12.0003 14.6667 10.1403 14.6667H5.86026C4.00026 14.6667 3.94026 13.8534 3.86693 12.8067L3.43359 6.09338"
+                        stroke="#9D9D9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6.88672 11H9.10672" stroke="#9D9D9D" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                      <path d="M6.33398 8.33325H9.66732" stroke="#9D9D9D" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="minicart__product-variant">{{ cart_item.variant.title }}</div>
+
+                <div class="minicart__footer" data-item-id="{{ id }}">
+                  <div class="minicart__quantity-controls"
+                       data-cart-id="{{ id }}">
+                    <button class="minicart__quantity-btn" data-value="decrement" data-item-id="{{ id }}">-
+                    </button>
+                    <input
+                      class="minicart__quantity js-minicart-counter"
+                      type="number"
+                      data-item-id="{{ id }}"
+                      min="{{ quantity_rule.min }}"
+                      data-cart-quantity="{{ cart | item_count_for_variant: id }}"
+                      {% if quantity_rule.max != null %}
+                        max="{{ quantity_rule.max }}"
+                      {% endif %}
+                      value="{{ cart_item.quantity }}"
+                    >
+                    <button class="minicart__quantity-btn" data-value="increment" data-item-id="{{ id }}">+
+                    </button>
+                  </div>
+
+                  <p class="minicart__price">
+                    {{ cart_item.final_line_price | money }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            Your cart is empty
+          {% endfor %}
+        </div>
+
+        <div class="minicart__add-note-wrapper">
+          <button class="minicart__note-btn js-minicart-add-note-btn">
+            {% render 'icon-plus' %}
+            Add a note to your order
+          </button>
+          <div class="minicart__container minicart__textarea-container minicart__textarea--hidden js-minicart-textarea">
+        <textarea class="minicart__textarea" cols="30"
+                  placeholder="Leave a note for seller">{{ cart.note }}</textarea>
+          </div>
+        </div>
+
+        <div class="minicart__container minicart__subtotal">
+          <span class="minicart__subtotal-heading">Subtotal</span>
+          <span class="minicart__subtotal-price js-minicart-subtotal">{{ cart.items_subtotal_price | money }}</span>
+        </div>
+      </div>
+
+      <div class="hidden minicart__loader js-minicart-loader">
+        {% render 'loader' %}
+      </div>
+
+      <button class="minicart__checkout">Check out</button>
+    </form>
+  </div>
+</section>

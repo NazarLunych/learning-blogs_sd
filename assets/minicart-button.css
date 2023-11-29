@@ -1,0 +1,15 @@
+.minicart-button {
+  background-color: var(--primary-black-color);
+  color: #fff;
+  margin: 0 16px;
+  padding: 16px 32px;
+  border-radius: var(--large-border-radius);
+  border: none;
+  transition: var(--transition-duration);
+}
+
+.minicart-button:hover {
+  background-color: #fff;
+  color: var(--primary-black-color);
+  outline: 1px solid var(--primary-black-color);
+}

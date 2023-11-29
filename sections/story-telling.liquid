@@ -1,0 +1,247 @@
+<script src="{{ "story-telling-tabs.js" | asset_url }}" defer></script>
+{{ "section-story-telling.css" | asset_url | stylesheet_tag }}
+
+{% if section.blocks.size > 0 %}
+  <section class="custom-section page-width">
+    <div class="story-telling__wrapper">
+      <div class="story-telling__tabs">
+        {% for block in section.blocks %}
+          {% if block.settings.tab_heading != blank %}
+            <button
+              class="story-telling__tab {% if forloop.first %}story-telling__tab--active{% endif %} js-story-telling-tab"
+              data-tab-index="{{ forloop.index }}">{{ block.settings.tab_heading }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% for block in section.blocks %}
+      <div
+        class="story-telling__card story-telling__card--{{ block.settings.image_position }} {% unless forloop.first %}hidden{% endunless %} js-story-telling-cards"
+        style="--story-telling-background: {{ block.settings.background | default: '#161E13' }}"
+        data-card-index="{{ forloop.index }}">
+        <div class="story-telling__content" style="text-align: {{ block.settings.text_alignment }}">
+          <p class="story-telling__label"
+             style="--subheading-color: {{ block.settings.subheading_color }}">{{ block.settings.label }}</p>
+          <span class="story-telling__heading"
+                style="--heading-color: {{ block.settings.heading_color }}">{{ block.settings.heading }}</span>
+          <div class="story-telling__text"
+               style="--text-color: {{ block.settings.text_color }}">{{ block.settings.text }}</div>
+
+          {% if block.settings.button_link and block.settings.button_label %}
+            <a class="story-telling__button"
+               style="--button-label-color:{{ block.settings.button_label_color }};
+                 --button-background-color: {{ block.settings.button_background_color }};
+                 --button-border-color: {{ block.settings.button_border_color }};
+                 --button-label-hover-color: {{ block.settings.button_label_hover_color }};
+                 --button-background-hover-color: {{ block.settings.button_background_hover_color }};
+                 --button-border-hover-color: {{ block.settings.button_border_hover_color }}"
+               href="{{ block.settings.button_link }}">
+              {{ block.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+
+        {% unless block.settings.image_desktop or block.settings.image_mobile %}
+          <div class="story-telling__placeholder-wrapper">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% else %}
+          <div class="story-telling__img-wrapper">
+            <div
+              class="story-telling__aspect-ratio-wrapper story-telling__aspect-ratio-wrapper--{{ block.settings.image_aspect_ratio }}">
+              <picture>
+                <source
+                  srcset="{{ block.settings.image_mobile | image_url: height: 906, width: 906 }}"
+                  media="(max-width: 991px)">
+                <source
+                  srcset="{{ block.settings.image_mobile | image_url: height: 311, width: 311 }}"
+                  media="(max-width: 600px)">
+                <img class="story-telling__img"
+                  {% case block.settings.image_aspect_ratio %}
+                    {% when 'square' %}
+                      srcset="{{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 800, width: 800 }} 1x,
+                   {{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 1600, width: 1600 }} 2x"
+                    {% when 'landscape' %}
+                      srcset="{{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 568, width: 800 }} 1x,
+                   {{ block.settings.image_desktop | default: block.settings.image_mobile | image_url: height: 1136, width: 1600 }} 2x"
+                  {% endcase %}
+                     src="{{ block.settings.image_desktop | default: block.settings.image_mobile | image_url }}"
+                     alt="{{ block.settings.image_desktop.alt | default: "Story image" }}">
+              </picture>
+            </div>
+          </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Story telling",
+  "max_blocks": 7,
+  "blocks": [
+    {
+      "name": "Story",
+      "type": "text",
+      "settings": [
+        {
+          "id": "tab_heading",
+          "type": "text",
+          "label": "Tab heading"
+        },
+        {
+          "id": "image_desktop",
+          "type": "image_picker",
+          "label": "Image desktop"
+        },
+        {
+          "id": "image_mobile",
+          "type": "image_picker",
+          "label": "Image mobile"
+        },
+        {
+          "id": "image_aspect_ratio",
+          "type": "select",
+          "options": [
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            }
+          ],
+          "label": "Image aspect ratio"
+        },
+        {
+          "id": "image_position",
+          "type": "select",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Image position"
+        },
+        {
+          "id": "text_alignment",
+          "type": "select",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "label": "Text alignment"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur</p>"
+        },
+        {
+          "id": "button_label",
+          "type": "text",
+          "label": "Button label"
+        },
+        {
+          "id": "button_link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "background",
+          "type": "color_background",
+          "label": "Background"
+        },
+        {
+          "id": "heading_color",
+          "type": "color",
+          "label": "Heading color",
+          "default": "#fff"
+        },
+        {
+          "id": "subheading_color",
+          "type": "color",
+          "label": "Subheading color",
+          "default": "#fff"
+        },
+        {
+          "id": "text_color",
+          "type": "color",
+          "label": "Text color",
+          "default": "#fff"
+        },
+        {
+          "id": "button_label_color",
+          "type": "color",
+          "label": "Button label color",
+          "default": "#fff"
+        },
+        {
+          "id": "button_background_color",
+          "type": "color",
+          "label": "Button background color"
+        },
+        {
+          "id": "button_border_color",
+          "type": "color",
+          "label": "Button border color",
+          "default": "#fff"
+        },
+        {
+          "id": "button_label_hover_color",
+          "type": "color",
+          "label": "Button label (hover) color",
+          "default": "#000"
+        },
+        {
+          "id": "button_background_hover_color",
+          "type": "color",
+          "label": "Button background (hover) color",
+          "default": "#fff"
+        },
+        {
+          "id": "button_border_hover_color",
+          "type": "color",
+          "label": "Button border (hover) color",
+          "default": "#fff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story telling"
+    }
+  ]
+}
+{% endschema %}

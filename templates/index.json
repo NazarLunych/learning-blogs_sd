@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "inverse",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "c77a2b0b-e214-45f2-a5eb-f10149322d32": {
+      "type": "trend-products",
+      "blocks": {
+        "127df2f1-6bd9-4297-8aa1-dfc7aa839666": {
+          "type": "product",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/image_18.jpg",
+            "product_1": "i-am-the-storm",
+            "spot_horizontal_position_1": 37,
+            "spot_vertical_position_1": 38,
+            "product_2": "",
+            "spot_horizontal_position_2": 0,
+            "spot_vertical_position_2": 0,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
+          }
+        },
+        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce": {
+          "type": "product",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/image_18.png",
+            "product_1": "the-3p-fulfilled-snowboard",
+            "spot_horizontal_position_1": 43,
+            "spot_vertical_position_1": 30,
+            "product_2": "the-collection-snowboard-liquid",
+            "spot_horizontal_position_2": 43,
+            "spot_vertical_position_2": 51,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
+          }
+        },
+        "9ddb0a17-810a-4930-8ff9-38c56825f6f7": {
+          "type": "product",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/image_3.png",
+            "product_1": "the-collection-snowboard-hydrogen",
+            "spot_horizontal_position_1": 38,
+            "spot_vertical_position_1": 81,
+            "product_2": "test",
+            "spot_horizontal_position_2": 42,
+            "spot_vertical_position_2": 55,
+            "product_3": "",
+            "spot_horizontal_position_3": 0,
+            "spot_vertical_position_3": 0,
+            "product_4": "",
+            "spot_horizontal_position_4": 0,
+            "spot_vertical_position_4": 0
+          }
+        }
+      },
+      "block_order": [
+        "127df2f1-6bd9-4297-8aa1-dfc7aa839666",
+        "00fd9d9a-09d7-4f91-9e38-7863109ab6ce",
+        "9ddb0a17-810a-4930-8ff9-38c56825f6f7"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "c77a2b0b-e214-45f2-a5eb-f10149322d32"
+  ]
+}

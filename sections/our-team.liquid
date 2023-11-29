@@ -1,0 +1,134 @@
+{{ 'section-our-team.css' | asset_url | stylesheet_tag }}
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'our-team.js' | asset_url }}" defer="defer"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+>
+
+{% for section_block in section.blocks %}
+  {% render 'our-team-modal', content: section_block %}
+{% endfor %}
+
+{% if section.blocks.size > 0 %}
+  <section class="page-width our-team">
+    <div class="swiper js-our-team-swiper">
+      <div class="our-team__container swiper-wrapper">
+        {% for block in section.blocks %}
+          {% assign instagram_link = block.settings.instagram_link %}
+          {% assign facebook_link = block.settings.facebook_link %}
+          {% assign youtube_link = block.settings.youtube_link %}
+
+          <div class="our-team__card swiper-slide">
+            {% if instagram_link or facebook_link or youtube_link %}
+              <div class="our-team__social-media-container">
+                {% render 'social-media-container', content: block %}
+              </div>
+            {% endif %}
+
+            <picture>
+              <source
+                media="(max-width: 990px)"
+                srcset="{{- block.settings.card_image | image_url: width: 303, height: 468 -}}"
+              >
+              <img
+                class="our-team__card-img"
+                {% if block.settings.card_image %}
+                  src="{{- block.settings.card_image | image_url: width: 400, height: 498 -}}"
+                {% else %}
+                  src="{{ 'image-placeholder.jpeg' | asset_url }}"
+                {% endif %}
+                width="400"
+                height="498"
+                alt="Card image"
+                loading="lazy"
+              >
+            </picture>
+
+            <div class="our-team__info-container">
+              <span class="our-team__card-name">{{ block.settings.name }}</span>
+              <span class="our-team__card-role">{{ block.settings.role }}</span>
+              <button class="our-team__read-more-btn js-our-team-read-more">
+                {{ section.settings.read_more_label }}
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% render 'swiper-pagination-custom' %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Our team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "Read More label",
+      "default": "Read More"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Team card",
+      "type": "team_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card image"
+        },
+        {
+          "type": "image_picker",
+          "id": "popup_image",
+          "label": "Popup image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Hristo Borisov"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Co-founder & CEO"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
+        },
+        {
+          "type": "url",
+          "id": "facebook_link",
+          "label": "Facebook link"
+        },
+        {
+          "type": "url",
+          "id": "instagram_link",
+          "label": "Instagram link"
+        },
+        {
+          "type": "url",
+          "id": "youtube_link",
+          "label": "Youtube link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our team"
+    }
+  ]
+}
+{% endschema %}
