@@ -361,6 +361,9 @@
         {%- endif -%}
       </a>
       <button class="minicart-button js-minicart-open-button">Your cart</button>
+      <button>
+        <img src="{{ "search-icon.svg" | asset_url }}" alt="Predictive search">
+      </button>
     </div>
   </header>
   </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
