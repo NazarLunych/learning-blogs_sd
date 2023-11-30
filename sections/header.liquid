@@ -30,6 +30,7 @@
 <noscript>{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
 
 {{ 'minicart-button.css' | asset_url | stylesheet_tag }}
+{{ 'custom-predictive-search.css' | asset_url | stylesheet_tag }}
 
 <style>
   header-drawer {
@@ -122,6 +123,7 @@
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'minicart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'custom-predictive-search.js' | asset_url }}" defer="defer"></script>
 {%- if settings.cart_type == "drawer" -%}
   <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
@@ -317,7 +319,7 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      {% comment %}{% render 'header-search', input_id: 'Search-In-Modal' %}{% endcomment %}
 
       {%- if shop.customer_accounts_enabled -%}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -361,7 +363,7 @@
         {%- endif -%}
       </a>
       <button class="minicart-button js-minicart-open-button">Your cart</button>
-      <button>
+      <button class="custom-predictive-search__open-btn js-custom-predictive-search-open-button">
         <img src="{{ "search-icon.svg" | asset_url }}" alt="Predictive search">
       </button>
     </div>

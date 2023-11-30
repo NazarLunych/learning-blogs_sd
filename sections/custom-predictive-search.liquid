@@ -1,0 +1,178 @@
+{{ 'custom-predictive-search.css' | asset_url | stylesheet_tag }}
+
+<section class="custom-predictive-search custom-predictive-search--hidden js-custom-predictive-search">
+  <div class="custom-predictive-search__content">
+    <div class="custom-predictive-search__container custom-predictive-search__header">
+      <h5 class="custom-predictive-search__title">Search</h5>
+      <button
+        class="custom-predictive-search__close-btn js-custom-predictive-search-close-button">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+
+    <div class="custom-predictive-search__input-container">
+      <div class="custom-predictive-search__input-wrapper">
+        <input class="custom-predictive-search__input js-custom-predictive-search-input" type="text"
+               placeholder="Search...">
+        <div class="custom-predictive-search__input-btns">
+          <button class="custom-predictive-search__close-btn js-custom-predictive-search-clear-input">
+            {% render 'icon-close' %}
+          </button>
+          <a class="custom-predictive-search__search-icon" href="/search">
+            <img src="{{ 'search-icon.svg' | asset_url }}" alt="Search"/>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-predictive-search__loader hidden js-custom-predictive-search-loader">
+      {% render 'loader' %}
+    </div>
+
+    <div class="custom-predictive-search__container hidden js-custom-predictive-search-content">
+      {% if predictive_search.performed %}
+        {% assign products = predictive_search.resources.products %}
+        {% assign articles = predictive_search.resources.articles %}
+        {% assign pages = predictive_search.resources.pages %}
+
+        {% if products.size > 0 or articles.size > 0 or pages.size > 0 %}
+          <div class="custom-predictive-search__tabs">
+            <button
+              class="custom-predictive-search__tab js-custom-predictive-search-tab"
+              {% unless products.size > 0 %}disabled{% endunless %}>
+              Products
+            </button>
+
+            <button class="custom-predictive-search__tab js-custom-predictive-search-tab"
+                    {% unless articles.size > 0 %}disabled{% endunless %}>
+              Articles
+            </button>
+
+            <button class="custom-predictive-search__tab js-custom-predictive-search-tab"
+                    {% unless pages.size > 0 %}disabled{% endunless %}>
+              Pages
+            </button>
+          </div>
+
+          <div
+            class="hidden js-custom-predictive-search-products-container"
+            data-tab-value="products">
+            <ul class="custom-predictive-search__ul">
+              {% for product in products %}
+                <li class="custom-predictive-search__li">
+                  <a class="custom-predictive-search__product" href="{{ product.url }}">
+                    <div class="custom-predictive-search__square-img">
+                      {% assign product_image = product.featured_image %}
+                      {% assign compare_at_price = product.compare_at_price %}
+
+                      {% if product_image %}
+                        <picture>
+                          <source
+                            srcset="{{ product_image | image_url: width: 100, height: 100 }} 1x, {{ product_image | image_url: width: 200, height: 200 }} 2x"
+                            media="(max-width: 768px)">
+
+                          <img class="custom-predictive__img"
+                               srcset="{{ product_image | image_url: width: 120, height: 120 }} 1x, {{ product_image | image_url: width: 240, height: 240 }} 2x"
+                               src="{{ product_image | image_url: width: 120, height: 120 }}"
+                               alt="{{ product_image.alt }}">
+                        </picture>
+                      {% else %}
+                        <div class="custom-predictive__img">
+                          {{ 'product-2' | placeholder_svg_tag }}
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="custom-predictive-search__product-info">
+                      <span class="custom-predictive-search__product-title">{{ product.title }}</span>
+                      <div class="custom-predictive-search__price-wrapper">
+                        <span class="custom-predictive-search__product-price">{{ product.price | money }}</span>
+                        {% if compare_at_price %}
+                          <span class="custom-predictive-search__product-compare-at-price">
+                            {{ compare_at_price | money }}
+                          </span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div data-tab-value="articles"
+               class="hidden js-custom-predictive-search-products-container">
+            <ul class="custom-predictive-search__ul">
+              {% for article in articles %}
+                <li class="custom-predictive-search__li">
+                  <a href="{{ article.url }}" class="custom-predictive-search__article">
+                    {% assign image = article.image %}
+                    {% assign content = article.content %}
+
+                    {% if image %}
+                      <div class="custom-predictive-search__square-img">
+                        <picture>
+                          <source
+                            srcset="{{ image | image_url: width: 100, height: 100 }} 1x, {{ image | image_url: width: 200, height: 200 }} 2x"
+                            media="(max-width: 768px)">
+
+                          <img class="custom-predictive__img"
+                               srcset="{{ image | image_url: width: 120, height: 120 }} 1x, {{ image | image_url: width: 240, height: 240 }} 2x"
+                               src="{{ image | image_url: width: 120, height: 120 }}"
+                               alt="{{ image.alt }}">
+                        </picture>
+                      </div>
+                    {% endif %}
+
+                    <div class="custom-predictive-search__article-content">
+                      <div class="custom-predictive-search__article-info-wrapper">
+                      <span
+                        class="custom-predictive-search__article-info">
+                        {{ article.published_at | date: '%B %d, %Y' }}
+                      </span>
+
+                        <span class="custom-predictive-search__article-info">
+                          {{ article.author }}
+                        </span>
+
+                        <span class="custom-predictive-search__article-info">
+                          {{ article.comments_count }} {% if article.comments_count == 1 %}comment{% else %}comments{% endif %}
+                        </span>
+                      </div>
+
+                      {% if content %}
+                        <p class="custom-predictive-search__article-text">{{ content }}</p>
+                      {% endif %}
+                    </div>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div data-tab-value="pages" class="hidden js-custom-predictive-search-products-container">
+            <ul class="custom-predictive-search__ul">
+              {% for page in pages %}
+                <li class="custom-predictive-search__li">
+                  <a href="{{ page.url }}" class="custom-predictive-search__page">
+                    <p class="custom-predictive-search__page-title">{{ page.title }}</p>
+                    <img src="{{ "arrow-right.svg" | asset_url }}" alt="Arrow right">
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="custom-predictive-search__footer">
+            <a href="/products" class="custom-predictive-search__all-results-button">
+              See all results
+            </a>
+          </div>
+        {% else %}
+          <div class="custom-predictive-search__no-results">
+            No results found
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</section>
