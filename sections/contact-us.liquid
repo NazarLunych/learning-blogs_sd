@@ -170,10 +170,14 @@
           {{ section.settings.success_message }}
         </div>
       {% elsif form.errors %}
-        <div class="contact-us__form-status contact-us__form--error">
-          {%- render 'icon-error' -%}
-          There was an error with your submission. Please try again.
-        </div>
+        {% assign errors = form.errors %}
+
+        {% for error in errors %}
+          <div class="contact-us__form-status contact-us__form--error">
+            {%- render 'icon-error' -%}
+            {{ errors.translated_fields[error] | capitalize }} {{ errors.messages[error] }}
+          </div>
+        {% endfor %}
       {% endif %}
 
       <div class="contact-us__inputs">
