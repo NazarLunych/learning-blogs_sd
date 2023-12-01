@@ -10,64 +10,72 @@
 {% assign section_settings = section.settings %}
 
 <section class="page-width custom-section product-banner">
-  <div class="swiper js-product-banner-swiper"
+  <div class="product-banner__container"
        style="--background-overlay: {{ section_settings.overlay }};
          --label-color:{{ section_settings.colors_label }};
          --heading-color:{{ section_settings.colors_heading }};
-         --text-color:{{ section_settings.colors_text }};"
-  >
-    <div class="swiper-wrapper">
-      {% for block in section.blocks %}
-        {% assign block_settings = block.settings %}
-        {% assign image_desktop = block_settings.image_desktop %}
-        {% assign image_mobile = block_settings.image_mobile | default: image_desktop %}
-        {% assign html_video = block_settings.html_video %}
-        {% assign label = section_settings.label %}
-        {% assign heading = section_settings.heading %}
-        {% assign text = section_settings.text %}
-        {% assign product = block_settings.product %}
+         --text-color:{{ section_settings.colors_text }};">
+    <div class="swiper product-banner__swiper js-product-banner-background-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% assign block_settings = block.settings %}
+          {% assign image_desktop = block_settings.image_desktop %}
+          {% assign image_mobile = block_settings.image_mobile | default: image_desktop %}
+          {% assign html_video = block_settings.html_video %}
+          {% assign label = section_settings.label %}
+          {% assign heading = section_settings.heading %}
+          {% assign text = section_settings.text %}
 
-        <div class="swiper-slide product-banner__container">
-          {% if html_video %}
-            <video class="product-banner__background js-product-banner-video" muted loop>
-              {% for source in html_video.sources %}
+          <div class="swiper-slide swiper-no-swiping">
+            {% if html_video %}
+              <video class="product-banner__background js-product-banner-video" muted loop>
+                {% for source in html_video.sources %}
+                  <source
+                    src="{{ source.url }}"
+                    type="{{ source.mime_type }}"/>
+                {% endfor %}
+              </video>
+            {% else %}
+              <picture>
                 <source
-                  src="{{ source.url }}"
-                  type="{{ source.mime_type }}"/>
-              {% endfor %}
-            </video>
-          {% else %}
-            <picture>
-              <source
-                srcset="{{ image_mobile | image_url: width: 375, height: 800 }} 1x, {{ image_mobile | image_url: width: 750, height: 1600 }} 2x"
-                media="(max-width: 1300px)">
+                  srcset="{{ image_mobile | image_url: width: 375, height: 800 }} 1x, {{ image_mobile | image_url: width: 750, height: 1600 }} 2x"
+                  media="(max-width: 1300px)">
 
-              <img class="product-banner__background"
-                   srcset="{{ image_desktop | image_url: width: 1648, height: 720 }} 1x, {{ image_desktop | image_url: width: 3296, height: 1440 }} 2x"
-                   src="{{ image_desktop | image_url: width: 1648, height: 720 }}"
-                   alt="{{ image_desktop.alt }}">
-            </picture>
+                <img class="product-banner__background"
+                     srcset="{{ image_desktop | image_url: width: 1648, height: 720 }} 1x, {{ image_desktop | image_url: width: 3296, height: 1440 }} 2x"
+                     src="{{ image_desktop | image_url: width: 1648, height: 720 }}"
+                     alt="{{ image_desktop.alt }}">
+              </picture>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="product-banner__content-wrapper">
+      {% if label != blank or heading != blank or text != blank %}
+        <div class="product-banner__text-content-wrapper">
+          {% if label %}
+            <span class="product-banner__label">{{ label }}</span>
           {% endif %}
 
-          <div class="product-banner__content-wrapper">
-            {% if label != blank or heading != blank or text != blank %}
-              <div class="product-banner__text-content-wrapper">
-                {% if label %}
-                  <span class="product-banner__label">{{ label }}</span>
-                {% endif %}
+          {% if heading %}
+            <h3 class="product-banner__heading">{{ heading }}</h3>
+          {% endif %}
 
-                {% if heading %}
-                  <h3 class="product-banner__heading">{{ heading }}</h3>
-                {% endif %}
+          {% if text %}
+            <p class="product-banner__text">{{ text }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
 
-                {% if text %}
-                  <p class="product-banner__text">{{ text }}</p>
-                {% endif %}
-              </div>
-            {% endif %}
+      <div class="swiper product-banner__content-swiper js-product-banner-product-swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% assign product = block.settings.product %}
 
             {% if product != blank %}
-              <div class="product-banner__slider-wrapper">
+              <div class="swiper-slide product-banner__slider-wrapper">
                 <button class="product-banner__button-prev">
                   <img src="{{ "arrow-right.svg" | asset_url }}" alt="Previous page button">
                 </button>
@@ -80,9 +88,9 @@
                 </button>
               </div>
             {% endif %}
-          </div>
+          {% endfor %}
         </div>
-      {% endfor %}
+      </div>
     </div>
   </div>
 </section>

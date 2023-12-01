@@ -13,7 +13,14 @@
   height: 100%;
   position: absolute;
   top: 0;
-  background: var(--background-overlay)
+  z-index: 1;
+  background: var(--background-overlay);
+}
+
+.product-banner .product-banner__swiper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .product-banner__background {
@@ -30,10 +37,11 @@
   gap: 70px;
   padding: 55px 140px;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .product-banner__text-content-wrapper {
+  width: 50%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -66,7 +74,12 @@
   line-height: 1.21em;
 }
 
-.product-banner__slider-wrapper {
+.product-banner .product-banner__content-swiper {
+  width: 50%;
+  overflow: visible;
+}
+
+.product-banner__content-wrapper .product-banner__slider-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
@@ -106,18 +119,19 @@
   transform: rotate(-180deg);
 }
 
-.product-banner__slider-wrapper .swiper-pagination {
+.product-banner__content-wrapper .product-banner__slider-wrapper .swiper-pagination {
   position: initial;
 }
 
-.product-banner__slider-wrapper .swiper-pagination .swiper-pagination-bullet,
-.product-banner__slider-wrapper .swiper-pagination .swiper-pagination-bullet-active {
+.product-banner__content-wrapper .product-banner__slider-wrapper .swiper-pagination .swiper-pagination-bullet,
+.product-banner__content-wrapper .product-banner__slider-wrapper .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #fff;
 }
 
 @media screen and (max-width: 1300px) {
   .product-banner__card-wrapper {
-    max-width: 50%;
+    max-width: 100%;
+    min-width: 100%;
   }
 
   .product-banner__content-wrapper {
@@ -126,11 +140,12 @@
     gap: 16px;
   }
 
-  .product-banner__slider-wrapper {
+  .product-banner__content-wrapper .product-banner__slider-wrapper {
     justify-content: center;
   }
 
   .product-banner__text-content-wrapper {
+    width: 100%;
     text-align: center;
   }
 
@@ -140,17 +155,16 @@
 }
 
 @media screen and (max-width: 768px) {
+  .product-banner__content-swiper {
+    width: 100%
+  }
+
   .product-banner {
     padding: 0 !important;
   }
 
   .product-banner .product-banner__container {
     border-radius: 0;
-  }
-
-  .product-banner__card-wrapper {
-    max-width: 100%;
-    min-width: 100%;
   }
 
   .product-banner__label {

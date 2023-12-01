@@ -1,14 +1,19 @@
 function initProductBannerFunc() {
   const selectors = {
-    swiper: ".js-product-banner-swiper",
+    backgroundSwiper: ".js-product-banner-background-swiper",
+    productSwiper: ".js-product-banner-product-swiper",
     video: ".js-product-banner-video"
   };
 
-  new Swiper(selectors.swiper, {
-    direction: "horizontal",
-    slidesPerView: 1,
-    spaceBetween: 24,
+  const backgroundSwiper = new Swiper(selectors.backgroundSwiper, {
+    effect: "fade"
+  });
+
+  new Swiper(selectors.productSwiper, {
     effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
     navigation: {
       nextEl: ".product-banner__button-next",
       prevEl: ".product-banner__button-prev"
@@ -23,6 +28,7 @@ function initProductBannerFunc() {
         const currentVideoEl = currentSlide?.querySelector(selectors.video);
         const prevVideoEl = this.clickedSlide?.querySelector(selectors.video);
 
+        backgroundSwiper.slideTo(index);
         currentVideoEl && currentVideoEl.play();
         prevVideoEl && prevVideoEl.pause();
       }
