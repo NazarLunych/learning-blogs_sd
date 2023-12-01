@@ -6,7 +6,18 @@ function initProductBannerFunc() {
   };
 
   const backgroundSwiper = new Swiper(selectors.backgroundSwiper, {
-    effect: "fade"
+    effect: "fade",
+    on: {
+      slideChange: function () {
+        const index = this.realIndex;
+        const currentSlide = this.slides[index];
+        const currentVideoEl = currentSlide?.querySelector(selectors.video);
+        const prevVideoEl = this.clickedSlide?.querySelector(selectors.video);
+
+        currentVideoEl && currentVideoEl.play();
+        prevVideoEl && prevVideoEl.pause();
+      }
+    }
   });
 
   new Swiper(selectors.productSwiper, {
@@ -23,14 +34,7 @@ function initProductBannerFunc() {
     },
     on: {
       slideChange: function () {
-        const index = this.realIndex;
-        const currentSlide = this.slides[index];
-        const currentVideoEl = currentSlide?.querySelector(selectors.video);
-        const prevVideoEl = this.clickedSlide?.querySelector(selectors.video);
-
-        backgroundSwiper.slideTo(index);
-        currentVideoEl && currentVideoEl.play();
-        prevVideoEl && prevVideoEl.pause();
+        backgroundSwiper.slideTo(this.realIndex);
       }
     }
   });
